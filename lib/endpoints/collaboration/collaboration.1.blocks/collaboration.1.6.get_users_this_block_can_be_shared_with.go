@@ -6,22 +6,22 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 func GetUsersThisBlockCanBeSharedWith(
 	jwtToken string,
-	blockAclParam common.SearchUsersParam,
+	projectAclParam common.SearchUsersParam,
 ) ([]response.SearchUser, error) {
 	resUsers := response.SearchUsers{}
 	route, err := helpers2.GetRoute(
 		lib.RouteCollaborationGetUsersThisBlockCanBeSharedWith,
-		blockAclParam.ResourceIds.BlockId,
-		blockAclParam.ResourceIds.KeyId,
-		blockAclParam.SearchToken,
+		projectAclParam.ResourceIds.BlockId,
+		projectAclParam.ResourceIds.KeyId,
+		projectAclParam.SearchToken,
 	)
 	if err != nil {
 		fmt.Println(err)

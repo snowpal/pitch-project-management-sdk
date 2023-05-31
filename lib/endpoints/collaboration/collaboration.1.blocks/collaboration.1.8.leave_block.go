@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-func LeaveBlock(jwtToken string, blockParam common.ResourceIdParam) error {
+func LeaveBlock(jwtToken string, projectParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteCollaborationLeaveBlock,
-		blockParam.BlockId,
-		blockParam.KeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
 	)
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {

@@ -1,4 +1,4 @@
-package blockPods
+package cards
 
 import (
 	"encoding/json"
@@ -6,15 +6,15 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 type BlockPodGradesForStudents struct {
 	ID       string             `json:"id"`
-	Name     string             `json:"blockName"`
+	Name     string             `json:"projectName"`
 	Key      common2.SlimKey    `json:"key"`
 	Pod      common2.SlimPod    `json:"pod"`
 	Students []response.Student `json:"students"`

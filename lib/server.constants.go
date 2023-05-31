@@ -309,29 +309,29 @@ const (
 )
 
 const (
-	RouteProjectKeysAddACard               = "projects/%s/project-cards?keyId=%s&projectListId=%s"
-	RouteProjectKeysAddCardBasedOnTemplate = "projects/%s/project-cards/by-template?keyId=%s&projectListId=%s&templateId=%s&excludeTasks=%s"
-	RouteProjectKeysLinkCardToProject      = "projects/%s/project-cards/%s/link?keyId=%s&projectListId=%s"
-	RouteProjectKeysReorderCards           = "projects/%s/project-cards/reorder?keyId=%s"
-	RouteProjectKeysCopyCard               = "project-cards/%s/copy?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s"
-	RouteProjectKeysMoveCard               = "project-cards/%s/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s"
-	RouteProjectKeysCopyProjectProject     = "projects/%s/project-cards/copy?keyId=%s&targetKeyId=%s&allCards=%s&allTasks=%s"
-	RouteProjectKeysAssignCard             = "project-cards/%s/assign?keyId=%s&projectId=%s"
-	RouteProjectKeysUnassignCard           = "project-cards/%s/unassign?keyId=%s&projectId=%s"
+	RouteProjectKeysAddACard               = "projects/%s/cards?keyId=%s&projectListId=%s"
+	RouteProjectKeysAddCardBasedOnTemplate = "projects/%s/cards/by-template?keyId=%s&projectListId=%s&templateId=%s&excludeTasks=%s"
+	RouteProjectKeysLinkCardToProject      = "projects/%s/cards/%s/link?keyId=%s&projectListId=%s"
+	RouteProjectKeysReorderCards           = "projects/%s/cards/reorder?keyId=%s"
+	RouteProjectKeysCopyCard               = "cards/%s/copy?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s"
+	RouteProjectKeysMoveCard               = "cards/%s/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s"
+	RouteProjectKeysCopyProject            = "projects/%s/cards/copy?keyId=%s&targetKeyId=%s&allCards=%s&allTasks=%s"
+	RouteProjectKeysAssignCard             = "cards/%s/assign?keyId=%s&projectId=%s"
+	RouteProjectKeysUnassignCard           = "cards/%s/unassign?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteProjectKeysAddProjectProjectList      = "projects/%s/project-project-lists?keyId=%s"
-	RouteProjectKeysGetProjectLists            = "projects/%s/project-project-lists?keyId=%s"
-	RouteProjectKeysCopyCardsInProjectList     = "project-project-lists/%s/cards/copy-all?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allCards=%s&allTasks=%s"
-	RouteProjectKeysBulkCopyCardsInProjectList = "project-project-lists/%s/cards/copy?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allTasks=%s&cardIds=%s"
-	RouteProjectKeysMoveCardsInProjectList     = "project-project-lists/%s/cards/move-all?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allCards=%s"
-	RouteProjectKeysBulkMoveCardsInProjectList = "project-project-lists/%s/cards/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&cardIds=%s"
-	RouteProjectKeysMoveProjectList            = "projects/%s/project-project-lists/%s/move?keyId=%s&targetKeyId=%s&targetProjectId=%s&targetPosition=%s"
-	RouteProjectKeysGetProjectList             = "projects/%s/project-project-lists/%s?keyId=%s"
-	RouteProjectKeysRenameProjectList          = "projects/%s/project-project-lists/%s?keyId=%s"
-	RouteProjectKeysReorderProjectList         = "projects/%s/project-project-lists/reorder?keyId=%s"
-	RouteProjectKeysArchiveProjectList         = "projects/%s/project-project-lists/%s/archive?keyId=%s"
+	RouteProjectKeysAddProjectList             = "projects/%s/project-lists?keyId=%s"
+	RouteProjectKeysGetProjectLists            = "projects/%s/project-lists?keyId=%s"
+	RouteProjectKeysCopyCardsInProjectList     = "project-lists/%s/cards/copy-all?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allCards=%s&allTasks=%s"
+	RouteProjectKeysBulkCopyCardsInProjectList = "project-lists/%s/cards/copy?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allTasks=%s&cardIds=%s"
+	RouteProjectKeysMoveCardsInProjectList     = "project-lists/%s/cards/move-all?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allCards=%s"
+	RouteProjectKeysBulkMoveCardsInProjectList = "project-lists/%s/cards/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&cardIds=%s"
+	RouteProjectKeysMoveProjectList            = "projects/%s/project-lists/%s/move?keyId=%s&targetKeyId=%s&targetProjectId=%s&targetPosition=%s"
+	RouteProjectKeysGetProjectList             = "projects/%s/project-lists/%s?keyId=%s"
+	RouteProjectKeysRenameProjectList          = "projects/%s/project-lists/%s?keyId=%s"
+	RouteProjectKeysReorderProjectList         = "projects/%s/project-lists/reorder?keyId=%s"
+	RouteProjectKeysArchiveProjectList         = "projects/%s/project-lists/%s/archive?keyId=%s"
 )
 
 const (

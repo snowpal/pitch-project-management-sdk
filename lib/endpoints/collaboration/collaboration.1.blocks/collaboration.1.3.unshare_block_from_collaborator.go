@@ -6,19 +6,19 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func UnshareBlockWithCollaborator(jwtToken string, blockAclParam common.AclParam) (response.Block, error) {
+func UnshareBlockWithCollaborator(jwtToken string, projectAclParam common.AclParam) (response.Block, error) {
 	resBlock := response.Block{}
 	route, err := helpers2.GetRoute(
 		lib.RouteCollaborationUnshareBlockFromCollaborator,
-		blockAclParam.ResourceIds.BlockId,
-		blockAclParam.UserId,
-		blockAclParam.ResourceIds.KeyId,
+		projectAclParam.ResourceIds.BlockId,
+		projectAclParam.UserId,
+		projectAclParam.ResourceIds.KeyId,
 	)
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {

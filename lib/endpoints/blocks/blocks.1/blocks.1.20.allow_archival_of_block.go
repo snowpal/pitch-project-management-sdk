@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -7,16 +7,16 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 func AllowArchivalOfBlock(
 	jwtToken string,
 	reqBody common.AllowArchivalReqBody,
-	blockParam common.ResourceIdParam,
+	projectParam common.ResourceIdParam,
 ) (response.Block, error) {
 	resBlock := response.Block{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -29,8 +29,8 @@ func AllowArchivalOfBlock(
 	var route string
 	route, err = helpers2.GetRoute(
 		lib.RouteProjectsAllowArchivalOfBlock,
-		blockParam.BlockId,
-		blockParam.KeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

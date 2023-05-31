@@ -1,15 +1,15 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/scheduler"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/scheduler"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
-	blocks "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/blocks/blocks.1"
-	keyPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/key_pods/key_pods.1"
+	keyPods "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/key_pods/key_pods.1"
+	projects "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -35,7 +35,7 @@ func FetchScheduler() {
 
 	var key response.Key
 	key, _ = recipes.AddCustomKey(user, SchedulerKeyName)
-	log.Info("Set due date for block")
+	log.Info("Set due date for project")
 	err = setBlockDueDate(user, key)
 	if err != nil {
 		return
@@ -54,19 +54,19 @@ func FetchScheduler() {
 	if err != nil {
 		return
 	}
-	log.Info(".Displayed block & pod due date events")
+	log.Info(".Displayed project & pod due date events")
 }
 
 func setBlockDueDate(user response.User, key response.Key) error {
-	block, err := recipes.AddBlock(user, SchedulerBlockName, key)
+	project, err := recipes.AddBlock(user, SchedulerBlockName, key)
 	if err != nil {
 		return err
 	}
 	dueDate := DueDate
-	_, err = blocks.UpdateBlock(
+	_, err = projects.UpdateBlock(
 		user.JwtToken,
-		blocks.UpdateBlockReqBody{DueDate: &dueDate},
-		common.ResourceIdParam{BlockId: block.ID, KeyId: block.Key.ID})
+		projects.UpdateBlockReqBody{DueDate: &dueDate},
+		common.ResourceIdParam{BlockId: project.ID, KeyId: project.Key.ID})
 	if err != nil {
 		return err
 	}
@@ -94,8 +94,8 @@ func fetchSchedulerEvents(user response.User) error {
 	if err != nil {
 		return err
 	}
-	for _, blockEvent := range allEvents.DueDateEvent.Projects {
-		log.Printf(".Block %s is due on %s", blockEvent.Name, *blockEvent.DueDate)
+	for _, projectEvent := range allEvents.DueDateEvent.Projects {
+		log.Printf(".Block %s is due on %s", projectEvent.Name, *projectEvent.DueDate)
 	}
 	for _, podEvent := range allEvents.DueDateEvent.Pods {
 		log.Printf(".Pod %s is due on %s", podEvent.Name, podEvent.DueDate)

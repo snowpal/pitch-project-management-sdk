@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Comments struct {
@@ -17,7 +17,7 @@ type Comment struct {
 	CanDelete *bool `json:"canDelete"`
 
 	Key   *common2.SlimKey   `json:"key"`
-	Block *common2.SlimBlock `json:"block"`
+	Block *common2.SlimBlock `json:"project"`
 	Pod   *common2.SlimPod   `json:"pod"`
 
 	Creator      common2.ResourceCreator  `json:"creator"`
@@ -34,8 +34,8 @@ type RecentComment struct {
 	CommentText string `json:"commentText"`
 
 	Key      *common2.SlimKey     `json:"key"`
-	Block    *common2.SlimBlock   `json:"block"`
-	Projects *[]common2.SlimBlock `json:"blocks"`
+	Block    *common2.SlimBlock   `json:"project"`
+	Projects *[]common2.SlimBlock `json:"projects"`
 	Pod      *common2.SlimPod     `json:"pod"`
 
 	StudentId *string `json:"studentId"`

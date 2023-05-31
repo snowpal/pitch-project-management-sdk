@@ -1,15 +1,15 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
 	log "github.com/sirupsen/logrus"
-	projectKeys "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/project_keys/project_keys.1"
-	projectLists "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/project_keys/project_keys.2.lists"
+	projectKeys "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_keys/project_keys.1"
+	projectLists "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_keys/project_keys.2.lists"
 )
 
 const (
@@ -91,11 +91,11 @@ func addProjectPod(user response.User, podName string, projectList response.Proj
 	return newPod, nil
 }
 
-func addProjectList(user response.User, projectListName string, block response.Block) (response.ProjectList, error) {
+func addProjectList(user response.User, projectListName string, project response.Block) (response.ProjectList, error) {
 	newProjectList, err := projectLists.AddProjectBlockList(
 		user.JwtToken,
 		request.AddProjectListReqBody{Name: projectListName},
-		common.ResourceIdParam{BlockId: block.ID, KeyId: block.Key.ID},
+		common.ResourceIdParam{BlockId: project.ID, KeyId: project.Key.ID},
 	)
 	if err != nil {
 		return newProjectList, err

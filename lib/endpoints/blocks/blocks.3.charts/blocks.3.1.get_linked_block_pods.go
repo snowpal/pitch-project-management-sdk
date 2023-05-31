@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -6,18 +6,18 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetLinkedCards(jwtToken string, blockParam common.ResourceIdParam) (response.LinkedResources, error) {
+func GetLinkedCards(jwtToken string, projectParam common.ResourceIdParam) (response.LinkedResources, error) {
 	resLinkedPods := response.LinkedResources{}
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectsGetLinkedCards,
-		blockParam.KeyId,
-		blockParam.BlockId,
+		projectParam.KeyId,
+		projectParam.BlockId,
 	)
 	if err != nil {
 		fmt.Println(err)

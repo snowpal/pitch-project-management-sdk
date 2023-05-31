@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -7,18 +7,18 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetArchivedProjects(jwtToken string, blocksParam request.GetProjectsParam) ([]response.Block, error) {
+func GetArchivedProjects(jwtToken string, projectsParam request.GetProjectsParam) ([]response.Block, error) {
 	resProjects := response.Projects{}
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectsGetArchivedProjects,
-		strconv.Itoa(blocksParam.BatchIndex),
-		blocksParam.KeyId,
+		strconv.Itoa(projectsParam.BatchIndex),
+		projectsParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

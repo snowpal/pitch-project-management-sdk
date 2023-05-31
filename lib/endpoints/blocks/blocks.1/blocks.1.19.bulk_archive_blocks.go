@@ -1,16 +1,16 @@
-package blocks
+package projects
 
 import (
 	"fmt"
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
 )
 
 type BulkArchiveProjectsReqBody struct {
-	BlockIds string `json:"blockIds"`
+	BlockIds string `json:"projectIds"`
 }
 
 func BulkArchiveProjects(jwtToken string, reqBody BulkArchiveProjectsReqBody, keyId string) error {

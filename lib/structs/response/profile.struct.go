@@ -16,7 +16,7 @@ type Profile struct {
 	IsInactive         bool `json:"inactive"`
 	IsAnnualSubscriber bool `json:"isAnnualSubscriber"`
 
-	BlockedUsers []BlockedUser `json:"blockedUsers"`
+	BlockedUsers []BlockedUser `json:"projectedUsers"`
 	Preferences  []Preference  `json:"preferences"`
 }
 

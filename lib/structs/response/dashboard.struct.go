@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Dashboard struct {
@@ -18,23 +18,23 @@ type RecentlyModifiedKeys struct {
 }
 
 type RecentlyModifiedResources struct {
-	Projects []DashboardBlock `json:"blocks"`
+	Projects []DashboardBlock `json:"projects"`
 	Pods     []DashboardPod   `json:"pods"`
 }
 
 type DueShortlyResources struct {
-	Projects *[]DashboardBlock `json:"blocks"`
+	Projects *[]DashboardBlock `json:"projects"`
 	Pods     []DashboardPod    `json:"pods"`
 	Tasks    []DashboardTask   `json:"tasks"`
 }
 
 type DashboardBlock struct {
 	ID      string `json:"id"`
-	Name    string `json:"blockName"`
-	DueDate string `json:"blockDueDate"`
+	Name    string `json:"projectName"`
+	DueDate string `json:"projectDueDate"`
 
 	Key       *common2.SlimKey `json:"key"`
-	BlockType *BlockType       `json:"blockType"`
+	BlockType *BlockType       `json:"projectType"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
@@ -46,7 +46,7 @@ type DashboardPod struct {
 	DueDate string `json:"podDueDate"`
 
 	Key      *common2.SlimKey    `json:"key"`
-	Projects *[]BlockWithPodType `json:"blocks"`
+	Projects *[]BlockWithPodType `json:"projects"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
@@ -54,7 +54,7 @@ type DashboardPod struct {
 
 type BlockWithPodType struct {
 	ID      string           `json:"id"`
-	Name    string           `json:"blockName"`
+	Name    string           `json:"projectName"`
 	Key     *common2.SlimKey `json:"key"`
 	PodType *PodType         `json:"podType"`
 }
@@ -65,9 +65,9 @@ type DashboardTask struct {
 	DueDate string `json:"taskDueDate"`
 
 	Key      *common2.SlimKey     `json:"key"`
-	Block    *common2.SlimBlock   `json:"block"`
+	Block    *common2.SlimBlock   `json:"project"`
 	Pod      *common2.SlimPod     `json:"pod"`
-	Projects *[]common2.SlimBlock `json:"blocks"`
+	Projects *[]common2.SlimBlock `json:"projects"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`

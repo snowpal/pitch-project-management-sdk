@@ -3,18 +3,18 @@ package recipes
 import (
 	"fmt"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/blocks/blocks.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/collaboration/collaboration.1.blocks"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/keys/keys.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/notifications"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/keys/keys.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/notifications"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
 	log "github.com/sirupsen/logrus"
-	user2 "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/user"
+	user2 "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/user"
 )
 
 const (
@@ -24,7 +24,7 @@ const (
 )
 
 func ShareBlock() {
-	log.Info("Objective: Create block, share users as read & write, make 1 of them as admin.")
+	log.Info("Objective: Create project, share users as read & write, make 1 of them as admin.")
 	_, err := recipes.ValidateDependencies()
 	if err != nil {
 		return
@@ -35,15 +35,15 @@ func ShareBlock() {
 		return
 	}
 
-	log.Info("Share a block")
+	log.Info("Share a project")
 	recipes.SleepBefore()
-	var block response.Block
-	block, err = shareBlock(user)
+	var project response.Block
+	project, err = shareBlock(user)
 	if err != nil {
 		return
 	}
 
-	writeUser, err := getWriteUser(user, block)
+	writeUser, err := getWriteUser(user, project)
 	fmt.Println(user.JwtToken)
 	if err != nil {
 		return
@@ -58,31 +58,31 @@ func ShareBlock() {
 	log.Printf(".Notifications for the recent share displayed successfully")
 	recipes.SleepAfter()
 
-	log.Printf("Update block name as a write user")
+	log.Printf("Update project name as a write user")
 	recipes.SleepBefore()
 	var resBlock response.Block
-	resBlock, err = updateBlockAsWriteUser(writeUser, block)
+	resBlock, err = updateBlockAsWriteUser(writeUser, project)
 	if err != nil {
 		return
 	}
-	log.Printf(".Write user updated block name to %s successfully", resBlock.Name)
+	log.Printf(".Write user updated project name to %s successfully", resBlock.Name)
 	recipes.SleepAfter()
 
 	log.Printf("Grant admin access to a user with read access")
-	err = makeReadUserAsAdmin(user, block)
+	err = makeReadUserAsAdmin(user, project)
 	if err != nil {
 		return
 	}
 	log.Printf(".Admin access has been granted successfully")
 }
 
-func getWriteUser(user response.User, block response.Block) (response.User, error) {
+func getWriteUser(user response.User, project response.Block) (response.User, error) {
 	var writeUser response.User
 	resBlock, err := collaboration.GetBlockCollaborators(
 		user.JwtToken,
 		common.ResourceIdParam{
-			BlockId: block.ID,
-			KeyId:   block.Key.ID,
+			BlockId: project.ID,
+			KeyId:   project.Key.ID,
 		})
 	if err != nil {
 		return writeUser, err
@@ -108,24 +108,24 @@ func getWriteUser(user response.User, block response.Block) (response.User, erro
 }
 
 func shareBlock(user response.User) (response.Block, error) {
-	var block response.Block
+	var project response.Block
 	key, err := recipes.AddCustomKey(user, KeyName)
 	if err != nil {
-		return block, err
+		return project, err
 	}
-	block, err = recipes.AddBlock(user, BlockName, key)
+	project, err = recipes.AddBlock(user, BlockName, key)
 	if err != nil {
-		return block, err
+		return project, err
 	}
-	err = recipes.SearchUserAndShareBlock(user, block, "api_read_user", lib.ReadAcl)
+	err = recipes.SearchUserAndShareBlock(user, project, "api_read_user", lib.ReadAcl)
 	if err != nil {
-		return block, err
+		return project, err
 	}
-	err = recipes.SearchUserAndShareBlock(user, block, "api_write_user", lib.WriteAcl)
+	err = recipes.SearchUserAndShareBlock(user, project, "api_write_user", lib.WriteAcl)
 	if err != nil {
-		return block, err
+		return project, err
 	}
-	return block, nil
+	return project, nil
 }
 
 func showNotificationsAsWriteUser(writeUser response.User) error {
@@ -142,7 +142,7 @@ func showNotificationsAsWriteUser(writeUser response.User) error {
 	return nil
 }
 
-func updateBlockAsWriteUser(writeUser response.User, block response.Block) (response.Block, error) {
+func updateBlockAsWriteUser(writeUser response.User, project response.Block) (response.Block, error) {
 	const (
 		SystemKeyType       = "system"
 		customSystemKeyType = "SharedCustomKey"
@@ -156,11 +156,11 @@ func updateBlockAsWriteUser(writeUser response.User, block response.Block) (resp
 		}
 	}
 	updatedBlockName := UpdatedBlockName
-	resBlock, err := blocks.UpdateBlock(
+	resBlock, err := projects.UpdateBlock(
 		writeUser.JwtToken,
-		blocks.UpdateBlockReqBody{Name: &updatedBlockName},
+		projects.UpdateBlockReqBody{Name: &updatedBlockName},
 		common.ResourceIdParam{
-			BlockId: block.ID,
+			BlockId: project.ID,
 			KeyId:   customSystemKey.ID,
 		})
 	if err != nil {
@@ -169,12 +169,12 @@ func updateBlockAsWriteUser(writeUser response.User, block response.Block) (resp
 	return resBlock, nil
 }
 
-func makeReadUserAsAdmin(user response.User, block response.Block) error {
+func makeReadUserAsAdmin(user response.User, project response.Block) error {
 	resBlock, err := collaboration.GetBlockCollaborators(
 		user.JwtToken,
 		common.ResourceIdParam{
-			BlockId: block.ID,
-			KeyId:   block.Key.ID,
+			BlockId: project.ID,
+			KeyId:   project.Key.ID,
 		})
 	if err != nil {
 		return err
@@ -194,8 +194,8 @@ func makeReadUserAsAdmin(user response.User, block response.Block) error {
 		common.AclParam{
 			UserId: readUser.ID,
 			ResourceIds: common.ResourceIdParam{
-				BlockId: block.ID,
-				KeyId:   block.Key.ID,
+				BlockId: project.ID,
+				KeyId:   project.Key.ID,
 			},
 		})
 	if err != nil {

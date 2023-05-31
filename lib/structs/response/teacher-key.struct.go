@@ -1,12 +1,12 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type StudentGradeForBlockAndPod struct {
 	ID           string                `json:"id"`
-	Name         string                `json:"blockName"`
+	Name         string                `json:"projectName"`
 	Key          common2.SlimKey       `json:"key"`
 	Pod          *common2.SlimPod      `json:"pod"`
 	StudentGrade *StudentGrade         `json:"scaleValue"`
@@ -44,8 +44,8 @@ type Student struct {
 	UserInitial   string             `json:"userInitial"`
 	AvatarName    string             `json:"avatarName"`
 	AvatarUrl     string             `json:"avatarUrl"`
-	BlockName     string             `json:"blockName"`
+	BlockName     string             `json:"projectName"`
 	StudentGrade  *StudentGrade      `json:"scaleValue"`
 	Key           *common2.SlimKey   `json:"key"`
-	Block         *common2.SlimBlock `json:"block"`
+	Block         *common2.SlimBlock `json:"project"`
 }

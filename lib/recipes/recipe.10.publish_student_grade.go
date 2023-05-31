@@ -1,15 +1,15 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/scales"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/scales"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
-	blockPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/block_pods/block_pods.1"
-	teacherKeys "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/teacher_keys/teacher_keys.2.teachers"
+	cards "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_pods/project_pods.1"
+	teacherKeys "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/teacher_keys/teacher_keys.2.teachers"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -39,19 +39,19 @@ func PublishStudentGrade() {
 		return
 	}
 
-	var block response.Block
-	block, err = recipes.AddBlock(user, TeacherBlockName, key)
+	var project response.Block
+	project, err = recipes.AddBlock(user, TeacherBlockName, key)
 	if err != nil {
 		return
 	}
 
 	var pod response.Pod
-	pod, err = recipes.AddPodToBlock(user, TeacherPodName, block)
+	pod, err = recipes.AddPodToBlock(user, TeacherPodName, project)
 	if err != nil {
 		return
 	}
 
-	err = recipes.SearchUserAndShareBlock(user, block, "api_read_user", lib.ReadAcl)
+	err = recipes.SearchUserAndShareBlock(user, project, "api_read_user", lib.ReadAcl)
 	if err != nil {
 		return
 	}
@@ -87,7 +87,7 @@ func PublishStudentGrade() {
 }
 
 func publishPod(user response.User, pod response.Pod) error {
-	_, err := blockPods.UpdateBlockPodCompletionStatus(
+	_, err := cards.UpdateBlockPodCompletionStatus(
 		user.JwtToken,
 		request.UpdatePodStatusReqBody{Completed: true},
 		common.ResourceIdParam{
@@ -115,11 +115,11 @@ func assignPodGrade(user response.User, pod response.Pod, student response.User)
 		}
 	}
 	podId := pod.ID
-	blockId := pod.Block.ID
-	err := blockPods.AddScaleToBlockPod(user.JwtToken, request.ScaleIdParam{
+	projectId := pod.Block.ID
+	err := cards.AddScaleToBlockPod(user.JwtToken, request.ScaleIdParam{
 		ScaleId: alphabeticScale.ID,
 		PodId:   &podId,
-		BlockId: &blockId,
+		BlockId: &projectId,
 		KeyId:   pod.Key.ID,
 	})
 	if err != nil {
@@ -132,7 +132,7 @@ func assignPodGrade(user response.User, pod response.Pod, student response.User)
 			StudentId: student.ID,
 			ResourceIds: common.ResourceIdParam{
 				PodId:   podId,
-				BlockId: blockId,
+				BlockId: projectId,
 				KeyId:   pod.Key.ID,
 			},
 		},

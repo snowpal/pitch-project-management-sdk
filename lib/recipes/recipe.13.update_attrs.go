@@ -1,13 +1,13 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/attributes"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/attributes"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 
 	log "github.com/sirupsen/logrus"
-	recipes "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
+	recipes "github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
 )
 
 const (
@@ -15,10 +15,10 @@ const (
 	AttrsBlockName = "Parrot"
 )
 
-// UpdateAttributes sign in, update key attributes, update block attributes, update pod attributes, update block pod attributes,
+// UpdateAttributes sign in, update key attributes, update project attributes, update pod attributes, update project pod attributes,
 // get resource attributes
 func UpdateAttributes() {
-	log.Info("Objective: Update show/hide of key, block, pod & block pod attributes")
+	log.Info("Objective: Update show/hide of key, project, pod & project pod attributes")
 	_, err := recipes.ValidateDependencies()
 	if err != nil {
 		return
@@ -57,17 +57,17 @@ func UpdateAttributes() {
 	log.Printf(".Attributes for Key %s updated successfully", key.Name)
 	recipes.SleepAfter()
 
-	log.Info("Update block attributes")
+	log.Info("Update project attributes")
 	recipes.SleepBefore()
-	block, err := recipes.AddBlock(user, AttrsBlockName, key)
+	project, err := recipes.AddBlock(user, AttrsBlockName, key)
 	if err != nil {
 		return
 	}
 	err = attributes.UpdateBlockAttrs(
 		user.JwtToken,
 		common.ResourceIdParam{
-			BlockId: block.ID,
-			KeyId:   block.Key.ID,
+			BlockId: project.ID,
+			KeyId:   project.Key.ID,
 		},
 		request.ResourceAttributeReqBody{
 			AttributeNames: "tags,rendering_mode",
@@ -77,6 +77,6 @@ func UpdateAttributes() {
 	if err != nil {
 		return
 	}
-	log.Printf(".Attributes for block %s updated successfully", key.Name)
+	log.Printf(".Attributes for project %s updated successfully", key.Name)
 	recipes.SleepAfter()
 }

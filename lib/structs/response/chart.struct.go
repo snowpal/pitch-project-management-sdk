@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type UserKeys struct {
@@ -12,7 +12,7 @@ type UserKey struct {
 	ID           string            `json:"id"`
 	Name         string            `json:"keyName"`
 	Type         string            `json:"keyType"`
-	Projects     []UserBlock       `json:"blocks"`
+	Projects     []UserBlock       `json:"projects"`
 	Pods         []common2.SlimPod `json:"pods"`
 	LastModified string            `json:"lastModified"`
 }
@@ -29,7 +29,7 @@ type FilteredKeys struct {
 }
 
 type ProjectsAndPods struct {
-	Projects []common2.SlimBlock `json:"blocks"`
+	Projects []common2.SlimBlock `json:"projects"`
 	Pods     []common2.SlimPod   `json:"pods"`
 }
 
@@ -50,7 +50,7 @@ type BlockTypesKey struct {
 	ID           string      `json:"id"`
 	Name         string      `json:"keyName"`
 	Type         string      `json:"keyType"`
-	BlockTypes   []BlockType `json:"blockTypes"`
+	BlockTypes   []BlockType `json:"projectTypes"`
 	LastModified string      `json:"lastModified"`
 }
 
@@ -59,7 +59,7 @@ type PodTypesKeysKeyPod struct {
 }
 
 type PodTypesKeysBlockPod struct {
-	BlockPod PodTypesKeys `json:"blockPod"`
+	BlockPod PodTypesKeys `json:"card"`
 }
 
 type PodTypesKeysOtherPod struct {
@@ -80,7 +80,7 @@ type PodTypesKey struct {
 }
 
 type ScalesKeysBlock struct {
-	Block ScalesKeys `json:"block"`
+	Block ScalesKeys `json:"project"`
 }
 
 type ScalesKeysKeyPod struct {
@@ -88,7 +88,7 @@ type ScalesKeysKeyPod struct {
 }
 
 type ScalesKeysBlockPod struct {
-	BlockPod ScalesKeys `json:"blockPod"`
+	BlockPod ScalesKeys `json:"card"`
 }
 
 type ScalesKeysOtherPod struct {
@@ -126,7 +126,7 @@ type TasksStatusKey struct {
 
 type TasksStatusBlock struct {
 	ID           string          `json:"id"`
-	Name         string          `json:"blockName"`
+	Name         string          `json:"projectName"`
 	TaskStatus   TaskStatus      `json:"taskStatus"`
 	Key          common2.SlimKey `json:"key"`
 	LastModified string          `json:"lastModified"`
@@ -140,12 +140,12 @@ type LinkedResources struct {
 	CurrentKey LinkedResourcesKey `json:"currentKey"`
 	SharedKey  LinkedResourcesKey `json:"sharedKey"`
 	Keys       *[]UserKey         `json:"keys"`
-	Projects   []UserBlock        `json:"blocks"`
+	Projects   []UserBlock        `json:"projects"`
 }
 
 type BlockScaleValue struct {
 	ID           string `json:"id"`
-	Name         string `json:"blockName"`
+	Name         string `json:"projectName"`
 	ScaleValue   string `json:"scaleValue"`
 	NumericScale int    `json:"numericScale"`
 }
@@ -160,14 +160,14 @@ type PodScaleValue struct {
 type ScaleValues struct {
 	Scale    Scale              `json:"scale"`
 	Key      common2.SlimKey    `json:"key"`
-	Block    *common2.SlimBlock `json:"block"`
-	Projects *[]BlockScaleValue `json:"blocks"`
+	Block    *common2.SlimBlock `json:"project"`
+	Projects *[]BlockScaleValue `json:"projects"`
 	Pods     []PodScaleValue    `json:"pods"`
 }
 
 type BlockGrade struct {
 	ID       string          `json:"id"`
-	Name     string          `json:"blockName"`
+	Name     string          `json:"projectName"`
 	Key      common2.SlimKey `json:"key"`
 	Students []Student       `json:"students"`
 }
@@ -176,6 +176,6 @@ type PodGrade struct {
 	ID       string            `json:"id"`
 	Name     string            `json:"podName"`
 	Key      common2.SlimKey   `json:"key"`
-	Block    common2.SlimBlock `json:"block"`
+	Block    common2.SlimBlock `json:"project"`
 	Students []Student         `json:"students"`
 }

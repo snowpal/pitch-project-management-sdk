@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type AllEvents struct {
@@ -11,23 +11,23 @@ type AllEvents struct {
 }
 
 type EndDateEvent struct {
-	Projects []BlockEvent `json:"blocks"`
+	Projects []BlockEvent `json:"projects"`
 }
 
 type DueDateEvent struct {
 	Tasks    TasksEvent   `json:"tasks"`
-	Projects []BlockEvent `json:"blocks"`
+	Projects []BlockEvent `json:"projects"`
 	Pods     []PodEvent   `json:"pods"`
 }
 
 type BlockEvent struct {
 	ID          string `json:"id"`
-	Name        string `json:"blockName"`
-	Description string `json:"blockDescription"`
+	Name        string `json:"projectName"`
+	Description string `json:"projectDescription"`
 
-	DueDate   *string `json:"blockDueDate"`
-	StartTime *string `json:"blockStartTime"`
-	EndTime   *string `json:"blockEndTime"`
+	DueDate   *string `json:"projectDueDate"`
+	StartTime *string `json:"projectStartTime"`
+	EndTime   *string `json:"projectEndTime"`
 
 	Key common2.SlimKey `json:"key"`
 }
@@ -38,12 +38,12 @@ type PodEvent struct {
 	DueDate string `json:"podDueDate"`
 
 	Key   common2.SlimKey   `json:"key"`
-	Block common2.SlimBlock `json:"block"`
+	Block common2.SlimBlock `json:"project"`
 }
 
 type TasksEvent struct {
 	KeyTasks   []TaskEvent `json:"keys"`
-	BlockTasks []TaskEvent `json:"blocks"`
+	BlockTasks []TaskEvent `json:"projects"`
 	PodTasks   []TaskEvent `json:"pods"`
 }
 
@@ -52,7 +52,7 @@ type TaskEvent struct {
 	Name    string             `json:"taskName"`
 	DueDate string             `json:"taskDueDate"`
 	Key     common2.SlimKey    `json:"key"`
-	Block   *common2.SlimBlock `json:"block"`
+	Block   *common2.SlimBlock `json:"project"`
 	Pod     *common2.SlimPod   `json:"pod"`
 }
 

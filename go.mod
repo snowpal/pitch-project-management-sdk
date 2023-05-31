@@ -1,4 +1,4 @@
-module github.com/snowpal/pitch-building-blocks-sdk
+module github.com/snowpal/pitch-building-projects-sdk
 
 go 1.19
 

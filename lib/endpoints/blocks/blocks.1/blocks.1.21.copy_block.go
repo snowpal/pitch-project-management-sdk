@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -8,23 +8,23 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func CopyBlock(jwtToken string, blockParam request.CopyMoveBlockParam) (response.Block, error) {
+func CopyBlock(jwtToken string, projectParam request.CopyMoveBlockParam) (response.Block, error) {
 	var resBlock response.Block
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectsCopyBlock,
-		blockParam.BlockId,
-		blockParam.KeyId,
-		strconv.FormatBool(blockParam.AllTasks),
-		strings.Join(blockParam.PodIds, ","),
-		strconv.FormatBool(blockParam.AllPods),
-		strconv.FormatBool(blockParam.AllChecklists),
-		blockParam.TargetKeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
+		strconv.FormatBool(projectParam.AllTasks),
+		strings.Join(projectParam.PodIds, ","),
+		strconv.FormatBool(projectParam.AllPods),
+		strconv.FormatBool(projectParam.AllChecklists),
+		projectParam.TargetKeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

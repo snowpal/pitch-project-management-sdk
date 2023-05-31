@@ -1,20 +1,20 @@
-package blocks
+package projects
 
 import (
 	"fmt"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func MoveBlock(jwtToken string, blockParam request.CopyMoveBlockParam) error {
+func MoveBlock(jwtToken string, projectParam request.CopyMoveBlockParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteProjectsMoveBlock,
-		blockParam.BlockId,
-		blockParam.KeyId,
-		blockParam.TargetKeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
+		projectParam.TargetKeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

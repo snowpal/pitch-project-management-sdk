@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -7,20 +7,20 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetProjects(jwtToken string, blockParam request.GetProjectsParam) ([]response.Block, error) {
+func GetProjects(jwtToken string, projectParam request.GetProjectsParam) ([]response.Block, error) {
 	resProjects := response.Projects{}
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectsGetProjects,
-		blockParam.KeyId,
-		blockParam.Filter,
-		strconv.Itoa(blockParam.BatchIndex),
-		strconv.FormatBool(blockParam.WriteOrHigherAcl),
+		projectParam.KeyId,
+		projectParam.Filter,
+		strconv.Itoa(projectParam.BatchIndex),
+		strconv.FormatBool(projectParam.WriteOrHigherAcl),
 	)
 	if err != nil {
 		fmt.Println(err)

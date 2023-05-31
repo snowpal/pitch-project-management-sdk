@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/blocks/blocks.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/collaboration/collaboration.1.blocks"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/keys/keys.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/keys/keys.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
-	blockPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/block_pods/block_pods.1"
-	keyPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/key_pods/key_pods.1"
+	keyPods "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/key_pods/key_pods.1"
+	cards "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_pods/project_pods.1"
 )
 
 func sleepWindow(sleepTime time.Duration) {
@@ -78,10 +78,10 @@ func AddProjectKey(user response.User, keyName string) (response.Key, error) {
 	return newKey, nil
 }
 
-func AddBlock(user response.User, blockName string, key response.Key) (response.Block, error) {
-	newBlock, err := blocks.AddBlock(
+func AddBlock(user response.User, projectName string, key response.Key) (response.Block, error) {
+	newBlock, err := projects.AddBlock(
 		user.JwtToken,
-		request.AddBlockReqBody{Name: blockName},
+		request.AddBlockReqBody{Name: projectName},
 		key.ID)
 	if err != nil {
 		return newBlock, err
@@ -100,28 +100,28 @@ func AddPod(user response.User, podName string, key response.Key) (response.Pod,
 	return newPod, nil
 }
 
-func AddPodToBlock(user response.User, podName string, block response.Block) (response.Pod, error) {
-	newPod, err := blockPods.AddBlockPod(
+func AddPodToBlock(user response.User, podName string, project response.Block) (response.Pod, error) {
+	newPod, err := cards.AddBlockPod(
 		user.JwtToken,
 		request.AddPodReqBody{Name: podName},
-		common.ResourceIdParam{BlockId: block.ID, KeyId: block.Key.ID})
+		common.ResourceIdParam{BlockId: project.ID, KeyId: project.Key.ID})
 	if err != nil {
 		return newPod, err
 	}
 	return newPod, nil
 }
 
-func SearchUserAndShareBlock(user response.User, block response.Block, searchToken string, acl string) error {
-	blockIdParam := common.ResourceIdParam{
-		BlockId: block.ID,
-		KeyId:   block.Key.ID,
+func SearchUserAndShareBlock(user response.User, project response.Block, searchToken string, acl string) error {
+	projectIdParam := common.ResourceIdParam{
+		BlockId: project.ID,
+		KeyId:   project.Key.ID,
 	}
 
 	searchedUsers, err := collaboration.GetUsersThisBlockCanBeSharedWith(
 		user.JwtToken,
 		common.SearchUsersParam{
 			SearchToken: searchToken,
-			ResourceIds: blockIdParam,
+			ResourceIds: projectIdParam,
 		})
 	if err != nil {
 		return err
@@ -134,7 +134,7 @@ func SearchUserAndShareBlock(user response.User, block response.Block, searchTok
 		request.BlockAclReqBody{Acl: acl},
 		common.AclParam{
 			UserId:      searchedUsers[0].ID,
-			ResourceIds: blockIdParam,
+			ResourceIds: projectIdParam,
 		})
 	if err != nil {
 		return err

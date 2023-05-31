@@ -6,18 +6,18 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetBlockCollaborators(jwtToken string, blockParam common.ResourceIdParam) (response.Block, error) {
+func GetBlockCollaborators(jwtToken string, projectParam common.ResourceIdParam) (response.Block, error) {
 	resBlock := response.Block{}
 	route, err := helpers2.GetRoute(
 		lib.RouteCollaborationGetBlockCollaborators,
-		blockParam.BlockId,
-		blockParam.KeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

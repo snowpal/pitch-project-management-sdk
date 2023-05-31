@@ -1,15 +1,15 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 
-	blockPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/block_pods/block_pods.1"
-	blocks "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/blocks/blocks.1"
-	keyPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/key_pods/key_pods.1"
-	recipes "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
-	response "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	keyPods "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/key_pods/key_pods.1"
+	cards "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_pods/project_pods.1"
+	projects "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
+	recipes "github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	response "github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -23,9 +23,9 @@ const (
 	BlockPod1Name    = "Expenses"
 )
 
-// AddAndLinkResources Add block, pod & block pod to a key and link them into another key
+// AddAndLinkResources Add project, pod & project pod to a key and link them into another key
 func AddAndLinkResources() {
-	log.Info("Objective: Add keys and blocks, and link blocks")
+	log.Info("Objective: Add keys and projects, and link projects")
 	_, err := recipes.ValidateDependencies()
 	if err != nil {
 		return
@@ -64,7 +64,7 @@ func AddAndLinkResources() {
 		return
 	}
 
-	log.Info("Add block")
+	log.Info("Add project")
 	recipes.SleepBefore()
 	var anotherBlock response.Block
 	anotherBlock, err = recipes.AddBlock(user, AnotherBlockName, newKey)
@@ -101,9 +101,9 @@ func linkResources(
 	log.Printf(".Block Pod, %s is linked successfully to %s Key.", newPod.Name, anotherKey.Name)
 	recipes.SleepAfter()
 
-	log.Info("Link block into the other key")
+	log.Info("Link project into the other key")
 	recipes.SleepBefore()
-	err = blocks.LinkBlockToKey(user.JwtToken,
+	err = projects.LinkBlockToKey(user.JwtToken,
 		common.ResourceIdParam{
 			BlockId: newBlock.ID,
 			KeyId:   anotherKey.ID,
@@ -114,9 +114,9 @@ func linkResources(
 	log.Printf(".Block, %s is linked successfully to %s Key.", newBlock.Name, anotherKey.Name)
 	recipes.SleepAfter()
 
-	log.Info("Link key pod into the other block")
+	log.Info("Link key pod into the other project")
 	recipes.SleepBefore()
-	err = blockPods.LinkPodToBlock(user.JwtToken,
+	err = cards.LinkPodToBlock(user.JwtToken,
 		common.ResourceIdParam{
 			PodId:   newBlockPod.ID,
 			BlockId: anotherBlock.ID,
@@ -135,8 +135,8 @@ func addProjectsAndPods(user response.User, newKey response.Key) (response.Pod, 
 	recipes.SleepBefore()
 
 	var (
-		pod   response.Pod
-		block response.Block
+		pod     response.Pod
+		project response.Block
 	)
 	newPod, err := keyPods.AddKeyPod(user.JwtToken,
 		request.AddPodReqBody{
@@ -144,25 +144,25 @@ func addProjectsAndPods(user response.User, newKey response.Key) (response.Pod, 
 		},
 		newKey.ID)
 	if err != nil {
-		return pod, block, pod, err
+		return pod, project, pod, err
 	}
 	log.Printf(".Key Pod, %s is created successfully in %s Key.", newPod.Name, newKey.Name)
 	recipes.SleepAfter()
 
-	log.Info("Add a new block")
+	log.Info("Add a new project")
 	recipes.SleepBefore()
 	var newBlock response.Block
 	newBlock, err = recipes.AddBlock(user, Block1Name, newKey)
 	if err != nil {
-		return pod, block, pod, err
+		return pod, project, pod, err
 	}
 	log.Printf(".Block, %s is created successfully.", newBlock.Name)
 	recipes.SleepAfter()
 
-	log.Info("Add a new block pod in this block")
+	log.Info("Add a new project pod in this project")
 	recipes.SleepBefore()
 	var newBlockPod response.Pod
-	newBlockPod, err = blockPods.AddBlockPod(user.JwtToken,
+	newBlockPod, err = cards.AddBlockPod(user.JwtToken,
 		request.AddPodReqBody{
 			Name: BlockPod1Name,
 		},
@@ -171,7 +171,7 @@ func addProjectsAndPods(user response.User, newKey response.Key) (response.Pod, 
 			KeyId:   newKey.ID,
 		})
 	if err != nil {
-		return pod, block, pod, err
+		return pod, project, pod, err
 	}
 	log.Printf(".Block Pod, %s is created successfully in %s Block.", newBlockPod.Name, newBlock.Name)
 	recipes.SleepAfter()

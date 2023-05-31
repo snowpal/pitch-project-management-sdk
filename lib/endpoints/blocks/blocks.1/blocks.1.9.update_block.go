@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -7,26 +7,26 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 type UpdateBlockReqBody struct {
-	Name              *string `json:"blockName"`
-	BlockId           *string `json:"blockId"`
+	Name              *string `json:"projectName"`
+	BlockId           *string `json:"projectId"`
 	SimpleDescription *string `json:"simpleDescription"`
-	DueDate           *string `json:"blockDueDate"`
-	StartTime         *string `json:"blockStartTime"`
-	EndTime           *string `json:"blockEndTime"`
-	Color             *string `json:"blockColor"`
-	Tags              *string `json:"blockTags"`
+	DueDate           *string `json:"projectDueDate"`
+	StartTime         *string `json:"projectStartTime"`
+	EndTime           *string `json:"projectEndTime"`
+	Color             *string `json:"projectColor"`
+	Tags              *string `json:"projectTags"`
 	KanbanMode        *bool   `json:"kanbanMode"`
-	Completed         bool    `json:"blockCompleted"`
+	Completed         bool    `json:"projectCompleted"`
 }
 
-func UpdateBlock(jwtToken string, reqBody UpdateBlockReqBody, blockParam common.ResourceIdParam) (response.Block, error) {
+func UpdateBlock(jwtToken string, reqBody UpdateBlockReqBody, projectParam common.ResourceIdParam) (response.Block, error) {
 	resBlock := response.Block{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
@@ -34,7 +34,7 @@ func UpdateBlock(jwtToken string, reqBody UpdateBlockReqBody, blockParam common.
 		return resBlock, err
 	}
 	payload := strings.NewReader(requestBody)
-	route, err := helpers2.GetRoute(lib.RouteProjectsUpdateBlock, blockParam.BlockId, blockParam.KeyId)
+	route, err := helpers2.GetRoute(lib.RouteProjectsUpdateBlock, projectParam.BlockId, projectParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resBlock, err

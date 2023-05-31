@@ -5,20 +5,20 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type BlockBulkShareReqBody struct {
-	Acl      string `json:"blockAcl"`
-	BlockIds string `json:"blockIds"`
+	Acl      string `json:"projectAcl"`
+	BlockIds string `json:"projectIds"`
 }
 
 func ShareProjectsWithCollaborators(
 	jwtToken string,
 	reqBody BlockBulkShareReqBody,
-	blockAclParam common.AclParam,
+	projectAclParam common.AclParam,
 ) error {
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
@@ -28,8 +28,8 @@ func ShareProjectsWithCollaborators(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers.GetRoute(
 		lib.RouteCollaborationBulkShareProjectsWithCollaborators,
-		blockAclParam.UserId,
-		blockAclParam.ResourceIds.KeyId,
+		projectAclParam.UserId,
+		projectAclParam.ResourceIds.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

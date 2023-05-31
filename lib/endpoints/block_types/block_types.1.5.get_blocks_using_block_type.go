@@ -1,4 +1,4 @@
-package block_types
+package project_types
 
 import (
 	"encoding/json"
@@ -6,14 +6,14 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetProjectsUsingBlockType(jwtToken string, blockTypeId string) ([]response.Block, error) {
+func GetProjectsUsingBlockType(jwtToken string, projectTypeId string) ([]response.Block, error) {
 	resProjects := response.Projects{}
-	route, err := helpers2.GetRoute(lib.RouteBlockTypesGetProjectsUsingBlockType, blockTypeId)
+	route, err := helpers2.GetRoute(lib.RouteBlockTypesGetProjectsUsingBlockType, projectTypeId)
 	if err != nil {
 		fmt.Println(err)
 		return resProjects.Projects, err

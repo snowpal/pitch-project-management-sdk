@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 type BlockByTemplateParam struct {
@@ -24,7 +24,7 @@ type BlockByTemplateParam struct {
 func AddBlockBasedOnTemplate(
 	jwtToken string,
 	reqBody request.AddBlockReqBody,
-	blockParam BlockByTemplateParam,
+	projectParam BlockByTemplateParam,
 ) (response.Block, error) {
 	resBlock := response.Block{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -36,10 +36,10 @@ func AddBlockBasedOnTemplate(
 	var route string
 	route, err = helpers2.GetRoute(
 		lib.RouteProjectsAddBlockBasedOnTemplate,
-		blockParam.KeyId,
-		blockParam.TemplateId,
-		strconv.FormatBool(blockParam.ExcludePods),
-		strconv.FormatBool(blockParam.ExcludeTasks),
+		projectParam.KeyId,
+		projectParam.TemplateId,
+		strconv.FormatBool(projectParam.ExcludePods),
+		strconv.FormatBool(projectParam.ExcludeTasks),
 	)
 	if err != nil {
 		fmt.Println(err)

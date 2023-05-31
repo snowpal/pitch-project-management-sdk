@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func UpdateBlockAttrs(jwtToken string, blockParam common.ResourceIdParam, attribute request.ResourceAttributeReqBody) error {
+func UpdateBlockAttrs(jwtToken string, projectParam common.ResourceIdParam, attribute request.ResourceAttributeReqBody) error {
 	requestBody, err := helpers.GetRequestBody(attribute)
 	if err != nil {
 		fmt.Println(err)
@@ -22,8 +22,8 @@ func UpdateBlockAttrs(jwtToken string, blockParam common.ResourceIdParam, attrib
 	var route string
 	route, err = helpers.GetRoute(
 		lib.RouteAttributesUpdateBlockDisplayAttributes,
-		blockParam.BlockId,
-		blockParam.KeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

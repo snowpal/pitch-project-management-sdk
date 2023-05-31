@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Pods struct {
@@ -22,7 +22,7 @@ type Pod struct {
 	Scale       *Scale                     `json:"scale"`
 	TaggedUsers []TaggedUser               `json:"taggedUsers"`
 	Key         *common2.SlimKey           `json:"key"`
-	Block       *common2.SlimBlock         `json:"block"`
+	Block       *common2.SlimBlock         `json:"project"`
 
 	// Boolean Attributes
 	Completed    *bool `json:"completed"`
@@ -69,5 +69,5 @@ type UpdatePodScaleValue struct {
 	NumericScale int    `json:"numericScale"`
 
 	Key   common2.SlimKey    `json:"key"`
-	Block *common2.SlimBlock `json:"block"`
+	Block *common2.SlimBlock `json:"project"`
 }

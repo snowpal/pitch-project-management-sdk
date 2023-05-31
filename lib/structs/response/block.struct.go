@@ -1,25 +1,25 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Projects struct {
-	Projects []Block `json:"blocks"`
+	Projects []Block `json:"projects"`
 }
 
 type Block struct {
 	ID                string  `json:"id"`
-	Name              string  `json:"blockName"`
-	BlockId           string  `json:"blockId"`
-	Description       string  `json:"blockDescription"`
+	Name              string  `json:"projectName"`
+	BlockId           string  `json:"projectId"`
+	Description       string  `json:"projectDescription"`
 	SimpleDescription string  `json:"simpleDescription"`
 	Color             string  `json:"color"`
 	Tags              string  `json:"tags"`
 	ScaleValue        *string `json:"scaleValue"`
 
 	Attributes  []common2.DisplayAttribute `json:"attributes"`
-	BlockType   *BlockType                 `json:"blockType"`
+	BlockType   *BlockType                 `json:"projectType"`
 	Scale       *Scale                     `json:"scale"`
 	TaggedUsers []TaggedUser               `json:"taggedUsers"`
 	Key         *common2.SlimKey           `json:"key"`
@@ -35,9 +35,9 @@ type Block struct {
 	ProjectKanbanMode *bool `json:"projectKanbanMode"`
 
 	// Time Attributes
-	DueDate   string `json:"blockDueDate"`
-	StartTime string `json:"blockStartTime"`
-	EndTime   string `json:"blockEndTime"`
+	DueDate   string `json:"projectDueDate"`
+	StartTime string `json:"projectStartTime"`
+	EndTime   string `json:"projectEndTime"`
 
 	// Acl Attributes
 	Acl            *string       `json:"acl"`

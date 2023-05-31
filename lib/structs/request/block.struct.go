@@ -1,11 +1,11 @@
 package request
 
 type AddBlockReqBody struct {
-	Name string `json:"blockName"`
+	Name string `json:"projectName"`
 }
 
 type BlockAclReqBody struct {
-	Acl string `json:"blockAcl"`
+	Acl string `json:"projectAcl"`
 }
 
 type GetProjectsParam struct {

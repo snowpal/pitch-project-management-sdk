@@ -1,4 +1,4 @@
-package blocks
+package projects
 
 import (
 	"encoding/json"
@@ -7,17 +7,17 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 func UpdateBlockScaleValue(
 	jwtToken string,
 	reqBody request.UpdateScaleValueReqBody,
-	blockParam common.ResourceIdParam,
+	projectParam common.ResourceIdParam,
 ) (response.UpdateBlockScaleValue, error) {
 	resBlockScaleValue := response.UpdateBlockScaleValue{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -28,8 +28,8 @@ func UpdateBlockScaleValue(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectsUpdateBlockScaleValue,
-		blockParam.BlockId,
-		blockParam.KeyId,
+		projectParam.BlockId,
+		projectParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

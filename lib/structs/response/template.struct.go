@@ -52,6 +52,6 @@ type PodTemplate struct {
 	PreviewUrl      string  `json:"previewUrl"`
 	Archived        bool    `json:"archived"`
 	KeyTemplateId   *string `json:"keyTemplateId"`
-	BlockTemplateId *string `json:"blockTemplateId"`
+	BlockTemplateId *string `json:"projectTemplateId"`
 	LastModified    string  `json:"lastModified"`
 }

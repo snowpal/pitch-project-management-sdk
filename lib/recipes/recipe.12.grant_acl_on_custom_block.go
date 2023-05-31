@@ -1,12 +1,12 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/blocks/blocks.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 
-	recipes "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers/recipes"
-	response "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	recipes "github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	response "github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -33,50 +33,50 @@ func GrantAclOnCustomBlock() {
 		return
 	}
 
-	log.Info("Add custom block")
+	log.Info("Add custom project")
 	recipes.SleepBefore()
-	block, err := recipes.AddBlock(user, CopyBlockName, key)
+	project, err := recipes.AddBlock(user, CopyBlockName, key)
 	if err != nil {
 		return
 	}
-	log.Printf(".Block %s added successfully", block.Name)
+	log.Printf(".Block %s added successfully", project.Name)
 	recipes.SleepAfter()
 
-	log.Info("Share block with read access")
+	log.Info("Share project with read access")
 	recipes.SleepBefore()
-	err = recipes.SearchUserAndShareBlock(user, block, "api_read_user", lib.ReadAcl)
+	err = recipes.SearchUserAndShareBlock(user, project, "api_read_user", lib.ReadAcl)
 	if err != nil {
 		return
 	}
-	log.Printf(".Block %s shared with %s with read access level", block.Name, lib.ReadUser)
+	log.Printf(".Block %s shared with %s with read access level", project.Name, lib.ReadUser)
 	recipes.SleepAfter()
 
-	log.Info("Copy block and see acl is not copied")
+	log.Info("Copy project and see acl is not copied")
 	recipes.SleepBefore()
-	anotherBlock, err := copyBlock(user, block)
+	anotherBlock, err := copyBlock(user, project)
 	if err != nil {
 		return
 	}
-	log.Printf(".Block %s copied but %s don't have access on copied block", block.Name, lib.ReadUser)
+	log.Printf(".Block %s copied but %s don't have access on copied project", project.Name, lib.ReadUser)
 	recipes.SleepAfter()
 
-	log.Info("Share block with admin access")
+	log.Info("Share project with admin access")
 	recipes.SleepBefore()
 	err = recipes.SearchUserAndShareBlock(user, anotherBlock, "api_admin_user", lib.AdminAcl)
 	if err != nil {
 		return
 	}
-	log.Printf(".Block %s shared with %s with admin access", block.Name, lib.ReadUser)
+	log.Printf(".Block %s shared with %s with admin access", project.Name, lib.ReadUser)
 	recipes.SleepAfter()
 }
 
-func copyBlock(user response.User, block response.Block) (response.Block, error) {
-	resBlock, err := blocks.CopyBlock(
+func copyBlock(user response.User, project response.Block) (response.Block, error) {
+	resBlock, err := projects.CopyBlock(
 		user.JwtToken,
 		request.CopyMoveBlockParam{
-			BlockId:       block.ID,
-			KeyId:         block.Key.ID,
-			TargetKeyId:   block.Key.ID,
+			BlockId:       project.ID,
+			KeyId:         project.Key.ID,
+			TargetKeyId:   project.Key.ID,
 			AllPods:       true,
 			AllTasks:      true,
 			AllChecklists: true,

@@ -1,17 +1,17 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type BlockTypes struct {
-	BlockTypes []BlockType `json:"blockTypes"`
+	BlockTypes []BlockType `json:"projectTypes"`
 }
 
 type BlockType struct {
 	ID       string               `json:"id"`
-	Name     string               `json:"blockTypeName"`
-	Projects *[]common2.SlimBlock `json:"blocks"`
+	Name     string               `json:"projectTypeName"`
+	Projects *[]common2.SlimBlock `json:"projects"`
 
 	TeacherReadOnly *bool `json:"teacherReadOnly"`
 

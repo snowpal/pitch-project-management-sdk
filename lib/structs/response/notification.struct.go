@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Notifications struct {
@@ -23,11 +23,11 @@ type NotificationResource struct {
 	IsTask       *bool  `json:"isTask"`
 
 	KeyName   *string `json:"keyName"`
-	BlockName *string `json:"blockName"`
+	BlockName *string `json:"projectName"`
 	PodName   *string `json:"podName"`
 
 	Key      *common2.SlimKey     `json:"key"`
-	Projects *[]common2.SlimBlock `json:"blocks"`
+	Projects *[]common2.SlimBlock `json:"projects"`
 
 	StartTime *string `json:"eventStartTime"`
 	EndTime   *string `json:"eventEndTime"`

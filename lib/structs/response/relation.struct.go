@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type SearchResources struct {
@@ -17,12 +17,12 @@ type SearchResource struct {
 
 	KeyName   *string `json:"keyName"`
 	KeyType   *string `json:"keyType"`
-	BlockName *string `json:"blockName"`
+	BlockName *string `json:"projectName"`
 	PodName   *string `json:"podName"`
 
 	Key      *common2.SlimKey     `json:"key"`
-	Block    *common2.SlimBlock   `json:"block"`
-	Projects *[]common2.SlimBlock `json:"blocks"`
+	Block    *common2.SlimBlock   `json:"project"`
+	Projects *[]common2.SlimBlock `json:"projects"`
 
 	Modifier common2.ResourceModifier `json:"modifier"`
 }
@@ -33,6 +33,6 @@ type Relations struct {
 
 type Relationships struct {
 	Keys     []common2.SlimKey   `json:"keys"`
-	Projects []common2.SlimBlock `json:"blocks"`
+	Projects []common2.SlimBlock `json:"projects"`
 	Pods     []common2.SlimPod   `json:"pods"`
 }

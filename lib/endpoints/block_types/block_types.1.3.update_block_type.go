@@ -1,4 +1,4 @@
-package block_types
+package project_types
 
 import (
 	"encoding/json"
@@ -7,13 +7,13 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func UpdateBlockType(jwtToken string, reqBody request.BlockTypeReqBody, blockTypeId string) (response.BlockType, error) {
+func UpdateBlockType(jwtToken string, reqBody request.BlockTypeReqBody, projectTypeId string) (response.BlockType, error) {
 	resBlockType := response.BlockType{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
@@ -21,7 +21,7 @@ func UpdateBlockType(jwtToken string, reqBody request.BlockTypeReqBody, blockTyp
 		return resBlockType, err
 	}
 	payload := strings.NewReader(requestBody)
-	route, err := helpers2.GetRoute(lib.RouteBlockTypesUpdateBlockType, blockTypeId)
+	route, err := helpers2.GetRoute(lib.RouteBlockTypesUpdateBlockType, projectTypeId)
 	if err != nil {
 		fmt.Println(err)
 		return resBlockType, err

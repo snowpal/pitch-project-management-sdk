@@ -1,15 +1,15 @@
-package block_types
+package project_types
 
 import (
 	"fmt"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
 )
 
-func DeleteBlockType(jwtToken string, blockTypeId string) error {
-	route, err := helpers.GetRoute(lib.RouteBlockTypesDeleteBlockType, blockTypeId)
+func DeleteBlockType(jwtToken string, projectTypeId string) error {
+	route, err := helpers.GetRoute(lib.RouteBlockTypesDeleteBlockType, projectTypeId)
 	if err != nil {
 		fmt.Println(err)
 		return err

@@ -5,19 +5,19 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func CopyProjectBlock(jwtToken string, blockParam request.CopyMoveBlockParam) error {
+func CopyProjectBlock(jwtToken string, projectParam request.CopyMoveBlockParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteProjectKeysCopyProjectBlock,
-		blockParam.BlockId,
-		blockParam.KeyId,
-		blockParam.TargetKeyId,
-		strconv.FormatBool(blockParam.AllPods),
-		strconv.FormatBool(blockParam.AllTasks),
+		projectParam.BlockId,
+		projectParam.KeyId,
+		projectParam.TargetKeyId,
+		strconv.FormatBool(projectParam.AllPods),
+		strconv.FormatBool(projectParam.AllTasks),
 	)
 	if err != nil {
 		fmt.Println(err)

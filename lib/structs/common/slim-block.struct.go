@@ -2,6 +2,6 @@ package common
 
 type SlimBlock struct {
 	ID   string   `json:"id"`
-	Name string   `json:"blockName"`
+	Name string   `json:"projectName"`
 	Key  *SlimKey `json:"key"`
 }
