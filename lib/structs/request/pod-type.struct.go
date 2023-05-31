@@ -1,5 +1,5 @@
 package request
 
-type PodTypeReqBody struct {
+type CardTypeReqBody struct {
 	Name string `json:"podTypeName"`
 }

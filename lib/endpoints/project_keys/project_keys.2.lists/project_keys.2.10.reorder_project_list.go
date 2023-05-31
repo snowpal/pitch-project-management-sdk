@@ -31,7 +31,7 @@ func ReorderProjectLists(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectKeysReorderProjectList,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.KeyId,
 	)
 	if err != nil {

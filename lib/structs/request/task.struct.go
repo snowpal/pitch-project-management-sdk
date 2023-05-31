@@ -19,8 +19,8 @@ type ReorderTasksReqBody struct {
 }
 
 type TaskIdParam struct {
-	KeyId   string
-	BlockId *string
-	PodId   *string
-	TaskId  *string
+	KeyId     string
+	ProjectId *string
+	CardId    *string
+	TaskId    *string
 }

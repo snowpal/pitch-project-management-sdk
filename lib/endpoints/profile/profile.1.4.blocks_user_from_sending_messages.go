@@ -9,7 +9,7 @@ import (
 )
 
 func ProjectsUserFromSendingMessages(jwtToken string, userId string) error {
-	route, err := helpers.GetRoute(lib.RouteProfileProjectsUserFromSendingMessages, userId)
+	route, err := helpers.GetRoute(lib.RouteProfileBlockUserFromSendingMessages, userId)
 	if err != nil {
 		fmt.Println(err)
 		return err

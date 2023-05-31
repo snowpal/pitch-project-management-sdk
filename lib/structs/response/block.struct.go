@@ -5,13 +5,13 @@ import (
 )
 
 type Projects struct {
-	Projects []Block `json:"projects"`
+	Projects []Project `json:"projects"`
 }
 
-type Block struct {
+type Project struct {
 	ID                string  `json:"id"`
 	Name              string  `json:"projectName"`
-	BlockId           string  `json:"projectId"`
+	ProjectId         string  `json:"projectId"`
 	Description       string  `json:"projectDescription"`
 	SimpleDescription string  `json:"simpleDescription"`
 	Color             string  `json:"color"`
@@ -19,7 +19,7 @@ type Block struct {
 	ScaleValue        *string `json:"scaleValue"`
 
 	Attributes  []common2.DisplayAttribute `json:"attributes"`
-	BlockType   *BlockType                 `json:"projectType"`
+	ProjectType *ProjectType               `json:"projectType"`
 	Scale       *Scale                     `json:"scale"`
 	TaggedUsers []TaggedUser               `json:"taggedUsers"`
 	Key         *common2.SlimKey           `json:"key"`
@@ -50,7 +50,7 @@ type Block struct {
 
 	// Count Attributes
 	KeysCount        *int `json:"keysCount"`
-	PodsCount        *int `json:"podsCount"`
+	CardsCount       *int `json:"podsCount"`
 	TasksCount       *int `json:"tasksCount"`
 	ChecklistsCount  *int `json:"checklistsCount"`
 	AttachmentsCount *int `json:"attachmentsCount"`
@@ -62,7 +62,7 @@ type Block struct {
 	LastModified string                   `json:"lastModified"`
 }
 
-type UpdateBlockScaleValue struct {
+type UpdateProjectScaleValue struct {
 	ID           string `json:"id"`
 	Name         string `json:"name"`
 	ScaleValue   string `json:"scaleValue"`

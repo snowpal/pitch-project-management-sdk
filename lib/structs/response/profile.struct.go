@@ -16,11 +16,11 @@ type Profile struct {
 	IsInactive         bool `json:"inactive"`
 	IsAnnualSubscriber bool `json:"isAnnualSubscriber"`
 
-	BlockedUsers []BlockedUser `json:"projectedUsers"`
-	Preferences  []Preference  `json:"preferences"`
+	ProjectedUsers []ProjectedUser `json:"projectedUsers"`
+	Preferences    []Preference    `json:"preferences"`
 }
 
-type BlockedUser struct {
+type ProjectedUser struct {
 	ID        string `json:"id"`
 	Username  string `json:"userName"`
 	FirstName string `json:"firstName"`
@@ -31,5 +31,5 @@ type Preference struct {
 	SubscribeSms               bool `json:"subscribeSms"`
 	ShowResourcesChart         bool `json:"showResourcesChart"`
 	ShowScalesChartForProjects bool `json:"showScalesChartForProjects"`
-	ShowScalesChartForPods     bool `json:"showScalesChartForPods"`
+	ShowScalesChartForCards    bool `json:"showScalesChartForCards"`
 }

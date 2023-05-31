@@ -19,7 +19,7 @@ func GetProjectList(
 	resProjectList := response.ProjectList{}
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectKeysGetProjectList,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.ProjectListId,
 		projectListParam.KeyId,
 	)

@@ -5,69 +5,38 @@ type KeyToKeyRelationParam struct {
 	TargetKeyId string
 }
 
-type KeyToBlockRelationParam struct {
-	KeyId         string
-	TargetBlockId string
+type KeyToProjectRelationParam struct {
+	KeyId           string
+	TargetProjectId string
 }
 
-type KeyToPodRelationParam struct {
+type KeyToCardRelationParam struct {
 	KeyId string
 
-	TargetPodId string
-	TargetKeyId string
+	TargetCardId    string
+	TargetKeyId     string
+	TargetProjectId string
 }
 
-type KeyToBlockPodRelationParam struct {
-	KeyId string
-
-	TargetPodId   string
-	TargetKeyId   string
-	TargetBlockId string
+type ProjectToProjectRelationParam struct {
+	ProjectId       string
+	TargetProjectId string
 }
 
-type BlockToBlockRelationParam struct {
-	BlockId       string
-	TargetBlockId string
+type ProjectToCardRelationParam struct {
+	ProjectId string
+
+	TargetCardId    string
+	TargetKeyId     string
+	TargetProjectId string
 }
 
-type BlockToPodRelationParam struct {
-	BlockId string
+type CardToCardRelationParam struct {
+	CardId          string
+	SourceKeyId     string
+	SourceProjectId string
 
-	TargetPodId string
-	TargetKeyId string
-}
-
-type BlockToBlockPodRelationParam struct {
-	BlockId string
-
-	TargetPodId   string
-	TargetKeyId   string
-	TargetBlockId string
-}
-
-type PodToPodRelationParam struct {
-	PodId       string
-	SourceKeyId string
-
-	TargetPodId string
-	TargetKeyId string
-}
-
-type PodToBlockPodRelationParam struct {
-	PodId       string
-	SourceKeyId string
-
-	TargetPodId   string
-	TargetKeyId   string
-	TargetBlockId string
-}
-
-type BlockPodToBlockPodRelationParam struct {
-	PodId         string
-	SourceKeyId   string
-	SourceBlockId string
-
-	TargetPodId   string
-	TargetKeyId   string
-	TargetBlockId string
+	TargetCardId    string
+	TargetKeyId     string
+	TargetProjectId string
 }

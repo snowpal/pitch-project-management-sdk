@@ -12,9 +12,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetKeysLinkedToBlock(jwtToken string, keyParam common.ResourceIdParam) ([]response.Key, error) {
+func GetKeysLinkedToProject(jwtToken string, keyParam common.ResourceIdParam) ([]response.Key, error) {
 	resKeys := response.Keys{}
-	route, err := helpers2.GetRoute(lib.RouteKeysGetKeysLinkedToBlock, keyParam.BlockId, keyParam.KeyId)
+	route, err := helpers2.GetRoute(lib.RouteKeysGetKeysLinkedToProject, keyParam.ProjectId, keyParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resKeys.Keys, err

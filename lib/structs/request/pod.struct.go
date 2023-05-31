@@ -1,23 +1,23 @@
 package request
 
-type AddPodReqBody struct {
+type AddCardReqBody struct {
 	Name string `json:"podName"`
 }
 
-type UpdatePodDescReqBody struct {
+type UpdateCardDescReqBody struct {
 	Description   string  `json:"podDescription"`
 	TaggedUserIds *string `json:"taggedUserIds"`
 }
 
-type BulkArchivePodsReqBody struct {
-	PodIds string `json:"podIds"`
+type BulkArchiveCardsReqBody struct {
+	CardIds string `json:"podIds"`
 }
 
-type UpdatePodStatusReqBody struct {
+type UpdateCardStatusReqBody struct {
 	Completed bool `json:"podCompleted"`
 }
 
-type UpdatePodReqBody struct {
+type UpdateCardReqBody struct {
 	Name              *string `json:"podName"`
 	SimpleDescription *string `json:"simpleDescription"`
 	DueDate           *string `json:"podDueDate"`
@@ -26,42 +26,42 @@ type UpdatePodReqBody struct {
 	KanbanMode        *bool   `json:"kanbanMode"`
 }
 
-type PodAclReqBody struct {
+type CardAclReqBody struct {
 	Acl string `json:"podAcl"`
 }
 
-type PodBulkShareReqBody struct {
-	Acl    string `json:"podAcl"`
-	PodIds string `json:"podIds"`
+type CardBulkShareReqBody struct {
+	Acl     string `json:"podAcl"`
+	CardIds string `json:"podIds"`
 }
 
-type GetPodsParam struct {
+type GetCardsParam struct {
 	KeyId      string
-	BlockId    *string
+	ProjectId  *string
 	BatchIndex int
 }
 
-type AddPodTypeIdParam struct {
-	PodId     string
-	PodTypeId string
-	KeyId     string
-	BlockId   *string
+type AddCardTypeIdParam struct {
+	CardId     string
+	CardTypeId string
+	KeyId      string
+	ProjectId  *string
 }
 
-type PodByTemplateParam struct {
+type CardByTemplateParam struct {
 	KeyId        string
-	BlockId      *string
+	ProjectId    *string
 	TemplateId   string
 	ExcludeTasks bool
 }
 
-type CopyMovePodParam struct {
-	PodId       string
+type CopyMoveCardParam struct {
+	CardId      string
 	KeyId       string
 	TargetKeyId string
 
-	BlockId       string
-	TargetBlockId string
+	ProjectId       string
+	TargetProjectId string
 
 	AllTasks      bool
 	AllChecklists bool

@@ -4,14 +4,14 @@ import (
 	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-type BlockTypes struct {
-	BlockTypes []BlockType `json:"projectTypes"`
+type ProjectTypes struct {
+	ProjectTypes []ProjectType `json:"projectTypes"`
 }
 
-type BlockType struct {
-	ID       string               `json:"id"`
-	Name     string               `json:"projectTypeName"`
-	Projects *[]common2.SlimBlock `json:"projects"`
+type ProjectType struct {
+	ID       string                 `json:"id"`
+	Name     string                 `json:"projectTypeName"`
+	Projects *[]common2.SlimProject `json:"projects"`
 
 	TeacherReadOnly *bool `json:"teacherReadOnly"`
 

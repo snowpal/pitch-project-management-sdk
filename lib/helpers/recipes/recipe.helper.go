@@ -2,18 +2,15 @@ package recipes
 
 import (
 	"fmt"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 	"time"
 
 	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/keys/keys.1"
 	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
-
-	keyPods "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/key_pods/key_pods.1"
-	cards "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_pods/project_pods.1"
 )
 
 func sleepWindow(sleepTime time.Duration) {
@@ -78,46 +75,24 @@ func AddProjectKey(user response.User, keyName string) (response.Key, error) {
 	return newKey, nil
 }
 
-func AddBlock(user response.User, projectName string, key response.Key) (response.Block, error) {
-	newBlock, err := projects.AddBlock(
+func AddProject(user response.User, projectName string, key response.Key) (response.Project, error) {
+	newProject, err := projects.AddProject(
 		user.JwtToken,
-		request.AddBlockReqBody{Name: projectName},
+		request.AddProjectReqBody{Name: projectName},
 		key.ID)
 	if err != nil {
-		return newBlock, err
+		return newProject, err
 	}
-	return newBlock, nil
+	return newProject, nil
 }
 
-func AddPod(user response.User, podName string, key response.Key) (response.Pod, error) {
-	newPod, err := keyPods.AddKeyPod(
-		user.JwtToken,
-		request.AddPodReqBody{Name: podName},
-		key.ID)
-	if err != nil {
-		return newPod, err
-	}
-	return newPod, nil
-}
-
-func AddPodToBlock(user response.User, podName string, project response.Block) (response.Pod, error) {
-	newPod, err := cards.AddBlockPod(
-		user.JwtToken,
-		request.AddPodReqBody{Name: podName},
-		common.ResourceIdParam{BlockId: project.ID, KeyId: project.Key.ID})
-	if err != nil {
-		return newPod, err
-	}
-	return newPod, nil
-}
-
-func SearchUserAndShareBlock(user response.User, project response.Block, searchToken string, acl string) error {
+func SearchUserAndShareProject(user response.User, project response.Project, searchToken string, acl string) error {
 	projectIdParam := common.ResourceIdParam{
-		BlockId: project.ID,
-		KeyId:   project.Key.ID,
+		ProjectId: project.ID,
+		KeyId:     project.Key.ID,
 	}
 
-	searchedUsers, err := collaboration.GetUsersThisBlockCanBeSharedWith(
+	searchedUsers, err := collaboration.GetUsersThisProjectCanBeSharedWith(
 		user.JwtToken,
 		common.SearchUsersParam{
 			SearchToken: searchToken,
@@ -129,9 +104,9 @@ func SearchUserAndShareBlock(user response.User, project response.Block, searchT
 
 	// For the purpose of this recipe, it does not matter which user from the list we end up picking, hence we go with
 	// the first one.
-	_, err = collaboration.ShareBlockWithCollaborator(
+	_, err = collaboration.ShareProjectWithCollaborator(
 		user.JwtToken,
-		request.BlockAclReqBody{Acl: acl},
+		request.ProjectAclReqBody{Acl: acl},
 		common.AclParam{
 			UserId:      searchedUsers[0].ID,
 			ResourceIds: projectIdParam,

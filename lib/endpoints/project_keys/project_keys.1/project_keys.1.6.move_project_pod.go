@@ -9,15 +9,15 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func MoveProjectPod(jwtToken string, projectPodParam request.CopyMoveProjectPodParam) error {
+func MoveCard(jwtToken string, projectCardParam request.CopyMoveProjectCardParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteProjectKeysMoveProjectPod,
-		projectPodParam.PodId,
-		projectPodParam.KeyId,
-		projectPodParam.BlockId,
-		projectPodParam.TargetKeyId,
-		projectPodParam.TargetBlockId,
-		projectPodParam.TargetProjectListId,
+		lib.RouteProjectKeysMoveCard,
+		projectCardParam.CardId,
+		projectCardParam.KeyId,
+		projectCardParam.ProjectId,
+		projectCardParam.TargetKeyId,
+		projectCardParam.TargetProjectId,
+		projectCardParam.TargetProjectListId,
 	)
 	if err != nil {
 		fmt.Println(err)

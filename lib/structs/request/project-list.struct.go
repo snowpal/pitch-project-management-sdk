@@ -4,48 +4,48 @@ type AddProjectListReqBody struct {
 	Name string `json:"projectListName"`
 }
 
-type AssignProjectPodReqBody struct {
+type AssignCardReqBody struct {
 	UserIds string `json:"userIds"`
 }
 
 type ProjectListIdParam struct {
 	KeyId         string
-	BlockId       string
+	ProjectId     string
 	ProjectListId string
-	PodId         *string
+	CardId        *string
 }
 
 type CopyMoveProjectListParam struct {
 	KeyId         string
-	BlockId       string
+	ProjectId     string
 	ProjectListId string
 
-	TargetKeyId    string
-	TargetBlockId  string
-	TargetPosition int
+	TargetKeyId     string
+	TargetProjectId string
+	TargetPosition  int
 }
 
-type CopyMoveProjectPodParam struct {
-	PodId   string
-	BlockId string
-	KeyId   string
+type CopyMoveProjectCardParam struct {
+	CardId    string
+	ProjectId string
+	KeyId     string
 
 	TargetKeyId         string
-	TargetBlockId       string
+	TargetProjectId     string
 	TargetProjectListId string
 }
 
-type CopyMoveProjectListPodsParam struct {
+type CopyMoveProjectListCardsParam struct {
 	KeyId         string
-	BlockId       string
+	ProjectId     string
 	ProjectListId string
 
 	TargetKeyId         string
-	TargetBlockId       string
+	TargetProjectId     string
 	TargetProjectListId string
 
 	AllTasks bool
-	AllPods  bool
+	AllCards bool
 
-	PodIds []string
+	CardIds []string
 }

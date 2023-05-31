@@ -11,9 +11,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetProjectsAndPodsAssociatedWithKey(jwtToken string, keyId string) (response.UserKey, error) {
+func GetProjectsAndCardsAssociatedWithKey(jwtToken string, keyId string) (response.UserKey, error) {
 	resUserKey := response.UserKey{}
-	route, err := helpers2.GetRoute(lib.RouteKeysGetProjectsAndPodsAssociatedWithKey, keyId)
+	route, err := helpers2.GetRoute(lib.RouteKeysGetProjectsAndCardsAssociatedWithKey, keyId)
 	if err != nil {
 		fmt.Println(err)
 		return resUserKey, err

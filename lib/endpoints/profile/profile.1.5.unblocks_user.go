@@ -9,7 +9,7 @@ import (
 )
 
 func UnprojectsUser(jwtToken string, userId string) error {
-	route, err := helpers.GetRoute(lib.RouteProfileUnprojectsUser, userId)
+	route, err := helpers.GetRoute(lib.RouteProfileUnblockUser, userId)
 	if err != nil {
 		fmt.Println(err)
 		return err

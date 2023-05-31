@@ -9,11 +9,11 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func LinkProjectPodToBlock(jwtToken string, podParam request.ProjectListIdParam) error {
+func LinkCardToProject(jwtToken string, podParam request.ProjectListIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteProjectKeysLinkProjectPodToBlock,
-		podParam.BlockId,
-		*podParam.PodId,
+		lib.RouteProjectKeysLinkCardToProject,
+		podParam.ProjectId,
+		*podParam.CardId,
 		podParam.KeyId,
 		podParam.ProjectListId,
 	)

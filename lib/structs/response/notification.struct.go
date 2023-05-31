@@ -22,12 +22,12 @@ type NotificationResource struct {
 	ResourceType string `json:"resourceType"`
 	IsTask       *bool  `json:"isTask"`
 
-	KeyName   *string `json:"keyName"`
-	BlockName *string `json:"projectName"`
-	PodName   *string `json:"podName"`
+	KeyName     *string `json:"keyName"`
+	ProjectName *string `json:"projectName"`
+	CardName    *string `json:"podName"`
 
-	Key      *common2.SlimKey     `json:"key"`
-	Projects *[]common2.SlimBlock `json:"projects"`
+	Key      *common2.SlimKey       `json:"key"`
+	Projects *[]common2.SlimProject `json:"projects"`
 
 	StartTime *string `json:"eventStartTime"`
 	EndTime   *string `json:"eventEndTime"`

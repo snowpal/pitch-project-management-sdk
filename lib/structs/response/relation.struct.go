@@ -15,14 +15,14 @@ type SearchResource struct {
 	// Relation attribute
 	IsRelated bool `json:"isRelated"`
 
-	KeyName   *string `json:"keyName"`
-	KeyType   *string `json:"keyType"`
-	BlockName *string `json:"projectName"`
-	PodName   *string `json:"podName"`
+	KeyName     *string `json:"keyName"`
+	KeyType     *string `json:"keyType"`
+	ProjectName *string `json:"projectName"`
+	CardName    *string `json:"podName"`
 
-	Key      *common2.SlimKey     `json:"key"`
-	Block    *common2.SlimBlock   `json:"project"`
-	Projects *[]common2.SlimBlock `json:"projects"`
+	Key      *common2.SlimKey       `json:"key"`
+	Project  *common2.SlimProject   `json:"project"`
+	Projects *[]common2.SlimProject `json:"projects"`
 
 	Modifier common2.ResourceModifier `json:"modifier"`
 }
@@ -32,7 +32,7 @@ type Relations struct {
 }
 
 type Relationships struct {
-	Keys     []common2.SlimKey   `json:"keys"`
-	Projects []common2.SlimBlock `json:"projects"`
-	Pods     []common2.SlimPod   `json:"pods"`
+	Keys     []common2.SlimKey     `json:"keys"`
+	Projects []common2.SlimProject `json:"projects"`
+	Cards    []common2.SlimCard    `json:"pods"`
 }

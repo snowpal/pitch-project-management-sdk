@@ -13,11 +13,11 @@ import (
 func MoveProjectList(jwtToken string, projectListParam request.CopyMoveProjectListParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteProjectKeysMoveProjectList,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.ProjectListId,
 		projectListParam.KeyId,
 		projectListParam.TargetKeyId,
-		projectListParam.TargetBlockId,
+		projectListParam.TargetProjectId,
 		strconv.Itoa(projectListParam.TargetPosition),
 	)
 	if err != nil {

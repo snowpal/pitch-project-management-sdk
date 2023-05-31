@@ -9,11 +9,11 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func RelateBlockToBlock(jwtToken string, relationParam request.BlockToBlockRelationParam) error {
+func RelateProjectToProject(jwtToken string, relationParam request.ProjectToProjectRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsRelateBlockToBlock,
-		relationParam.BlockId,
-		relationParam.TargetBlockId,
+		lib.RouteRelationsRelateProjectToProject,
+		relationParam.ProjectId,
+		relationParam.TargetProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

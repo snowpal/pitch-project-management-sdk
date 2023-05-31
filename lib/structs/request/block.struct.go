@@ -1,10 +1,10 @@
 package request
 
-type AddBlockReqBody struct {
+type AddProjectReqBody struct {
 	Name string `json:"projectName"`
 }
 
-type BlockAclReqBody struct {
+type ProjectAclReqBody struct {
 	Acl string `json:"projectAcl"`
 }
 
@@ -15,13 +15,13 @@ type GetProjectsParam struct {
 	Filter           string
 }
 
-type CopyMoveBlockParam struct {
-	BlockId     string
+type CopyMoveProjectParam struct {
+	ProjectId   string
 	KeyId       string
 	TargetKeyId string
 
-	PodIds        []string
-	AllPods       bool
+	CardIds       []string
+	AllCards      bool
 	AllTasks      bool
 	AllChecklists bool
 }

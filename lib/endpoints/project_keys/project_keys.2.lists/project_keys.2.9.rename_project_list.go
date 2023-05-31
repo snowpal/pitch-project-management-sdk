@@ -27,7 +27,7 @@ func RenameProjectList(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectKeysRenameProjectList,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.ProjectListId,
 		projectListParam.KeyId,
 	)

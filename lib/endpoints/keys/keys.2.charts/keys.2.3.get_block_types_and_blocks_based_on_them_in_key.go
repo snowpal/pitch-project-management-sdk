@@ -11,19 +11,19 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetBlockTypesAndProjectsBasedOnThemInKey(jwtToken string, keyId string) (response.BlockTypesKey, error) {
-	resBlockTypesKey := response.BlockTypesKey{}
-	route, err := helpers2.GetRoute(lib.RouteKeysGetBlockTypesAndProjectsBasedOnThemInKey, keyId)
+func GetProjectTypesAndProjectsBasedOnThemInKey(jwtToken string, keyId string) (response.ProjectTypesKey, error) {
+	resProjectTypesKey := response.ProjectTypesKey{}
+	route, err := helpers2.GetRoute(lib.RouteKeysGetProjectTypesAndProjectsBasedOnThemInKey, keyId)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTypesKey, err
+		return resProjectTypesKey, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTypesKey, err
+		return resProjectTypesKey, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -32,7 +32,7 @@ func GetBlockTypesAndProjectsBasedOnThemInKey(jwtToken string, keyId string) (re
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTypesKey, err
+		return resProjectTypesKey, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -41,13 +41,13 @@ func GetBlockTypesAndProjectsBasedOnThemInKey(jwtToken string, keyId string) (re
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTypesKey, err
+		return resProjectTypesKey, err
 	}
 
-	err = json.Unmarshal(body, &resBlockTypesKey)
+	err = json.Unmarshal(body, &resProjectTypesKey)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTypesKey, err
+		return resProjectTypesKey, err
 	}
-	return resBlockTypesKey, nil
+	return resProjectTypesKey, nil
 }

@@ -11,9 +11,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetRecentlyModifiedProjectsAndPods(jwtToken string) (response.Dashboard, error) {
+func GetRecentlyModifiedProjectsAndCards(jwtToken string) (response.Dashboard, error) {
 	resDashboard := response.Dashboard{}
-	route, err := helpers2.GetRoute(lib.RouteDashboardGetRecentlyModifiedProjectsAndPods)
+	route, err := helpers2.GetRoute(lib.RouteDashboardGetRecentlyModifiedProjectsAndCards)
 	if err != nil {
 		fmt.Println(err)
 		return resDashboard, err

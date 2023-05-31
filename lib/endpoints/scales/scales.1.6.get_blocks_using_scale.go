@@ -11,7 +11,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetProjectsUsingScale(jwtToken string, scaleId string) ([]response.Block, error) {
+func GetProjectsUsingScale(jwtToken string, scaleId string) ([]response.Project, error) {
 	resProjects := response.Projects{}
 	route, err := helpers2.GetRoute(lib.RouteScalesGetProjectsUsingScale, scaleId)
 	if err != nil {

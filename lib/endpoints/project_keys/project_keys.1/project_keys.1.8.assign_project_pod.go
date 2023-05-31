@@ -11,10 +11,10 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func AssignProjectPod(
+func AssignCard(
 	jwtToken string,
-	reqBody request.AssignProjectPodReqBody,
-	projectPodParam common.ResourceIdParam,
+	reqBody request.AssignCardReqBody,
+	projectCardParam common.ResourceIdParam,
 ) error {
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
@@ -23,10 +23,10 @@ func AssignProjectPod(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers.GetRoute(
-		lib.RouteProjectKeysAssignProjectPod,
-		projectPodParam.PodId,
-		projectPodParam.KeyId,
-		projectPodParam.BlockId,
+		lib.RouteProjectKeysAssignCard,
+		projectCardParam.CardId,
+		projectCardParam.KeyId,
+		projectCardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

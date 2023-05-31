@@ -11,19 +11,19 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetPodTemplates(jwtToken string) ([]response.PodTemplate, error) {
-	resPodTemplates := response.PodTemplates{}
-	route, err := helpers2.GetRoute(lib.RouteTemplatesGetPodTemplates)
+func GetCardTemplates(jwtToken string) ([]response.CardTemplate, error) {
+	resCardTemplates := response.CardTemplates{}
+	route, err := helpers2.GetRoute(lib.RouteTemplatesGetCardTemplates)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTemplates.Templates, err
+		return resCardTemplates.Templates, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTemplates.Templates, err
+		return resCardTemplates.Templates, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -32,7 +32,7 @@ func GetPodTemplates(jwtToken string) ([]response.PodTemplate, error) {
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTemplates.Templates, err
+		return resCardTemplates.Templates, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -41,13 +41,13 @@ func GetPodTemplates(jwtToken string) ([]response.PodTemplate, error) {
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTemplates.Templates, err
+		return resCardTemplates.Templates, err
 	}
 
-	err = json.Unmarshal(body, &resPodTemplates)
+	err = json.Unmarshal(body, &resCardTemplates)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTemplates.Templates, err
+		return resCardTemplates.Templates, err
 	}
-	return resPodTemplates.Templates, nil
+	return resCardTemplates.Templates, nil
 }

@@ -11,19 +11,19 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetPodsUsingScale(jwtToken string, scaleId string) ([]response.Pod, error) {
-	resPods := response.Pods{}
-	route, err := helpers2.GetRoute(lib.RouteScalesGetPodsUsingScale, scaleId)
+func GetCardsUsingScale(jwtToken string, scaleId string) ([]response.Card, error) {
+	resCards := response.Cards{}
+	route, err := helpers2.GetRoute(lib.RouteScalesGetCardsUsingScale, scaleId)
 	if err != nil {
 		fmt.Println(err)
-		return resPods.Pods, err
+		return resCards.Cards, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resPods.Pods, err
+		return resCards.Cards, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -32,7 +32,7 @@ func GetPodsUsingScale(jwtToken string, scaleId string) ([]response.Pod, error) 
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resPods.Pods, err
+		return resCards.Cards, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -41,13 +41,13 @@ func GetPodsUsingScale(jwtToken string, scaleId string) ([]response.Pod, error) 
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resPods.Pods, err
+		return resCards.Cards, err
 	}
 
-	err = json.Unmarshal(body, &resPods)
+	err = json.Unmarshal(body, &resCards)
 	if err != nil {
 		fmt.Println(err)
-		return resPods.Pods, err
+		return resCards.Cards, err
 	}
-	return resPods.Pods, nil
+	return resCards.Cards, nil
 }

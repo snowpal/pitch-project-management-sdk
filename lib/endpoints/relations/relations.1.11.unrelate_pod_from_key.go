@@ -9,7 +9,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func unrelateKeyFromPod(jwtToken string, route string) error {
+func unrelateKeyFromCard(jwtToken string, route string) error {
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
 		fmt.Println(err)
@@ -26,18 +26,18 @@ func unrelateKeyFromPod(jwtToken string, route string) error {
 	return nil
 }
 
-func UnrelateKeyFromKeyPod(jwtToken string, relationParam request.BlockToPodRelationParam) error {
+func UnrelateKeyFromKeyCard(jwtToken string, relationParam request.ProjectToCardRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsUnrelatePodFromKey,
-		relationParam.BlockId,
-		relationParam.TargetPodId,
+		lib.RouteRelationsUnrelateCardFromKey,
+		relationParam.ProjectId,
+		relationParam.TargetCardId,
 		relationParam.TargetKeyId,
 	)
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	err = unrelateKeyFromPod(jwtToken, route)
+	err = unrelateKeyFromCard(jwtToken, route)
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -45,19 +45,19 @@ func UnrelateKeyFromKeyPod(jwtToken string, relationParam request.BlockToPodRela
 	return nil
 }
 
-func UnrelateKeyFromBlockPod(jwtToken string, relationParam request.BlockToBlockPodRelationParam) error {
+func UnrelateKeyFromCard(jwtToken string, relationParam request.ProjectToCardRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsUnrelateBlockPodFromKey,
-		relationParam.BlockId,
-		relationParam.TargetPodId,
+		lib.RouteRelationsUnrelateCardFromKey,
+		relationParam.ProjectId,
+		relationParam.TargetCardId,
 		relationParam.TargetKeyId,
-		relationParam.TargetBlockId,
+		relationParam.TargetProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	err = unrelateKeyFromPod(jwtToken, route)
+	err = unrelateKeyFromCard(jwtToken, route)
 	if err != nil {
 		fmt.Println(err)
 		return err

@@ -9,7 +9,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func relatePodToPod(jwtToken string, route string) error {
+func relateCardToCard(jwtToken string, route string) error {
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
 		fmt.Println(err)
@@ -26,19 +26,19 @@ func relatePodToPod(jwtToken string, route string) error {
 	return nil
 }
 
-func RelateKeyPodToKeyPod(jwtToken string, relationParam request.PodToPodRelationParam) error {
+func RelateKeyCardToKeyCard(jwtToken string, relationParam request.CardToCardRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsRelatePodToPod,
-		relationParam.PodId,
+		lib.RouteRelationsRelateCardToCard,
+		relationParam.CardId,
 		relationParam.SourceKeyId,
-		relationParam.TargetPodId,
+		relationParam.TargetCardId,
 		relationParam.TargetKeyId,
 	)
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	err = relatePodToPod(jwtToken, route)
+	err = relateCardToCard(jwtToken, route)
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -46,20 +46,20 @@ func RelateKeyPodToKeyPod(jwtToken string, relationParam request.PodToPodRelatio
 	return nil
 }
 
-func RelateKeyPodToBlockPod(jwtToken string, relationParam request.PodToBlockPodRelationParam) error {
+func RelateKeyCardToCard(jwtToken string, relationParam request.CardToCardRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsRelatePodToBlockPod,
-		relationParam.PodId,
+		lib.RouteRelationsRelateCardToCard,
+		relationParam.CardId,
 		relationParam.SourceKeyId,
-		relationParam.TargetPodId,
+		relationParam.TargetCardId,
 		relationParam.TargetKeyId,
-		relationParam.TargetBlockId,
+		relationParam.TargetProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	err = relatePodToPod(jwtToken, route)
+	err = relateCardToCard(jwtToken, route)
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -67,21 +67,21 @@ func RelateKeyPodToBlockPod(jwtToken string, relationParam request.PodToBlockPod
 	return nil
 }
 
-func RelateBlockPodToBlockPod(jwtToken string, relationParam request.BlockPodToBlockPodRelationParam) error {
+func RelateCardToCard(jwtToken string, relationParam request.CardToCardRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsRelateBlockPodToBlockPod,
-		relationParam.PodId,
+		lib.RouteRelationsRelateCardToCard,
+		relationParam.CardId,
 		relationParam.SourceKeyId,
-		relationParam.SourceBlockId,
-		relationParam.TargetPodId,
+		relationParam.SourceProjectId,
+		relationParam.TargetCardId,
 		relationParam.TargetKeyId,
-		relationParam.TargetBlockId,
+		relationParam.TargetProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	err = relatePodToPod(jwtToken, route)
+	err = relateCardToCard(jwtToken, route)
 	if err != nil {
 		fmt.Println(err)
 		return err

@@ -9,11 +9,11 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func UnrelateKeyFromBlock(jwtToken string, relationParam request.KeyToBlockRelationParam) error {
+func UnrelateKeyFromProject(jwtToken string, relationParam request.KeyToProjectRelationParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteRelationsUnrelateBlockFromKey,
+		lib.RouteRelationsUnrelateProjectFromKey,
 		relationParam.KeyId,
-		relationParam.TargetBlockId,
+		relationParam.TargetProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

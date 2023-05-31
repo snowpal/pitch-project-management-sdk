@@ -12,13 +12,13 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetRelationsForBlockPod(jwtToken string, relationParam common.ResourceIdParam) (response.Relationships, error) {
+func GetRelationsForCard(jwtToken string, relationParam common.ResourceIdParam) (response.Relationships, error) {
 	resRelations := response.Relations{}
 	route, err := helpers2.GetRoute(
-		lib.RouteRelationsGetRelationsForBlockPod,
-		relationParam.PodId,
+		lib.RouteRelationsGetRelationsForCard,
+		relationParam.CardId,
 		relationParam.KeyId,
-		relationParam.BlockId,
+		relationParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

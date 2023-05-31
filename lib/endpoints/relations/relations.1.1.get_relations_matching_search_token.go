@@ -16,23 +16,17 @@ type SearchKeyRelationParam struct {
 	CurrentKeyId string
 }
 
-type SearchBlockRelationParam struct {
-	Token          string
-	CurrentBlockId string
-	KeyId          string
+type SearchProjectRelationParam struct {
+	Token            string
+	CurrentProjectId string
+	KeyId            string
 }
 
-type SearchPodRelationParam struct {
-	Token        string
-	CurrentPodId string
-	KeyId        string
-}
-
-type SearchBlockPodRelationParam struct {
-	Token        string
-	CurrentPodId string
-	KeyId        string
-	BlockId      string
+type SearchCardRelationParam struct {
+	Token         string
+	CurrentCardId string
+	KeyId         string
+	ProjectId     string
 }
 
 func searchRelationsMatchingSearchToken(jwtToken string, route string) ([]response.SearchResource, error) {
@@ -91,15 +85,15 @@ func SearchRelationsForKeyMatchingSearchToken(
 	return searchResults, nil
 }
 
-func SearchRelationsForBlockMatchingSearchToken(
+func SearchRelationsForProjectMatchingSearchToken(
 	jwtToken string,
-	relationParam SearchBlockRelationParam,
+	relationParam SearchProjectRelationParam,
 ) ([]response.SearchResource, error) {
 	var searchResults []response.SearchResource
 	route, err := helpers2.GetRoute(
-		lib.RouteRelationsGetRelationsForBlockMatchingSearchToken,
+		lib.RouteRelationsGetRelationsForProjectMatchingSearchToken,
 		relationParam.Token,
-		relationParam.CurrentBlockId,
+		relationParam.CurrentProjectId,
 		relationParam.KeyId,
 	)
 	if err != nil {
@@ -114,40 +108,17 @@ func SearchRelationsForBlockMatchingSearchToken(
 	return searchResults, nil
 }
 
-func SearchRelationsForPodMatchingSearchToken(
+func SearchRelationsForCardMatchingSearchToken(
 	jwtToken string,
-	relationParam SearchPodRelationParam,
+	relationParam SearchCardRelationParam,
 ) ([]response.SearchResource, error) {
 	var searchResults []response.SearchResource
 	route, err := helpers2.GetRoute(
-		lib.RouteRelationsGetRelationsForPodMatchingSearchToken,
+		lib.RouteRelationsGetRelationsForCardMatchingSearchToken,
 		relationParam.Token,
-		relationParam.CurrentPodId,
+		relationParam.CurrentCardId,
 		relationParam.KeyId,
-	)
-	if err != nil {
-		fmt.Println(err)
-		return searchResults, err
-	}
-	searchResults, err = searchRelationsMatchingSearchToken(jwtToken, route)
-	if err != nil {
-		fmt.Println(err)
-		return searchResults, err
-	}
-	return searchResults, nil
-}
-
-func SearchRelationsForBlockPodMatchingSearchToken(
-	jwtToken string,
-	relationParam SearchBlockPodRelationParam,
-) ([]response.SearchResource, error) {
-	var searchResults []response.SearchResource
-	route, err := helpers2.GetRoute(
-		lib.RouteRelationsGetRelationsForBlockPodMatchingSearchToken,
-		relationParam.Token,
-		relationParam.CurrentPodId,
-		relationParam.KeyId,
-		relationParam.BlockId,
+		relationParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

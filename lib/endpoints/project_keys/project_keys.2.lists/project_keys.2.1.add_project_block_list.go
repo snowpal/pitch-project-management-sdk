@@ -14,7 +14,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func AddProjectBlockList(
+func AddProjectProjectList(
 	jwtToken string,
 	reqBody request.AddProjectListReqBody,
 	projectListParam common.ResourceIdParam,
@@ -29,8 +29,8 @@ func AddProjectBlockList(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteProjectKeysAddProjectBlockList,
-		projectListParam.BlockId,
+		lib.RouteProjectKeysAddProjectList,
+		projectListParam.ProjectId,
 		projectListParam.KeyId,
 	)
 	if err != nil {

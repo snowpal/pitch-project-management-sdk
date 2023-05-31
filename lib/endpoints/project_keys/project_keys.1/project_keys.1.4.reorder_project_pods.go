@@ -13,38 +13,38 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-type ReorderProjectPodsReqBody struct {
+type ReorderCardsReqBody struct {
 	ProjectListId       string `json:"sourceProjectListId"`
-	ProjectPodIds       string `json:"sourceProjectListPodIds"`
+	CardIds             string `json:"sourceProjectListCardIds"`
 	TargetProjectListId string `json:"targetProjectListId"`
-	TargetProjectPodIds string `json:"targetProjectListPodIds"`
+	TargetCardIds       string `json:"targetProjectListCardIds"`
 }
 
-func ReorderProjectPods(
+func ReorderCards(
 	jwtToken string,
-	reqBody ReorderProjectPodsReqBody,
+	reqBody ReorderCardsReqBody,
 	podParam common.ResourceIdParam,
-) ([]response.Pod, error) {
-	resProjectPods := response.Pods{}
+) ([]response.Card, error) {
+	resCards := response.Cards{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPods.Pods, err
+		return resCards.Cards, err
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteProjectKeysReorderProjectPods,
-		podParam.BlockId,
+		lib.RouteProjectKeysReorderCards,
+		podParam.ProjectId,
 		podParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPods.Pods, err
+		return resCards.Cards, err
 	}
 	req, err := http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPods.Pods, err
+		return resCards.Cards, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -52,7 +52,7 @@ func ReorderProjectPods(
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPods.Pods, err
+		return resCards.Cards, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -60,13 +60,13 @@ func ReorderProjectPods(
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPods.Pods, err
+		return resCards.Cards, err
 	}
 
-	err = json.Unmarshal(body, &resProjectPods)
+	err = json.Unmarshal(body, &resCards)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPods.Pods, err
+		return resCards.Cards, err
 	}
-	return resProjectPods.Pods, nil
+	return resCards.Cards, nil
 }

@@ -15,7 +15,7 @@ type Task struct {
 	Completed bool                     `json:"isCompleted"`
 	Assignees []TaggedUser             `json:"assignees"`
 	Key       *common2.SlimKey         `json:"key"`
-	Block     *common2.SlimBlock       `json:"project"`
+	Project   *common2.SlimProject     `json:"project"`
 	Creator   common2.ResourceCreator  `json:"creator"`
 	Modifier  common2.ResourceModifier `json:"modifier"`
 }

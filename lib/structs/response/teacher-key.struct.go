@@ -4,17 +4,17 @@ import (
 	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-type StudentGradeForBlockAndPod struct {
-	ID           string                `json:"id"`
-	Name         string                `json:"projectName"`
-	Key          common2.SlimKey       `json:"key"`
-	Pod          *common2.SlimPod      `json:"pod"`
-	StudentGrade *StudentGrade         `json:"scaleValue"`
-	Pods         *[]StudentGradeForPod `json:"pods"`
-	Students     *[]Student            `json:"students"`
+type StudentGradeForProjectAndCard struct {
+	ID           string                 `json:"id"`
+	Name         string                 `json:"projectName"`
+	Key          common2.SlimKey        `json:"key"`
+	Card         *common2.SlimCard      `json:"pod"`
+	StudentGrade *StudentGrade          `json:"scaleValue"`
+	Cards        *[]StudentGradeForCard `json:"pods"`
+	Students     *[]Student             `json:"students"`
 }
 
-type StudentGradeForPod struct {
+type StudentGradeForCard struct {
 	ID           string        `json:"id"`
 	Name         string        `json:"podName"`
 	StudentGrade *StudentGrade `json:"scaleValue"`
@@ -32,20 +32,20 @@ type Students struct {
 }
 
 type Student struct {
-	ID            string             `json:"id"`
-	ProfileID     string             `json:"profileId"`
-	Email         string             `json:"email"`
-	Username      string             `json:"username"`
-	FirstName     string             `json:"firstName"`
-	MiddleName    string             `json:"middleName"`
-	LastName      string             `json:"lastName"`
-	PhoneNumber   string             `json:"phoneNumber"`
-	AddressUserBy string             `json:"addressUserBy"`
-	UserInitial   string             `json:"userInitial"`
-	AvatarName    string             `json:"avatarName"`
-	AvatarUrl     string             `json:"avatarUrl"`
-	BlockName     string             `json:"projectName"`
-	StudentGrade  *StudentGrade      `json:"scaleValue"`
-	Key           *common2.SlimKey   `json:"key"`
-	Block         *common2.SlimBlock `json:"project"`
+	ID            string               `json:"id"`
+	ProfileID     string               `json:"profileId"`
+	Email         string               `json:"email"`
+	Username      string               `json:"username"`
+	FirstName     string               `json:"firstName"`
+	MiddleName    string               `json:"middleName"`
+	LastName      string               `json:"lastName"`
+	PhoneNumber   string               `json:"phoneNumber"`
+	AddressUserBy string               `json:"addressUserBy"`
+	UserInitial   string               `json:"userInitial"`
+	AvatarName    string               `json:"avatarName"`
+	AvatarUrl     string               `json:"avatarUrl"`
+	ProjectName   string               `json:"projectName"`
+	StudentGrade  *StudentGrade        `json:"scaleValue"`
+	Key           *common2.SlimKey     `json:"key"`
+	Project       *common2.SlimProject `json:"project"`
 }

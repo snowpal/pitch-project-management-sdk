@@ -1,5 +1,5 @@
 package request
 
-type BlockTypeReqBody struct {
+type ProjectTypeReqBody struct {
 	Name string `json:"projectTypeName"`
 }

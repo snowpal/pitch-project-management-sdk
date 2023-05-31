@@ -17,7 +17,7 @@ import (
 type KeyByTemplateParam struct {
 	TemplateId      string
 	ExcludeProjects bool
-	ExcludePods     bool
+	ExcludeCards    bool
 	ExcludeTasks    bool
 }
 
@@ -37,7 +37,7 @@ func AddKeyBasedOnTemplate(
 		lib.RouteKeysAddKeyBasedOnTemplate,
 		keyParam.TemplateId,
 		strconv.FormatBool(keyParam.ExcludeProjects),
-		strconv.FormatBool(keyParam.ExcludePods),
+		strconv.FormatBool(keyParam.ExcludeCards),
 		strconv.FormatBool(keyParam.ExcludeTasks),
 	)
 	if err != nil {

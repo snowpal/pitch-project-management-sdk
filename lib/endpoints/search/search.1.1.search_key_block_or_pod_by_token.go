@@ -11,9 +11,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func SrchKeyBlockOrPodByToken(jwtToken string, searchToken string) ([]response.SearchResource, error) {
+func SrchKeyProjectOrCardByToken(jwtToken string, searchToken string) ([]response.SearchResource, error) {
 	resSearchResources := response.SearchResources{}
-	route, err := helpers2.GetRoute(lib.RouteSearchSearchKeyBlockOrPodByToken, searchToken)
+	route, err := helpers2.GetRoute(lib.RouteSearchSearchKeyProjectOrCardByToken, searchToken)
 	if err != nil {
 		fmt.Println(err)
 		return resSearchResources.Results, err

@@ -24,9 +24,9 @@ type AllowArchivalReqBody struct {
 }
 
 type ResourceIdParam struct {
-	KeyId   string
-	BlockId string
-	PodId   string
+	KeyId     string
+	ProjectId string
+	CardId    string
 }
 
 type SearchUsersParam struct {

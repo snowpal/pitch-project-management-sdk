@@ -11,19 +11,19 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetPodsBasedOnPodTypesInKey(jwtToken string, keyId string) (response.PodTypesKey, error) {
-	resPodTypesKey := response.PodTypesKey{}
-	route, err := helpers2.GetRoute(lib.RouteKeysGetPodsBasedOnPodTypesInKey, keyId)
+func GetCardsBasedOnCardTypesInKey(jwtToken string, keyId string) (response.CardTypesKey, error) {
+	resCardTypesKey := response.CardTypesKey{}
+	route, err := helpers2.GetRoute(lib.RouteKeysGetCardsBasedOnCardTypesInKey, keyId)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTypesKey, err
+		return resCardTypesKey, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTypesKey, err
+		return resCardTypesKey, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -32,7 +32,7 @@ func GetPodsBasedOnPodTypesInKey(jwtToken string, keyId string) (response.PodTyp
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTypesKey, err
+		return resCardTypesKey, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -41,13 +41,13 @@ func GetPodsBasedOnPodTypesInKey(jwtToken string, keyId string) (response.PodTyp
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTypesKey, err
+		return resCardTypesKey, err
 	}
 
-	err = json.Unmarshal(body, &resPodTypesKey)
+	err = json.Unmarshal(body, &resCardTypesKey)
 	if err != nil {
 		fmt.Println(err)
-		return resPodTypesKey, err
+		return resCardTypesKey, err
 	}
-	return resPodTypesKey, nil
+	return resCardTypesKey, nil
 }

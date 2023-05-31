@@ -12,7 +12,7 @@ import (
 func ArchiveProjectList(jwtToken string, projectListParam request.ProjectListIdParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteProjectKeysArchiveProjectList,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.ProjectListId,
 		projectListParam.KeyId,
 	)

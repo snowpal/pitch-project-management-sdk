@@ -11,16 +11,16 @@ type AllEvents struct {
 }
 
 type EndDateEvent struct {
-	Projects []BlockEvent `json:"projects"`
+	Projects []ProjectEvent `json:"projects"`
 }
 
 type DueDateEvent struct {
-	Tasks    TasksEvent   `json:"tasks"`
-	Projects []BlockEvent `json:"projects"`
-	Pods     []PodEvent   `json:"pods"`
+	Tasks    TasksEvent     `json:"tasks"`
+	Projects []ProjectEvent `json:"projects"`
+	Cards    []CardEvent    `json:"pods"`
 }
 
-type BlockEvent struct {
+type ProjectEvent struct {
 	ID          string `json:"id"`
 	Name        string `json:"projectName"`
 	Description string `json:"projectDescription"`
@@ -32,28 +32,28 @@ type BlockEvent struct {
 	Key common2.SlimKey `json:"key"`
 }
 
-type PodEvent struct {
+type CardEvent struct {
 	ID      string `json:"id"`
 	Name    string `json:"podName"`
 	DueDate string `json:"podDueDate"`
 
-	Key   common2.SlimKey   `json:"key"`
-	Block common2.SlimBlock `json:"project"`
+	Key     common2.SlimKey     `json:"key"`
+	Project common2.SlimProject `json:"project"`
 }
 
 type TasksEvent struct {
-	KeyTasks   []TaskEvent `json:"keys"`
-	BlockTasks []TaskEvent `json:"projects"`
-	PodTasks   []TaskEvent `json:"pods"`
+	KeyTasks     []TaskEvent `json:"keys"`
+	ProjectTasks []TaskEvent `json:"projects"`
+	CardTasks    []TaskEvent `json:"pods"`
 }
 
 type TaskEvent struct {
-	ID      string             `json:"id"`
-	Name    string             `json:"taskName"`
-	DueDate string             `json:"taskDueDate"`
-	Key     common2.SlimKey    `json:"key"`
-	Block   *common2.SlimBlock `json:"project"`
-	Pod     *common2.SlimPod   `json:"pod"`
+	ID      string               `json:"id"`
+	Name    string               `json:"taskName"`
+	DueDate string               `json:"taskDueDate"`
+	Key     common2.SlimKey      `json:"key"`
+	Project *common2.SlimProject `json:"project"`
+	Card    *common2.SlimCard    `json:"pod"`
 }
 
 type SchedulerEvent struct {

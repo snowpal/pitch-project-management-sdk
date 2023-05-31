@@ -18,45 +18,45 @@ type RecentlyModifiedKeys struct {
 }
 
 type RecentlyModifiedResources struct {
-	Projects []DashboardBlock `json:"projects"`
-	Pods     []DashboardPod   `json:"pods"`
+	Projects []DashboardProject `json:"projects"`
+	Cards    []DashboardCard    `json:"pods"`
 }
 
 type DueShortlyResources struct {
-	Projects *[]DashboardBlock `json:"projects"`
-	Pods     []DashboardPod    `json:"pods"`
-	Tasks    []DashboardTask   `json:"tasks"`
+	Projects *[]DashboardProject `json:"projects"`
+	Cards    []DashboardCard     `json:"pods"`
+	Tasks    []DashboardTask     `json:"tasks"`
 }
 
-type DashboardBlock struct {
+type DashboardProject struct {
 	ID      string `json:"id"`
 	Name    string `json:"projectName"`
 	DueDate string `json:"projectDueDate"`
 
-	Key       *common2.SlimKey `json:"key"`
-	BlockType *BlockType       `json:"projectType"`
+	Key         *common2.SlimKey `json:"key"`
+	ProjectType *ProjectType     `json:"projectType"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
 }
 
-type DashboardPod struct {
+type DashboardCard struct {
 	ID      string `json:"id"`
 	Name    string `json:"podName"`
 	DueDate string `json:"podDueDate"`
 
-	Key      *common2.SlimKey    `json:"key"`
-	Projects *[]BlockWithPodType `json:"projects"`
+	Key      *common2.SlimKey       `json:"key"`
+	Projects *[]ProjectWithCardType `json:"projects"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
 }
 
-type BlockWithPodType struct {
-	ID      string           `json:"id"`
-	Name    string           `json:"projectName"`
-	Key     *common2.SlimKey `json:"key"`
-	PodType *PodType         `json:"podType"`
+type ProjectWithCardType struct {
+	ID       string           `json:"id"`
+	Name     string           `json:"projectName"`
+	Key      *common2.SlimKey `json:"key"`
+	CardType *CardType        `json:"podType"`
 }
 
 type DashboardTask struct {
@@ -64,10 +64,10 @@ type DashboardTask struct {
 	Name    string `json:"taskName"`
 	DueDate string `json:"taskDueDate"`
 
-	Key      *common2.SlimKey     `json:"key"`
-	Block    *common2.SlimBlock   `json:"project"`
-	Pod      *common2.SlimPod     `json:"pod"`
-	Projects *[]common2.SlimBlock `json:"projects"`
+	Key      *common2.SlimKey       `json:"key"`
+	Project  *common2.SlimProject   `json:"project"`
+	Card     *common2.SlimCard      `json:"pod"`
+	Projects *[]common2.SlimProject `json:"projects"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
@@ -76,7 +76,7 @@ type DashboardTask struct {
 type DashboardUnreadCount struct {
 	DueTasks    int `json:"dueTasks"`
 	DueProjects int `json:"dueProjects"`
-	DuePods     int `json:"duePods"`
+	DueCards    int `json:"dueCards"`
 
 	Notifications int `json:"notifications"`
 	Conversations int `json:"conversations"`

@@ -254,6 +254,7 @@ const (
 	RouteKeysGetCardsBasedOnCardTypesInKey                  = "charts/keys/%s/card-types"
 	RouteKeysGetScalesAlongWithProjectsAndCardsBasedOnThem  = "charts/keys/%s/scales"
 	RouteKeysGetLinkedResources                             = "charts/keys/%s/linked-resources"
+	RouteKeysGetProjectScaleValues                          = "charts/keys/%s/scales/%s/scale-values"
 	RouteKeysGetTaskStatus                                  = "charts/keys/%s/task-status"
 )
 

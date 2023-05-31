@@ -1,9 +1,9 @@
 package common
 
-type SlimPod struct {
-	ID       string      `json:"id"`
-	Name     string      `json:"podName"`
-	Key      *SlimKey    `json:"key"`
-	Block    *SlimBlock  `json:"project"`
-	Projects []SlimBlock `json:"projects"`
+type SlimCard struct {
+	ID       string        `json:"id"`
+	Name     string        `json:"podName"`
+	Key      *SlimKey      `json:"key"`
+	Project  *SlimProject  `json:"project"`
+	Projects []SlimProject `json:"projects"`
 }

@@ -16,9 +16,9 @@ type Comment struct {
 	CanEdit   *bool `json:"canEdit"`
 	CanDelete *bool `json:"canDelete"`
 
-	Key   *common2.SlimKey   `json:"key"`
-	Block *common2.SlimBlock `json:"project"`
-	Pod   *common2.SlimPod   `json:"pod"`
+	Key     *common2.SlimKey     `json:"key"`
+	Project *common2.SlimProject `json:"project"`
+	Card    *common2.SlimCard    `json:"pod"`
 
 	Creator      common2.ResourceCreator  `json:"creator"`
 	Modifier     common2.ResourceModifier `json:"modifier"`
@@ -33,10 +33,10 @@ type RecentComment struct {
 	ID          string `json:"id"`
 	CommentText string `json:"commentText"`
 
-	Key      *common2.SlimKey     `json:"key"`
-	Block    *common2.SlimBlock   `json:"project"`
-	Projects *[]common2.SlimBlock `json:"projects"`
-	Pod      *common2.SlimPod     `json:"pod"`
+	Key      *common2.SlimKey       `json:"key"`
+	Project  *common2.SlimProject   `json:"project"`
+	Projects *[]common2.SlimProject `json:"projects"`
+	Card     *common2.SlimCard      `json:"pod"`
 
 	StudentId *string `json:"studentId"`
 

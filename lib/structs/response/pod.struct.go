@@ -4,11 +4,11 @@ import (
 	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-type Pods struct {
-	Pods []Pod `json:"pods"`
+type Cards struct {
+	Cards []Card `json:"pods"`
 }
 
-type Pod struct {
+type Card struct {
 	ID                string  `json:"id"`
 	Name              string  `json:"podName"`
 	Description       string  `json:"podDescription"`
@@ -18,11 +18,11 @@ type Pod struct {
 	ScaleValue        *string `json:"scaleValue"`
 
 	Attributes  []common2.DisplayAttribute `json:"attributes"`
-	PodType     *PodType                   `json:"podType"`
+	CardType    *CardType                  `json:"podType"`
 	Scale       *Scale                     `json:"scale"`
 	TaggedUsers []TaggedUser               `json:"taggedUsers"`
 	Key         *common2.SlimKey           `json:"key"`
-	Block       *common2.SlimBlock         `json:"project"`
+	Project     *common2.SlimProject       `json:"project"`
 
 	// Boolean Attributes
 	Completed    *bool `json:"completed"`
@@ -62,12 +62,12 @@ type Pod struct {
 	LastModified string                   `json:"lastModified"`
 }
 
-type UpdatePodScaleValue struct {
+type UpdateCardScaleValue struct {
 	ID           string `json:"id"`
 	Name         string `json:"name"`
 	ScaleValue   string `json:"scaleValue"`
 	NumericScale int    `json:"numericScale"`
 
-	Key   common2.SlimKey    `json:"key"`
-	Block *common2.SlimBlock `json:"project"`
+	Key     common2.SlimKey      `json:"key"`
+	Project *common2.SlimProject `json:"project"`
 }

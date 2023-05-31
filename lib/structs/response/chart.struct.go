@@ -9,90 +9,90 @@ type UserKeys struct {
 }
 
 type UserKey struct {
-	ID           string            `json:"id"`
-	Name         string            `json:"keyName"`
-	Type         string            `json:"keyType"`
-	Projects     []UserBlock       `json:"projects"`
-	Pods         []common2.SlimPod `json:"pods"`
-	LastModified string            `json:"lastModified"`
+	ID           string             `json:"id"`
+	Name         string             `json:"keyName"`
+	Type         string             `json:"keyType"`
+	Projects     []UserProject      `json:"projects"`
+	Cards        []common2.SlimCard `json:"pods"`
+	LastModified string             `json:"lastModified"`
 }
 
-type UserBlock struct {
-	ID           string            `json:"id"`
-	Name         string            `json:"keyName"`
-	Pods         []common2.SlimPod `json:"pods"`
-	LastModified string            `json:"lastModified"`
+type UserProject struct {
+	ID           string             `json:"id"`
+	Name         string             `json:"keyName"`
+	Cards        []common2.SlimCard `json:"pods"`
+	LastModified string             `json:"lastModified"`
 }
 
 type FilteredKeys struct {
 	Keys []FilteredKey `json:"keys"`
 }
 
-type ProjectsAndPods struct {
-	Projects []common2.SlimBlock `json:"projects"`
-	Pods     []common2.SlimPod   `json:"pods"`
+type ProjectsAndCards struct {
+	Projects []common2.SlimProject `json:"projects"`
+	Cards    []common2.SlimCard    `json:"pods"`
 }
 
 type FilteredKey struct {
-	ID               string          `json:"id"`
-	Name             string          `json:"keyName"`
-	Type             string          `json:"keyType"`
-	CreatedByMe      ProjectsAndPods `json:"createdByMe"`
-	SharedWithMe     ProjectsAndPods `json:"sharedWithMe"`
-	SharedWithOthers ProjectsAndPods `json:"sharedWithOthers"`
+	ID               string           `json:"id"`
+	Name             string           `json:"keyName"`
+	Type             string           `json:"keyType"`
+	CreatedByMe      ProjectsAndCards `json:"createdByMe"`
+	SharedWithMe     ProjectsAndCards `json:"sharedWithMe"`
+	SharedWithOthers ProjectsAndCards `json:"sharedWithOthers"`
 }
 
-type BlockTypesKeys struct {
-	Keys []BlockTypesKey `json:"keys"`
+type ProjectTypesKeys struct {
+	Keys []ProjectTypesKey `json:"keys"`
 }
 
-type BlockTypesKey struct {
+type ProjectTypesKey struct {
+	ID           string        `json:"id"`
+	Name         string        `json:"keyName"`
+	Type         string        `json:"keyType"`
+	ProjectTypes []ProjectType `json:"projectTypes"`
+	LastModified string        `json:"lastModified"`
+}
+
+type CardTypesKeysKeyCard struct {
+	KeyCard CardTypesKeys `json:"keyCard"`
+}
+
+type CardTypesKeysCard struct {
+	Card CardTypesKeys `json:"card"`
+}
+
+type CardTypesKeysOtherCard struct {
+	OtherCard CardTypesKeys `json:"otherCard"`
+}
+
+type CardTypesKeys struct {
+	Keys *[]CardTypesKey `json:"keys"`
+	Key  *CardTypesKey   `json:"key"`
+}
+
+type CardTypesKey struct {
 	ID           string      `json:"id"`
 	Name         string      `json:"keyName"`
 	Type         string      `json:"keyType"`
-	BlockTypes   []BlockType `json:"projectTypes"`
+	CardTypes    *[]CardType `json:"podTypes"`
 	LastModified string      `json:"lastModified"`
 }
 
-type PodTypesKeysKeyPod struct {
-	KeyPod PodTypesKeys `json:"keyPod"`
+type ScalesKeysProject struct {
+	Project ScalesKeys `json:"project"`
 }
 
-type PodTypesKeysBlockPod struct {
-	BlockPod PodTypesKeys `json:"card"`
+type ScalesKeysKeyCard struct {
+	KeyCard ScalesKeys `json:"keyCard"`
 }
 
-type PodTypesKeysOtherPod struct {
-	OtherPod PodTypesKeys `json:"otherPod"`
+type ScalesKeysCard struct {
+	Card ScalesKeys `json:"card"`
 }
 
-type PodTypesKeys struct {
-	Keys *[]PodTypesKey `json:"keys"`
-	Key  *PodTypesKey   `json:"key"`
-}
-
-type PodTypesKey struct {
-	ID           string     `json:"id"`
-	Name         string     `json:"keyName"`
-	Type         string     `json:"keyType"`
-	PodTypes     *[]PodType `json:"podTypes"`
-	LastModified string     `json:"lastModified"`
-}
-
-type ScalesKeysBlock struct {
-	Block ScalesKeys `json:"project"`
-}
-
-type ScalesKeysKeyPod struct {
-	KeyPod ScalesKeys `json:"keyPod"`
-}
-
-type ScalesKeysBlockPod struct {
-	BlockPod ScalesKeys `json:"card"`
-}
-
-type ScalesKeysOtherPod struct {
-	OtherPod ScalesKeys `json:"otherPod"`
+type ScalesKeysOtherCard struct {
+	OtherCard ScalesKeys `json:"otherCard"`
 }
 
 type ScalesKeys struct {
@@ -124,7 +124,7 @@ type TasksStatusKey struct {
 	LastModified string     `json:"lastModified"`
 }
 
-type TasksStatusBlock struct {
+type TasksStatusProject struct {
 	ID           string          `json:"id"`
 	Name         string          `json:"projectName"`
 	TaskStatus   TaskStatus      `json:"taskStatus"`
@@ -140,17 +140,17 @@ type LinkedResources struct {
 	CurrentKey LinkedResourcesKey `json:"currentKey"`
 	SharedKey  LinkedResourcesKey `json:"sharedKey"`
 	Keys       *[]UserKey         `json:"keys"`
-	Projects   []UserBlock        `json:"projects"`
+	Projects   []UserProject      `json:"projects"`
 }
 
-type BlockScaleValue struct {
+type ProjectScaleValue struct {
 	ID           string `json:"id"`
 	Name         string `json:"projectName"`
 	ScaleValue   string `json:"scaleValue"`
 	NumericScale int    `json:"numericScale"`
 }
 
-type PodScaleValue struct {
+type CardScaleValue struct {
 	ID           string `json:"id"`
 	Name         string `json:"podName"`
 	ScaleValue   string `json:"scaleValue"`
@@ -158,24 +158,24 @@ type PodScaleValue struct {
 }
 
 type ScaleValues struct {
-	Scale    Scale              `json:"scale"`
-	Key      common2.SlimKey    `json:"key"`
-	Block    *common2.SlimBlock `json:"project"`
-	Projects *[]BlockScaleValue `json:"projects"`
-	Pods     []PodScaleValue    `json:"pods"`
+	Scale    Scale                `json:"scale"`
+	Key      common2.SlimKey      `json:"key"`
+	Project  *common2.SlimProject `json:"project"`
+	Projects *[]ProjectScaleValue `json:"projects"`
+	Cards    []CardScaleValue     `json:"pods"`
 }
 
-type BlockGrade struct {
+type ProjectGrade struct {
 	ID       string          `json:"id"`
 	Name     string          `json:"projectName"`
 	Key      common2.SlimKey `json:"key"`
 	Students []Student       `json:"students"`
 }
 
-type PodGrade struct {
-	ID       string            `json:"id"`
-	Name     string            `json:"podName"`
-	Key      common2.SlimKey   `json:"key"`
-	Block    common2.SlimBlock `json:"project"`
-	Students []Student         `json:"students"`
+type CardGrade struct {
+	ID       string              `json:"id"`
+	Name     string              `json:"podName"`
+	Key      common2.SlimKey     `json:"key"`
+	Project  common2.SlimProject `json:"project"`
+	Students []Student           `json:"students"`
 }

@@ -11,19 +11,19 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetBlockTemplates(jwtToken string) ([]response.BlockTemplate, error) {
-	resBlockTemplates := response.BlockTemplates{}
-	route, err := helpers2.GetRoute(lib.RouteTemplatesGetBlockTemplates)
+func GetProjectTemplates(jwtToken string) ([]response.ProjectTemplate, error) {
+	resProjectTemplates := response.ProjectTemplates{}
+	route, err := helpers2.GetRoute(lib.RouteTemplatesGetProjectTemplates)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTemplates.Templates, err
+		return resProjectTemplates.Templates, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTemplates.Templates, err
+		return resProjectTemplates.Templates, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -32,7 +32,7 @@ func GetBlockTemplates(jwtToken string) ([]response.BlockTemplate, error) {
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTemplates.Templates, err
+		return resProjectTemplates.Templates, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -41,13 +41,13 @@ func GetBlockTemplates(jwtToken string) ([]response.BlockTemplate, error) {
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTemplates.Templates, err
+		return resProjectTemplates.Templates, err
 	}
 
-	err = json.Unmarshal(body, &resBlockTemplates)
+	err = json.Unmarshal(body, &resProjectTemplates)
 	if err != nil {
 		fmt.Println(err)
-		return resBlockTemplates.Templates, err
+		return resProjectTemplates.Templates, err
 	}
-	return resBlockTemplates.Templates, nil
+	return resProjectTemplates.Templates, nil
 }

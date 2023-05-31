@@ -13,36 +13,36 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func AddProjectPod(
+func AddCard(
 	jwtToken string,
-	reqBody request.AddPodReqBody,
+	reqBody request.AddCardReqBody,
 	projectListParam request.ProjectListIdParam,
-) (response.Pod, error) {
-	resProjectPod := response.Pod{}
+) (response.Card, error) {
+	resCard := response.Card{}
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPod, err
+		return resCard, err
 	}
 	payload := strings.NewReader(requestBody)
 
 	var route string
 	route, err = helpers.GetRoute(
-		lib.RouteProjectKeysAddAProjectPod,
-		projectListParam.BlockId,
+		lib.RouteProjectKeysAddACard,
+		projectListParam.ProjectId,
 		projectListParam.KeyId,
 		projectListParam.ProjectListId,
 	)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPod, err
+		return resCard, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, payload)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPod, err
+		return resCard, err
 	}
 
 	helpers.AddUserHeaders(jwtToken, req)
@@ -51,7 +51,7 @@ func AddProjectPod(
 	res, err = helpers.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPod, err
+		return resCard, err
 	}
 
 	defer helpers.CloseBody(res.Body)
@@ -60,13 +60,13 @@ func AddProjectPod(
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPod, err
+		return resCard, err
 	}
 
-	err = json.Unmarshal(body, &resProjectPod)
+	err = json.Unmarshal(body, &resCard)
 	if err != nil {
 		fmt.Println(err)
-		return resProjectPod, err
+		return resCard, err
 	}
-	return resProjectPod, nil
+	return resCard, nil
 }

@@ -4,14 +4,14 @@ import (
 	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-type PodTypes struct {
-	PodTypes []PodType `json:"podTypes"`
+type CardTypes struct {
+	CardTypes []CardType `json:"podTypes"`
 }
 
-type PodType struct {
-	ID   string             `json:"id"`
-	Name string             `json:"podTypeName"`
-	Pods *[]common2.SlimPod `json:"pods"`
+type CardType struct {
+	ID    string              `json:"id"`
+	Name  string              `json:"podTypeName"`
+	Cards *[]common2.SlimCard `json:"pods"`
 
 	TeacherReadOnly *bool `json:"teacherReadOnly"`
 
