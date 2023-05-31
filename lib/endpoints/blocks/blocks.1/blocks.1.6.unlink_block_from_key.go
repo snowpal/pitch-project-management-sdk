@@ -10,7 +10,7 @@ import (
 )
 
 func UnlinkBlockFromKey(jwtToken string, blockParam common.ResourceIdParam) error {
-	route, err := helpers.GetRoute(lib.RouteBlocksUnlinkBlockFromKey, blockParam.KeyId, blockParam.BlockId)
+	route, err := helpers.GetRoute(lib.RouteProjectsUnlinkBlockFromKey, blockParam.KeyId, blockParam.BlockId)
 	if err != nil {
 		fmt.Println(err)
 		return err

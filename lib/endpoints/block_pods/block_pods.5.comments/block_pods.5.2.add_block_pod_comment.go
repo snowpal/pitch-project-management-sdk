@@ -26,7 +26,7 @@ func AddBlockPodComment(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsAddBlockPodComment,
+		lib.RouteCardsAddBlockPodComment,
 		*commentParam.PodId,
 		commentParam.KeyId,
 		*commentParam.BlockId,

@@ -15,7 +15,7 @@ import (
 func GetBlockPodTasksForCharts(jwtToken string, podParam common.ResourceIdParam) ([]response.Task, error) {
 	resTasks := response.Tasks{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsGetBlockPodTasksForCharts,
+		lib.RouteCardsGetBlockPodTasksForCharts,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

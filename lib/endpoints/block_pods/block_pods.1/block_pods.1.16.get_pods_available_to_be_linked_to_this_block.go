@@ -14,7 +14,7 @@ import (
 
 func GetPodsAvailableToBeLinked(jwtToken string, podParam common.ResourceIdParam) ([]response.Pod, error) {
 	resPods := response.Pods{}
-	route, err := helpers2.GetRoute(lib.RouteBlockPodsGetPodsAvailableToBeLinkedToThisBlock, podParam.BlockId, podParam.KeyId)
+	route, err := helpers2.GetRoute(lib.RouteCardsGetPodsAvailableToBeLinkedToThisBlock, podParam.BlockId, podParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resPods.Pods, err

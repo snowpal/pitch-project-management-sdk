@@ -94,7 +94,7 @@ func fetchSchedulerEvents(user response.User) error {
 	if err != nil {
 		return err
 	}
-	for _, blockEvent := range allEvents.DueDateEvent.Blocks {
+	for _, blockEvent := range allEvents.DueDateEvent.Projects {
 		log.Printf(".Block %s is due on %s", blockEvent.Name, *blockEvent.DueDate)
 	}
 	for _, podEvent := range allEvents.DueDateEvent.Pods {

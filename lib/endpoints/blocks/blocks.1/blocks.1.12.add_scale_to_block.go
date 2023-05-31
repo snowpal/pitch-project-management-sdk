@@ -11,7 +11,7 @@ import (
 
 func AddScaleToBlock(jwtToken string, blockParam request.ScaleIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksAddScaleToBlock,
+		lib.RouteProjectsAddScaleToBlock,
 		*blockParam.BlockId,
 		blockParam.ScaleId,
 		blockParam.KeyId,

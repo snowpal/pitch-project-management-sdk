@@ -12,7 +12,7 @@ import (
 
 func CopyBlockPod(jwtToken string, podParam request.CopyMovePodParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsCopyBlockPod,
+		lib.RouteCardsCopyBlockPod,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

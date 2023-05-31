@@ -26,7 +26,7 @@ func UpdateBlockTask(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksUpdateBlockTask,
+		lib.RouteProjectsUpdateBlockTask,
 		*taskParam.TaskId,
 		taskParam.KeyId,
 		*taskParam.BlockId,

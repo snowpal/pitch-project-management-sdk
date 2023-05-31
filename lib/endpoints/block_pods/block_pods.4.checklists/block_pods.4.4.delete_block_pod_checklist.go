@@ -11,7 +11,7 @@ import (
 
 func DeleteBlockPodChecklist(jwtToken string, checklistParam request.ChecklistIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsDeleteBlockPodChecklist,
+		lib.RouteCardsDeleteBlockPodChecklist,
 		*checklistParam.PodId,
 		*checklistParam.ChecklistId,
 		checklistParam.KeyId,

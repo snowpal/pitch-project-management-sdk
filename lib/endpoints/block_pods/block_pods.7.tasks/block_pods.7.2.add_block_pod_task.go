@@ -26,7 +26,7 @@ func AddBlockPodTask(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsAddBlockPodTask,
+		lib.RouteCardsAddBlockPodTask,
 		*taskParam.PodId,
 		taskParam.KeyId,
 		*taskParam.BlockId,

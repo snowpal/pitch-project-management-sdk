@@ -12,10 +12,10 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetLinkedBlockPods(jwtToken string, blockParam common.ResourceIdParam) (response.LinkedResources, error) {
+func GetLinkedCards(jwtToken string, blockParam common.ResourceIdParam) (response.LinkedResources, error) {
 	resLinkedPods := response.LinkedResources{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetLinkedBlockPods,
+		lib.RouteProjectsGetLinkedCards,
 		blockParam.KeyId,
 		blockParam.BlockId,
 	)

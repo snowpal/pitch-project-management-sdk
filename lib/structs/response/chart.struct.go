@@ -12,7 +12,7 @@ type UserKey struct {
 	ID           string            `json:"id"`
 	Name         string            `json:"keyName"`
 	Type         string            `json:"keyType"`
-	Blocks       []UserBlock       `json:"blocks"`
+	Projects     []UserBlock       `json:"blocks"`
 	Pods         []common2.SlimPod `json:"pods"`
 	LastModified string            `json:"lastModified"`
 }
@@ -28,18 +28,18 @@ type FilteredKeys struct {
 	Keys []FilteredKey `json:"keys"`
 }
 
-type BlocksAndPods struct {
-	Blocks []common2.SlimBlock `json:"blocks"`
-	Pods   []common2.SlimPod   `json:"pods"`
+type ProjectsAndPods struct {
+	Projects []common2.SlimBlock `json:"blocks"`
+	Pods     []common2.SlimPod   `json:"pods"`
 }
 
 type FilteredKey struct {
-	ID               string        `json:"id"`
-	Name             string        `json:"keyName"`
-	Type             string        `json:"keyType"`
-	CreatedByMe      BlocksAndPods `json:"createdByMe"`
-	SharedWithMe     BlocksAndPods `json:"sharedWithMe"`
-	SharedWithOthers BlocksAndPods `json:"sharedWithOthers"`
+	ID               string          `json:"id"`
+	Name             string          `json:"keyName"`
+	Type             string          `json:"keyType"`
+	CreatedByMe      ProjectsAndPods `json:"createdByMe"`
+	SharedWithMe     ProjectsAndPods `json:"sharedWithMe"`
+	SharedWithOthers ProjectsAndPods `json:"sharedWithOthers"`
 }
 
 type BlockTypesKeys struct {
@@ -140,7 +140,7 @@ type LinkedResources struct {
 	CurrentKey LinkedResourcesKey `json:"currentKey"`
 	SharedKey  LinkedResourcesKey `json:"sharedKey"`
 	Keys       *[]UserKey         `json:"keys"`
-	Blocks     []UserBlock        `json:"blocks"`
+	Projects   []UserBlock        `json:"blocks"`
 }
 
 type BlockScaleValue struct {
@@ -158,11 +158,11 @@ type PodScaleValue struct {
 }
 
 type ScaleValues struct {
-	Scale  Scale              `json:"scale"`
-	Key    common2.SlimKey    `json:"key"`
-	Block  *common2.SlimBlock `json:"block"`
-	Blocks *[]BlockScaleValue `json:"blocks"`
-	Pods   []PodScaleValue    `json:"pods"`
+	Scale    Scale              `json:"scale"`
+	Key      common2.SlimKey    `json:"key"`
+	Block    *common2.SlimBlock `json:"block"`
+	Projects *[]BlockScaleValue `json:"blocks"`
+	Pods     []PodScaleValue    `json:"pods"`
 }
 
 type BlockGrade struct {

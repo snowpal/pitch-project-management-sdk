@@ -11,19 +11,19 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetBlocksUsingBlockType(jwtToken string, blockTypeId string) ([]response.Block, error) {
-	resBlocks := response.Blocks{}
-	route, err := helpers2.GetRoute(lib.RouteBlockTypesGetBlocksUsingBlockType, blockTypeId)
+func GetProjectsUsingBlockType(jwtToken string, blockTypeId string) ([]response.Block, error) {
+	resProjects := response.Projects{}
+	route, err := helpers2.GetRoute(lib.RouteBlockTypesGetProjectsUsingBlockType, blockTypeId)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -32,7 +32,7 @@ func GetBlocksUsingBlockType(jwtToken string, blockTypeId string) ([]response.Bl
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -41,13 +41,13 @@ func GetBlocksUsingBlockType(jwtToken string, blockTypeId string) ([]response.Bl
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
-	err = json.Unmarshal(body, &resBlocks)
+	err = json.Unmarshal(body, &resProjects)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
-	return resBlocks.Blocks, nil
+	return resProjects.Projects, nil
 }

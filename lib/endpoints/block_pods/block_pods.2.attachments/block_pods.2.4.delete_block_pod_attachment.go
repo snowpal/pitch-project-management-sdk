@@ -11,7 +11,7 @@ import (
 
 func DeleteBlockPodAttachment(jwtToken string, attachmentParam request.AttachmentParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsDeleteBlockPodAttachment,
+		lib.RouteCardsDeleteBlockPodAttachment,
 		*attachmentParam.AttachmentId,
 		attachmentParam.KeyId,
 		*attachmentParam.BlockId,

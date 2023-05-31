@@ -29,7 +29,7 @@ func AddBlockPodBasedOnTemplate(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlockPodsAddBlockPodBasedOnTemplate,
+		lib.RouteCardsAddBlockPodBasedOnTemplate,
 		*podParam.BlockId,
 		podParam.KeyId,
 		podParam.TemplateId,

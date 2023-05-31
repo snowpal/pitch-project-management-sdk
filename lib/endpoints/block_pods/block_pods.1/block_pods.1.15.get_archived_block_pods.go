@@ -13,10 +13,10 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetArchivedBlockPods(jwtToken string, podsParam request.GetPodsParam) ([]response.Pod, error) {
+func GetArchivedCards(jwtToken string, podsParam request.GetPodsParam) ([]response.Pod, error) {
 	resPods := response.Pods{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsGetArchivedBlockPods,
+		lib.RouteCardsGetArchivedCards,
 		strconv.Itoa(podsParam.BatchIndex),
 		podsParam.KeyId,
 		*podsParam.BlockId,

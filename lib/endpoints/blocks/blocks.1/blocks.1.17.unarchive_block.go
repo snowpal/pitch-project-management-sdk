@@ -11,7 +11,7 @@ import (
 
 func UnarchiveBlock(jwtToken string, blockParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksUnarchiveBlock,
+		lib.RouteProjectsUnarchiveBlock,
 		blockParam.BlockId,
 		blockParam.KeyId,
 	)

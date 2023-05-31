@@ -18,14 +18,14 @@ type RecentlyModifiedKeys struct {
 }
 
 type RecentlyModifiedResources struct {
-	Blocks []DashboardBlock `json:"blocks"`
-	Pods   []DashboardPod   `json:"pods"`
+	Projects []DashboardBlock `json:"blocks"`
+	Pods     []DashboardPod   `json:"pods"`
 }
 
 type DueShortlyResources struct {
-	Blocks *[]DashboardBlock `json:"blocks"`
-	Pods   []DashboardPod    `json:"pods"`
-	Tasks  []DashboardTask   `json:"tasks"`
+	Projects *[]DashboardBlock `json:"blocks"`
+	Pods     []DashboardPod    `json:"pods"`
+	Tasks    []DashboardTask   `json:"tasks"`
 }
 
 type DashboardBlock struct {
@@ -45,8 +45,8 @@ type DashboardPod struct {
 	Name    string `json:"podName"`
 	DueDate string `json:"podDueDate"`
 
-	Key    *common2.SlimKey    `json:"key"`
-	Blocks *[]BlockWithPodType `json:"blocks"`
+	Key      *common2.SlimKey    `json:"key"`
+	Projects *[]BlockWithPodType `json:"blocks"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
@@ -64,19 +64,19 @@ type DashboardTask struct {
 	Name    string `json:"taskName"`
 	DueDate string `json:"taskDueDate"`
 
-	Key    *common2.SlimKey     `json:"key"`
-	Block  *common2.SlimBlock   `json:"block"`
-	Pod    *common2.SlimPod     `json:"pod"`
-	Blocks *[]common2.SlimBlock `json:"blocks"`
+	Key      *common2.SlimKey     `json:"key"`
+	Block    *common2.SlimBlock   `json:"block"`
+	Pod      *common2.SlimPod     `json:"pod"`
+	Projects *[]common2.SlimBlock `json:"blocks"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`
 	Modifier common2.ResourceModifier `json:"modifier"`
 }
 
 type DashboardUnreadCount struct {
-	DueTasks  int `json:"dueTasks"`
-	DueBlocks int `json:"dueBlocks"`
-	DuePods   int `json:"duePods"`
+	DueTasks    int `json:"dueTasks"`
+	DueProjects int `json:"dueProjects"`
+	DuePods     int `json:"duePods"`
 
 	Notifications int `json:"notifications"`
 	Conversations int `json:"conversations"`

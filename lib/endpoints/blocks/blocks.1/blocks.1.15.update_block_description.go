@@ -33,7 +33,7 @@ func UpdateBlockPodDescription(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlocksUpdateBlockDescription,
+		lib.RouteProjectsUpdateBlockDescription,
 		podParam.BlockId,
 		podParam.KeyId,
 	)

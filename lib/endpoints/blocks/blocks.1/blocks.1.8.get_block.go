@@ -14,7 +14,7 @@ import (
 
 func GetBlock(jwtToken string, blockParam common.ResourceIdParam) (response.Block, error) {
 	resBlock := response.Block{}
-	route, err := helpers2.GetRoute(lib.RouteBlocksGetBlock, blockParam.BlockId, blockParam.KeyId)
+	route, err := helpers2.GetRoute(lib.RouteProjectsGetBlock, blockParam.BlockId, blockParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resBlock, err

@@ -28,7 +28,7 @@ func AllowArchivalOfBlockPod(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlockPodsAllowArchivalOfBlockPod,
+		lib.RouteCardsAllowArchivalOfBlockPod,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

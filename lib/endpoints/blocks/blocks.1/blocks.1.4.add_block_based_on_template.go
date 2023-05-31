@@ -35,7 +35,7 @@ func AddBlockBasedOnTemplate(
 	payload := strings.NewReader(requestBody)
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlocksAddBlockBasedOnTemplate,
+		lib.RouteProjectsAddBlockBasedOnTemplate,
 		blockParam.KeyId,
 		blockParam.TemplateId,
 		strconv.FormatBool(blockParam.ExcludePods),

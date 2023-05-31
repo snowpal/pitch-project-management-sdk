@@ -50,7 +50,7 @@ type Pod struct {
 
 	// Count Attributes
 	KeysCount        *int `json:"keysCount"`
-	BlocksCount      *int `json:"podsCount"`
+	ProjectsCount    *int `json:"podsCount"`
 	TasksCount       *int `json:"tasksCount"`
 	ChecklistsCount  *int `json:"checklistsCount"`
 	AttachmentsCount *int `json:"attachmentsCount"`

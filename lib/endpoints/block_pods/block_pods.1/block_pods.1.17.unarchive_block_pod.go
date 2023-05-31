@@ -11,7 +11,7 @@ import (
 
 func UnarchiveBlockPod(jwtToken string, podParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsUnarchiveBlockPod,
+		lib.RouteCardsUnarchiveBlockPod,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

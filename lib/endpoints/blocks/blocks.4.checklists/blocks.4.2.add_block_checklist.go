@@ -26,7 +26,7 @@ func AddBlockChecklist(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksAddBlockChecklist,
+		lib.RouteProjectsAddBlockChecklist,
 		*checklistParam.BlockId,
 		checklistParam.KeyId,
 	)

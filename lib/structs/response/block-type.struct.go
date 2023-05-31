@@ -9,9 +9,9 @@ type BlockTypes struct {
 }
 
 type BlockType struct {
-	ID     string               `json:"id"`
-	Name   string               `json:"blockTypeName"`
-	Blocks *[]common2.SlimBlock `json:"blocks"`
+	ID       string               `json:"id"`
+	Name     string               `json:"blockTypeName"`
+	Projects *[]common2.SlimBlock `json:"blocks"`
 
 	TeacherReadOnly *bool `json:"teacherReadOnly"`
 

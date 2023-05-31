@@ -15,7 +15,7 @@ import (
 func GetTaskStatusForBlock(jwtToken string, taskParam common.ResourceIdParam) (response.TasksStatusBlock, error) {
 	resBlockTasksStatus := response.TasksStatusBlock{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetTaskStatusForBlock,
+		lib.RouteProjectsGetTaskStatusForBlock,
 		taskParam.KeyId,
 		taskParam.BlockId,
 	)

@@ -16,7 +16,7 @@ type AddBlockTypeIdParam struct {
 
 func AddPodTypeToBlockPod(jwtToken string, podParam AddBlockTypeIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksAddBlockTypeToBlock,
+		lib.RouteProjectsAddBlockTypeToBlock,
 		podParam.BlockId,
 		podParam.BlockTypeId,
 		podParam.KeyId,

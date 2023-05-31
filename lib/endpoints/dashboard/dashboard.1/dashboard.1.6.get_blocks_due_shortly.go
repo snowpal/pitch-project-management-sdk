@@ -11,9 +11,9 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetBlocksDueShortly(jwtToken string) (response.Dashboard, error) {
+func GetProjectsDueShortly(jwtToken string) (response.Dashboard, error) {
 	resDashboard := response.Dashboard{}
-	route, err := helpers2.GetRoute(lib.RouteDashboardGetBlocksDueShortly)
+	route, err := helpers2.GetRoute(lib.RouteDashboardGetProjectsDueShortly)
 	if err != nil {
 		fmt.Println(err)
 		return resDashboard, err

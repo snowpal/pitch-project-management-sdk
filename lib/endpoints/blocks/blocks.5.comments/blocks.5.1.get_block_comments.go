@@ -15,7 +15,7 @@ import (
 func GetBlockComments(jwtToken string, commentParam request.CommentIdParam) ([]response.Comment, error) {
 	resComments := response.Comments{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetBlockComments,
+		lib.RouteProjectsGetBlockComments,
 		*commentParam.BlockId,
 		commentParam.KeyId,
 	)

@@ -14,10 +14,10 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetBlockPods(jwtToken string, podsParam request.GetPodsParam) ([]response.Pod, error) {
+func GetCards(jwtToken string, podsParam request.GetPodsParam) ([]response.Pod, error) {
 	resPods := response.Pods{}
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsGetBlockPods,
+		lib.RouteCardsGetCards,
 		*podsParam.BlockId,
 		strconv.Itoa(podsParam.BatchIndex),
 		podsParam.KeyId,

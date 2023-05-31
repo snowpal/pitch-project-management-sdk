@@ -26,7 +26,7 @@ func AddBlockPodChecklistItem(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsAddBlockPodChecklistItem,
+		lib.RouteCardsAddBlockPodChecklistItem,
 		*checklistParam.PodId,
 		*checklistParam.ChecklistId,
 		checklistParam.KeyId,

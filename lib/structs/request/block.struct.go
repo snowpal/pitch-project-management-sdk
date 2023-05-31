@@ -8,7 +8,7 @@ type BlockAclReqBody struct {
 	Acl string `json:"blockAcl"`
 }
 
-type GetBlocksParam struct {
+type GetProjectsParam struct {
 	KeyId            string
 	BatchIndex       int
 	WriteOrHigherAcl bool

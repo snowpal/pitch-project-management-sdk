@@ -11,7 +11,7 @@ import (
 
 func ArchiveBlockPod(jwtToken string, podParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsArchiveBlockPod,
+		lib.RouteCardsArchiveBlockPod,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

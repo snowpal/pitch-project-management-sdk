@@ -26,7 +26,7 @@ func UpdateBlockComment(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksUpdateBlockComment,
+		lib.RouteProjectsUpdateBlockComment,
 		*commentParam.CommentId,
 		commentParam.KeyId,
 		*commentParam.BlockId,

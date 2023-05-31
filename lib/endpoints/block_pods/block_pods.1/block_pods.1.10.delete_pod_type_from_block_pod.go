@@ -11,7 +11,7 @@ import (
 
 func DeletePodTypeFromBlockPod(jwtToken string, podParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsDeletePodTypeFromBlockPod,
+		lib.RouteCardsDeletePodTypeFromBlockPod,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

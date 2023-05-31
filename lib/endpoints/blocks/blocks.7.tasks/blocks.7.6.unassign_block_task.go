@@ -18,7 +18,7 @@ func UnassignBlockTask(jwtToken string, reqBody request.AssignTaskReqBody, taskP
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksUnassignBlockTask,
+		lib.RouteProjectsUnassignBlockTask,
 		*taskParam.TaskId,
 		taskParam.KeyId,
 		*taskParam.BlockId,

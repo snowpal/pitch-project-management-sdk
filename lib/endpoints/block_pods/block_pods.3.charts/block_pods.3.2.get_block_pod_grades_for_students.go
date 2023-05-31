@@ -23,7 +23,7 @@ type BlockPodGradesForStudents struct {
 func GetBlockPodGradesForStudents(jwtToken string, podParam common2.ResourceIdParam) (BlockPodGradesForStudents, error) {
 	resBlockPodGrades := BlockPodGradesForStudents{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsGetBlockPodGradesForStudents,
+		lib.RouteCardsGetBlockPodGradesForStudents,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

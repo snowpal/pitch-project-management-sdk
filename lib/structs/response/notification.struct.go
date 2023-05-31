@@ -26,8 +26,8 @@ type NotificationResource struct {
 	BlockName *string `json:"blockName"`
 	PodName   *string `json:"podName"`
 
-	Key    *common2.SlimKey     `json:"key"`
-	Blocks *[]common2.SlimBlock `json:"blocks"`
+	Key      *common2.SlimKey     `json:"key"`
+	Projects *[]common2.SlimBlock `json:"blocks"`
 
 	StartTime *string `json:"eventStartTime"`
 	EndTime   *string `json:"eventEndTime"`

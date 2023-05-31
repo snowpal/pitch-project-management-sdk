@@ -11,13 +11,13 @@ type AllEvents struct {
 }
 
 type EndDateEvent struct {
-	Blocks []BlockEvent `json:"blocks"`
+	Projects []BlockEvent `json:"blocks"`
 }
 
 type DueDateEvent struct {
-	Tasks  TasksEvent   `json:"tasks"`
-	Blocks []BlockEvent `json:"blocks"`
-	Pods   []PodEvent   `json:"pods"`
+	Tasks    TasksEvent   `json:"tasks"`
+	Projects []BlockEvent `json:"blocks"`
+	Pods     []PodEvent   `json:"pods"`
 }
 
 type BlockEvent struct {

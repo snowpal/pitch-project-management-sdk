@@ -10,7 +10,7 @@ import (
 )
 
 func LinkPodToBlock(jwtToken string, podParam common.ResourceIdParam) error {
-	route, err := helpers.GetRoute(lib.RouteBlockPodsLinkPodToBlock, podParam.BlockId, podParam.PodId, podParam.KeyId)
+	route, err := helpers.GetRoute(lib.RouteCardsLinkPodToBlock, podParam.BlockId, podParam.PodId, podParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return err

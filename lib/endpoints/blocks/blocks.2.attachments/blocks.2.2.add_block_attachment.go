@@ -26,7 +26,7 @@ func AddBlockAttachment(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksAddBlockAttachment,
+		lib.RouteProjectsAddBlockAttachment,
 		*attachmentParam.PodId,
 		attachmentParam.KeyId,
 		*attachmentParam.BlockId,

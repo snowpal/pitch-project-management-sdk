@@ -8,8 +8,8 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
 )
 
-func BlocksUserFromSendingMessages(jwtToken string, userId string) error {
-	route, err := helpers.GetRoute(lib.RouteProfileBlocksUserFromSendingMessages, userId)
+func ProjectsUserFromSendingMessages(jwtToken string, userId string) error {
+	route, err := helpers.GetRoute(lib.RouteProfileProjectsUserFromSendingMessages, userId)
 	if err != nil {
 		fmt.Println(err)
 		return err

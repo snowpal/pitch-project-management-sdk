@@ -12,29 +12,29 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetBlocksLinkedToPods(jwtToken string, blockParam common.ResourceIdParam) ([]response.Block, error) {
-	resBlocks := response.Blocks{}
+func GetProjectsLinkedToPods(jwtToken string, blockParam common.ResourceIdParam) ([]response.Block, error) {
+	resProjects := response.Projects{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetBlocksLinkedToPod,
+		lib.RouteProjectsGetProjectsLinkedToPod,
 		blockParam.PodId,
 		blockParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	req, _ := http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -42,13 +42,13 @@ func GetBlocksLinkedToPods(jwtToken string, blockParam common.ResourceIdParam) (
 	body, _ := io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
-	err = json.Unmarshal(body, &resBlocks)
+	err = json.Unmarshal(body, &resProjects)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
-	return resBlocks.Blocks, nil
+	return resProjects.Projects, nil
 }

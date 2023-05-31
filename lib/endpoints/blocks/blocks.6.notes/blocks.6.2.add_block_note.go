@@ -26,7 +26,7 @@ func AddBlockNote(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksAddBlockNote,
+		lib.RouteProjectsAddBlockNote,
 		*commentParam.BlockId,
 		commentParam.KeyId,
 	)

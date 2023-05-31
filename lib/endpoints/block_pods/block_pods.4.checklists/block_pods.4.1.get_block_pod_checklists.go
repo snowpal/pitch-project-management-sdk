@@ -15,7 +15,7 @@ import (
 func GetBlockPodChecklists(jwtToken string, checklistParam request.ChecklistIdParam) ([]response.Checklist, error) {
 	resChecklists := response.Checklists{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsGetBlockPodChecklists,
+		lib.RouteCardsGetBlockPodChecklists,
 		*checklistParam.PodId,
 		checklistParam.KeyId,
 		*checklistParam.BlockId,

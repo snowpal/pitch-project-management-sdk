@@ -11,7 +11,7 @@ import (
 
 func ArchiveBlock(jwtToken string, blockParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksArchiveBlock,
+		lib.RouteProjectsArchiveBlock,
 		blockParam.BlockId,
 		blockParam.KeyId,
 	)

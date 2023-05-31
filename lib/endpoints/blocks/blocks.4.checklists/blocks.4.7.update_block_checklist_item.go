@@ -26,7 +26,7 @@ func UpdateBlockChecklistItem(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksUpdateBlockChecklistItem,
+		lib.RouteProjectsUpdateBlockChecklistItem,
 		*checklistParam.BlockId,
 		*checklistParam.ChecklistId,
 		*checklistParam.ChecklistItemId,

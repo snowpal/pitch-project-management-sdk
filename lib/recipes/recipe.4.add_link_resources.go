@@ -51,7 +51,7 @@ func AddAndLinkResources() {
 		newBlock    response.Block
 		newBlockPod response.Pod
 	)
-	newPod, newBlock, newBlockPod, err = addBlocksAndPods(user, newKey)
+	newPod, newBlock, newBlockPod, err = addProjectsAndPods(user, newKey)
 	if err != nil {
 		return
 	}
@@ -130,7 +130,7 @@ func linkResources(
 	return nil
 }
 
-func addBlocksAndPods(user response.User, newKey response.Key) (response.Pod, response.Block, response.Pod, error) {
+func addProjectsAndPods(user response.User, newKey response.Key) (response.Pod, response.Block, response.Pod, error) {
 	log.Info("Add a new key pod into this key")
 	recipes.SleepBefore()
 

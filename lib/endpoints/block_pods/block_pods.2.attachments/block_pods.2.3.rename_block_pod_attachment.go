@@ -22,7 +22,7 @@ func RenameBlockPodAttachment(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsRenameBlockPodAttachment,
+		lib.RouteCardsRenameBlockPodAttachment,
 		*attachmentParam.AttachmentId,
 		attachmentParam.KeyId,
 		*attachmentParam.BlockId,

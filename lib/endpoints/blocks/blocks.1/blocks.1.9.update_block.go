@@ -34,7 +34,7 @@ func UpdateBlock(jwtToken string, reqBody UpdateBlockReqBody, blockParam common.
 		return resBlock, err
 	}
 	payload := strings.NewReader(requestBody)
-	route, err := helpers2.GetRoute(lib.RouteBlocksUpdateBlock, blockParam.BlockId, blockParam.KeyId)
+	route, err := helpers2.GetRoute(lib.RouteProjectsUpdateBlock, blockParam.BlockId, blockParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resBlock, err

@@ -11,7 +11,7 @@ import (
 
 func DeleteBlockPodComment(jwtToken string, commentParam request.CommentIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsDeleteBlockPodComment,
+		lib.RouteCardsDeleteBlockPodComment,
 		*commentParam.CommentId,
 		commentParam.KeyId,
 		*commentParam.BlockId,

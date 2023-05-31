@@ -29,7 +29,7 @@ func UpdateBlockPodDescription(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlockPodsUpdateBlockPodDescription,
+		lib.RouteCardsUpdateBlockPodDescription,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

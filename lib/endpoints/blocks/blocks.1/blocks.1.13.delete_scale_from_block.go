@@ -11,7 +11,7 @@ import (
 
 func DeleteScaleFromBlock(jwtToken string, blockParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksDeleteScaleFromBlock,
+		lib.RouteProjectsDeleteScaleFromBlock,
 		blockParam.BlockId,
 		blockParam.KeyId,
 	)

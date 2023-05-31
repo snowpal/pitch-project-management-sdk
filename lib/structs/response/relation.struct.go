@@ -20,9 +20,9 @@ type SearchResource struct {
 	BlockName *string `json:"blockName"`
 	PodName   *string `json:"podName"`
 
-	Key    *common2.SlimKey     `json:"key"`
-	Block  *common2.SlimBlock   `json:"block"`
-	Blocks *[]common2.SlimBlock `json:"blocks"`
+	Key      *common2.SlimKey     `json:"key"`
+	Block    *common2.SlimBlock   `json:"block"`
+	Projects *[]common2.SlimBlock `json:"blocks"`
 
 	Modifier common2.ResourceModifier `json:"modifier"`
 }
@@ -32,7 +32,7 @@ type Relations struct {
 }
 
 type Relationships struct {
-	Keys   []common2.SlimKey   `json:"keys"`
-	Blocks []common2.SlimBlock `json:"blocks"`
-	Pods   []common2.SlimPod   `json:"pods"`
+	Keys     []common2.SlimKey   `json:"keys"`
+	Projects []common2.SlimBlock `json:"blocks"`
+	Pods     []common2.SlimPod   `json:"pods"`
 }

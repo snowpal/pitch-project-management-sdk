@@ -13,23 +13,23 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetArchivedBlocks(jwtToken string, blocksParam request.GetBlocksParam) ([]response.Block, error) {
-	resBlocks := response.Blocks{}
+func GetArchivedProjects(jwtToken string, blocksParam request.GetProjectsParam) ([]response.Block, error) {
+	resProjects := response.Projects{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetArchivedBlocks,
+		lib.RouteProjectsGetArchivedProjects,
 		strconv.Itoa(blocksParam.BatchIndex),
 		blocksParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
@@ -38,7 +38,7 @@ func GetArchivedBlocks(jwtToken string, blocksParam request.GetBlocksParam) ([]r
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
 	defer helpers2.CloseBody(res.Body)
@@ -47,13 +47,13 @@ func GetArchivedBlocks(jwtToken string, blocksParam request.GetBlocksParam) ([]r
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
 
-	err = json.Unmarshal(body, &resBlocks)
+	err = json.Unmarshal(body, &resProjects)
 	if err != nil {
 		fmt.Println(err)
-		return resBlocks.Blocks, err
+		return resProjects.Projects, err
 	}
-	return resBlocks.Blocks, nil
+	return resProjects.Projects, nil
 }

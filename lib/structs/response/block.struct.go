@@ -4,8 +4,8 @@ import (
 	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
 )
 
-type Blocks struct {
-	Blocks []Block `json:"blocks"`
+type Projects struct {
+	Projects []Block `json:"blocks"`
 }
 
 type Block struct {

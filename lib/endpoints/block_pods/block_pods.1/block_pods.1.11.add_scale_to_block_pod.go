@@ -11,7 +11,7 @@ import (
 
 func AddScaleToBlockPod(jwtToken string, podParam request.ScaleIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsAddScaleToBlockPod,
+		lib.RouteCardsAddScaleToBlockPod,
 		*podParam.PodId,
 		podParam.ScaleId,
 		podParam.KeyId,

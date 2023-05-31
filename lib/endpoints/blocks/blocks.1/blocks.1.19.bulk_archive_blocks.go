@@ -9,11 +9,11 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
 )
 
-type BulkArchiveBlocksReqBody struct {
+type BulkArchiveProjectsReqBody struct {
 	BlockIds string `json:"blockIds"`
 }
 
-func BulkArchiveBlocks(jwtToken string, reqBody BulkArchiveBlocksReqBody, keyId string) error {
+func BulkArchiveProjects(jwtToken string, reqBody BulkArchiveProjectsReqBody, keyId string) error {
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
 		fmt.Println(err)
@@ -22,7 +22,7 @@ func BulkArchiveBlocks(jwtToken string, reqBody BulkArchiveBlocksReqBody, keyId 
 	payload := strings.NewReader(requestBody)
 
 	var route string
-	route, err = helpers.GetRoute(lib.RouteBlocksBulkArchiveBlocks, keyId)
+	route, err = helpers.GetRoute(lib.RouteProjectsBulkArchiveProjects, keyId)
 	if err != nil {
 		fmt.Println(err)
 		return err

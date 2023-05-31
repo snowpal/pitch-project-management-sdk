@@ -20,7 +20,7 @@ type BlockGradesForStudents struct {
 func GetBlockGradesForStudents(jwtToken string, gradeParam common.ResourceIdParam) (BlockGradesForStudents, error) {
 	resBlockGrades := BlockGradesForStudents{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetBlockGradesForStudents,
+		lib.RouteProjectsGetBlockGradesForStudents,
 		gradeParam.BlockId,
 		gradeParam.KeyId,
 	)

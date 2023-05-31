@@ -28,7 +28,7 @@ func UpdateBlockPod(
 	payload := strings.NewReader(requestBody)
 
 	var route string
-	route, err = helpers2.GetRoute(lib.RouteBlockPodsUpdateBlockPod, podParam.PodId, podParam.KeyId, podParam.BlockId)
+	route, err = helpers2.GetRoute(lib.RouteCardsUpdateBlockPod, podParam.PodId, podParam.KeyId, podParam.BlockId)
 	if err != nil {
 		fmt.Println(err)
 		return resPod, err

@@ -11,7 +11,7 @@ import (
 
 func AddPodTypeToBlockPod(jwtToken string, podParam request.AddPodTypeIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlockPodsAddPodTypeToBlockPod,
+		lib.RouteCardsAddPodTypeToBlockPod,
 		podParam.PodId,
 		podParam.PodTypeId,
 		podParam.KeyId,

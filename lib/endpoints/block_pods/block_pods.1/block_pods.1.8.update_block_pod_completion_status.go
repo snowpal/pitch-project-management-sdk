@@ -29,7 +29,7 @@ func UpdateBlockPodCompletionStatus(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlockPodsUpdateBlockPodCompletionStatus,
+		lib.RouteCardsUpdateBlockPodCompletionStatus,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

@@ -11,7 +11,7 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
 )
 
-func ShareBlocksWithCollaborators(
+func ShareProjectsWithCollaborators(
 	jwtToken string,
 	reqBody request.PodBulkShareReqBody,
 	blockAclParam common.AclParam,
@@ -23,7 +23,7 @@ func ShareBlocksWithCollaborators(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers.GetRoute(
-		lib.RouteCollaborationBulkShareBlockPodsWithCollaborators,
+		lib.RouteCollaborationBulkShareCardsWithCollaborators,
 		blockAclParam.UserId,
 		blockAclParam.ResourceIds.KeyId,
 	)

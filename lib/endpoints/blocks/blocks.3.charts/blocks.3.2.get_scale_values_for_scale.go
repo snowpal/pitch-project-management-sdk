@@ -15,7 +15,7 @@ import (
 func GetScaleValuesForScale(jwtToken string, scaleParam request.ScaleIdParam) (response.ScaleValues, error) {
 	resScaleValues := response.ScaleValues{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetScaleValuesForScale,
+		lib.RouteProjectsGetScaleValuesForScale,
 		scaleParam.KeyId,
 		*scaleParam.BlockId,
 		scaleParam.ScaleId,

@@ -15,7 +15,7 @@ import (
 func GetBlockNotes(jwtToken string, noteParam request.NoteIdParam) ([]response.Note, error) {
 	resNotes := response.Notes{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetBlockNotes,
+		lib.RouteProjectsGetBlockNotes,
 		*noteParam.BlockId,
 		noteParam.KeyId,
 	)

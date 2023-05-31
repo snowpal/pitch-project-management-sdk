@@ -33,10 +33,10 @@ type RecentComment struct {
 	ID          string `json:"id"`
 	CommentText string `json:"commentText"`
 
-	Key    *common2.SlimKey     `json:"key"`
-	Block  *common2.SlimBlock   `json:"block"`
-	Blocks *[]common2.SlimBlock `json:"blocks"`
-	Pod    *common2.SlimPod     `json:"pod"`
+	Key      *common2.SlimKey     `json:"key"`
+	Block    *common2.SlimBlock   `json:"block"`
+	Projects *[]common2.SlimBlock `json:"blocks"`
+	Pod      *common2.SlimPod     `json:"pod"`
 
 	StudentId *string `json:"studentId"`
 

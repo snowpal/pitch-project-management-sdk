@@ -15,7 +15,7 @@ import (
 func GetBlockAttachments(jwtToken string, attachmentParam request.AttachmentParam) ([]response.Attachment, error) {
 	resAttachments := response.Attachments{}
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksGetBlockAttachments,
+		lib.RouteProjectsGetBlockAttachments,
 		*attachmentParam.PodId,
 		attachmentParam.KeyId,
 		*attachmentParam.BlockId,

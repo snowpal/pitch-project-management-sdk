@@ -27,7 +27,7 @@ func UpdateBlockPodScaleValue(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlockPodsUpdateBlockPodScaleValue,
+		lib.RouteCardsUpdateBlockPodScaleValue,
 		podParam.PodId,
 		podParam.KeyId,
 		podParam.BlockId,

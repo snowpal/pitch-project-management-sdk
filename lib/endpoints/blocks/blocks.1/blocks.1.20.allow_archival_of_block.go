@@ -28,7 +28,7 @@ func AllowArchivalOfBlock(
 
 	var route string
 	route, err = helpers2.GetRoute(
-		lib.RouteBlocksAllowArchivalOfBlock,
+		lib.RouteProjectsAllowArchivalOfBlock,
 		blockParam.BlockId,
 		blockParam.KeyId,
 	)

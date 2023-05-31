@@ -24,7 +24,7 @@ func AddBlockPod(jwtToken string, reqBody request.AddPodReqBody, podParam common
 	payload := strings.NewReader(requestBody)
 
 	var route string
-	route, err = helpers2.GetRoute(lib.RouteBlockPodsAddBlockPod, podParam.BlockId, podParam.KeyId)
+	route, err = helpers2.GetRoute(lib.RouteCardsAddBlockPod, podParam.BlockId, podParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resPod, err

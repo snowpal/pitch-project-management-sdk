@@ -21,7 +21,7 @@ func AddBlock(jwtToken string, reqBody request.AddBlockReqBody, keyId string) (r
 		return resBlock, err
 	}
 	payload := strings.NewReader(requestBody)
-	route, err := helpers2.GetRoute(lib.RouteBlocksAddBlock, keyId)
+	route, err := helpers2.GetRoute(lib.RouteProjectsAddBlock, keyId)
 	if err != nil {
 		fmt.Println(err)
 		return resBlock, err

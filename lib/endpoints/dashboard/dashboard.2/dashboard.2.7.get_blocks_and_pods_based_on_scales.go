@@ -11,9 +11,9 @@ import (
 	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
 )
 
-func GetBlocksAndPodsBasedOnScales(jwtToken string) ([]response.ScalesKey, error) {
+func GetProjectsAndPodsBasedOnScales(jwtToken string) ([]response.ScalesKey, error) {
 	resScalesKeys := response.ScalesKeys{}
-	route, err := helpers2.GetRoute(lib.RouteDashboardGetBlocksAndPodsBasedOnScales)
+	route, err := helpers2.GetRoute(lib.RouteDashboardGetProjectsAndPodsBasedOnScales)
 	if err != nil {
 		fmt.Println(err)
 		return *resScalesKeys.Keys, err

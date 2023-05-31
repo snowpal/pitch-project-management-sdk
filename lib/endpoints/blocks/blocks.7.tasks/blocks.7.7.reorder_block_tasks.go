@@ -26,7 +26,7 @@ func ReorderBlockTasks(
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksReorderBlockTasks,
+		lib.RouteProjectsReorderBlockTasks,
 		*taskParam.BlockId,
 		taskParam.KeyId,
 	)

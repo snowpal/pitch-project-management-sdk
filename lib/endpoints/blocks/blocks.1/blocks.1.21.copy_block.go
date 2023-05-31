@@ -17,7 +17,7 @@ import (
 func CopyBlock(jwtToken string, blockParam request.CopyMoveBlockParam) (response.Block, error) {
 	var resBlock response.Block
 	route, err := helpers2.GetRoute(
-		lib.RouteBlocksCopyBlock,
+		lib.RouteProjectsCopyBlock,
 		blockParam.BlockId,
 		blockParam.KeyId,
 		strconv.FormatBool(blockParam.AllTasks),

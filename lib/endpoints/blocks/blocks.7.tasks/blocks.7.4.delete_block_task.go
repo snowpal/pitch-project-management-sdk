@@ -11,7 +11,7 @@ import (
 
 func DeleteBlockTask(jwtToken string, taskParam request.TaskIdParam) error {
 	route, err := helpers.GetRoute(
-		lib.RouteBlocksDeleteBlockTask,
+		lib.RouteProjectsDeleteBlockTask,
 		*taskParam.TaskId,
 		taskParam.KeyId,
 		*taskParam.BlockId,

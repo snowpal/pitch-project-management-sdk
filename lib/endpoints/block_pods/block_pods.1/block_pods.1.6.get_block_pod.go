@@ -14,7 +14,7 @@ import (
 
 func GetBlockPod(jwtToken string, podParam common.ResourceIdParam) (response.Pod, error) {
 	resPod := response.Pod{}
-	route, err := helpers2.GetRoute(lib.RouteBlockPodsGetBlockPod, podParam.PodId, podParam.KeyId, podParam.BlockId)
+	route, err := helpers2.GetRoute(lib.RouteCardsGetBlockPod, podParam.PodId, podParam.KeyId, podParam.BlockId)
 	if err != nil {
 		fmt.Println(err)
 		return resPod, err
