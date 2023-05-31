@@ -17,7 +17,7 @@ const (
 const (
 	RouteProjectsGetProjects                             = "keys/%s/projects?filter=%s&batchIndex=%s&aclWriteOrHigher=%s"
 	RouteProjectsAddProject                              = "keys/%s/projects"
-	RouteProjectsGetProjectsLinkedToPod                  = "cards/:id/linked-to/projects?keyId=%s"
+	RouteProjectsGetProjectsLinkedToCard                 = "cards/:id/linked-to/projects?keyId=%s"
 	RouteProjectsAddProjectBasedOnTemplate               = "keys/%s/projects/by-template?templateId=%s&excludeCards=%s&excludeTasks=%s"
 	RouteProjectsLinkProjectToKey                        = "keys/%s/projects/%s/link"
 	RouteProjectsUnlinkProjectFromKey                    = "keys/%s/projects/%s/unlink"
@@ -93,8 +93,8 @@ const (
 	RouteCardsGetCards                                 = "projects/%s/cards?batchIndex=%s&keyId=%s"
 	RouteCardsAddCard                                  = "projects/%s/cards?keyId=%s"
 	RouteCardsAddCardBasedOnTemplate                   = "projects/%s/cards/by-template?keyId=%s&templateId=%s&excludeTasks=%s"
-	RouteCardsLinkPodToProject                         = "projects/%s/cards/%s/link?keyId=%s"
-	RouteCardsUnlinkPodFromProject                     = "projects/%s/cards/%s/unlink?keyId=%s"
+	RouteCardsLinkCardToProject                        = "projects/%s/cards/%s/link?keyId=%s"
+	RouteCardsUnlinkCardFromProject                    = "projects/%s/cards/%s/unlink?keyId=%s"
 	RouteCardsGetCard                                  = "cards/%s?keyId=%s&projectId=%s"
 	RouteCardsUpdateCard                               = "cards/%s?keyId=%s&projectId=%s"
 	RouteCardsUpdateCardCompletionStatus               = "cards/%s/by-completion-status?keyId=%s&projectId=%s"
@@ -181,16 +181,6 @@ const (
 )
 
 const (
-	RouteCollaborationGetCardCollaborators            = "cards/%s/acl?keyId=%s&projectId=%s"
-	RouteCollaborationShareCardWithCollaborator       = "cards/%s/users/%s/share?keyId=%s&projectId=%s"
-	RouteCollaborationUnshareCardFromCollaborator     = "cards/%s/users/%s/unshare?keyId=%s&projectId=%s"
-	RouteCollaborationBulkShareCardsWithCollaborators = "cards/users/%s/share?keyId=%s"
-	RouteCollaborationGetUsersThisCardCanBeSharedWith = "search/cards/%s/shareable/users?keyId=%s&projectId=%s&token=%s"
-	RouteCollaborationUpdateCardAcl                   = "cards/%s/users/%s/acl?keyId=%s&projectId=%s"
-	RouteCollaborationLeaveCard                       = "cards/%s/leave?keyId=%s&projectId=%s"
-)
-
-const (
 	RouteCommentsGetRecentComments = "comments"
 )
 
@@ -232,7 +222,6 @@ const (
 	RouteFavoritesGetFavorites         = "favorites"
 	RouteFavoritesAddKeyAsFavorite     = "favorites/keys/%s"
 	RouteFavoritesAddProjectAsFavorite = "favorites/projects/%s?keyId=%s"
-	RouteFavoritesAddPodAsFavorite     = "favorites/cards/%s?keyId=%s"
 	RouteFavoritesAddCardAsFavorite    = "favorites/cards/%s?keyId=%s&projectId=%s"
 	RouteFavoritesDeleteFavorite       = "favorites/%s"
 )
@@ -249,7 +238,7 @@ const (
 	RouteKeysGetKey                 = "keys/%s"
 	RouteKeysUpdateKey              = "keys/%s"
 	RouteKeysGetArchivedKeys        = "keys/archived"
-	RouteKeysGetKeysLinkedToPod     = "cards/%s/linked-to/keys?keyId=%s"
+	RouteKeysGetKeysLinkedToCard    = "cards/%s/linked-to/keys?keyId=%s"
 	RouteKeysGetKeysLinkedToProject = "projects/%s/linked-to/keys?keyId=%s"
 	RouteKeysGetKeysFilteredByType  = "keys/filtered/by-type?keyType=%s"
 	RouteKeysBulkArchiveKeys        = "keys/archive?keyIds=%s"
@@ -357,15 +346,12 @@ const (
 const (
 	RouteRelationsGetRelationsForKeyMatchingSearchToken     = "search/relations?token=%s&currentKeyId=%s"
 	RouteRelationsGetRelationsForProjectMatchingSearchToken = "search/relations?token=%s&currentProjectId=%s"
-	RouteRelationsGetRelationsForPodMatchingSearchToken     = "search/relations?token=%s&currentPodId=%s&keyId=%s"
-	RouteRelationsGetRelationsForCardMatchingSearchToken    = "search/relations?token=%s&currentPodId=%s&keyId=%s&projectId=%s"
+	RouteRelationsGetRelationsForCardMatchingSearchToken    = "search/relations?token=%s&currentCardId=%s&keyId=%s&projectId=%s"
 
 	RouteRelationsRelateCardToKey         = "keys/%s/cards/%s/relate?targetKeyId=%s&targetProjectId=%s"
 	RouteRelationsUnrelateCardFromKey     = "keys/%s/cards/%s/unrelate?targetKeyId=%s&targetProjectId=%s"
 	RouteRelationsRelateCardToProject     = "projects/%s/cards/%s/relate?targetKeyId=%s&targetProjectId=%s"
 	RouteRelationsUnrelateCardFromProject = "projects/%s/cards/%s/unrelate?targetKeyId=%s&targetProjectId=%s"
-	RouteRelationsRelatePodToCard         = "cards/%s/cards/%s/relate?sourceKeyId=%s&targetKeyId=%s&targetProjectId=%s"
-	RouteRelationsUnrelatePodFromCard     = "cards/%s/cards/%s/unrelate?sourceKeyId=%s&targetKeyId=%s&targetProjectId=%s"
 	RouteRelationsRelateCardToCard        = "cards/%s/cards/%s/relate?sourceKeyId=%s&sourceProjectId=%s&targetKeyId=%s&targetProjectId=%s"
 	RouteRelationsUnrelateCardFromCard    = "cards/%s/cards/%s/unrelate?sourceKeyId=%s&sourceProjectId=%s&targetKeyId=%s&targetProjectId=%s"
 )
@@ -373,20 +359,13 @@ const (
 const (
 	RouteRelationsGetRelationsForKey         = "keys/%s/relations"
 	RouteRelationsGetRelationsForProject     = "projects/%s/relations?keyId=%s"
-	RouteRelationsGetRelationsForPod         = "cards/%s/relations?keyId=%s"
 	RouteRelationsGetRelationsForCard        = "cards/%s/relations?keyId=%s&projectId=%s"
 	RouteRelationsRelateKeyToKey             = "keys/%s/keys/%s/relate"
 	RouteRelationsUnrelateKeyFromKey         = "keys/%s/keys/%s/unrelate"
 	RouteRelationsRelateProjectToKey         = "keys/%s/projects/%s/relate"
 	RouteRelationsUnrelateProjectFromKey     = "keys/%s/projects/%s/unrelate"
-	RouteRelationsRelatePodToKey             = "keys/%s/cards/%s/relate?targetKeyId=%s"
-	RouteRelationsUnrelatePodFromKey         = "keys/%s/cards/%s/unrelate?targetKeyId=%s"
-	RouteRelationsRelatePodToProject         = "projects/%s/cards/%s/relate?targetKeyId=%s"
-	RouteRelationsUnrelatePodFromProject     = "projects/%s/cards/%s/unrelate?targetKeyId=%s"
 	RouteRelationsRelateProjectToProject     = "projects/%s/projects/%s/relate"
 	RouteRelationsUnrelateProjectFromProject = "projects/%s/projects/%s/unrelate"
-	RouteRelationsRelatePodToPod             = "cards/%s/cards/%s/relate?sourceKeyId=%s&targetKeyId=%s"
-	RouteRelationsUnrelatePodFromPod         = "cards/%s/cards/%s/unrelate?sourceKeyId=%s&targetKeyId=%s"
 )
 
 const (
@@ -409,8 +388,8 @@ const (
 )
 
 const (
-	RouteSearchSearchKeyProjectOrPodByToken = "search?token=%s"
-	RouteSearchSearchUserByToken            = "search/users?token=%s"
+	RouteSearchSearchKeyProjectOrCardByToken = "search?token=%s"
+	RouteSearchSearchUserByToken             = "search/users?token=%s"
 )
 
 const (
@@ -422,23 +401,23 @@ const (
 const (
 	RouteTeacherKeysGetStudentAttachmentSubmissionsAsTeacher     = "classroom-cards/%s/submissions/attachments/as-teacher?studentId=%s&keyId=%s&projectId=%s"
 	RouteTeacherKeysGetStudentCommentSubmissionsAsTeacher        = "classroom-cards/%s/submissions/comments/as-teacher?studentId=%s&keyId=%s&projectId=%s"
-	RouteTeacherKeysAddAttachmentToTeacherPodAsTeacher           = "classroom-cards/%s/attachments/as-teacher?keyId=%s&projectId=%s"
-	RouteTeacherKeysAddCommentToTeacherPodAsTeacher              = "classroom-cards/%s/comments/as-teacher?keyId=%s&projectId=%s"
+	RouteTeacherKeysAddAttachmentToTeacherCardAsTeacher          = "classroom-cards/%s/attachments/as-teacher?keyId=%s&projectId=%s"
+	RouteTeacherKeysAddCommentToTeacherCardAsTeacher             = "classroom-cards/%s/comments/as-teacher?keyId=%s&projectId=%s"
 	RouteTeacherKeysGetProjectAndCardsGradesForAStudentAsTeacher = "classroom-projects/%s/student-grades/as-teacher?studentUserId=%s&keyId=%s"
 	RouteTeacherKeysPublishStudentGradesForAProject              = "classroom-projects/%s/student-grades/publish?keyId=%s"
-	RouteTeacherKeysBulkPublishPodGradesForAStudent              = "classroom-cards/students/%s/grades/publish?keyId=%s&projectId=%s"
-	RouteTeacherKeysBulkPublishPodGradesForStudents              = "classroom-cards/%s/students/grades/publish?keyId=%s&projectId=%s"
+	RouteTeacherKeysBulkPublishCardGradesForAStudent             = "classroom-cards/students/%s/grades/publish?keyId=%s&projectId=%s"
+	RouteTeacherKeysBulkPublishCardGradesForStudents             = "classroom-cards/%s/students/grades/publish?keyId=%s&projectId=%s"
 	RouteTeacherKeysGetProjectGradesForStudents                  = "classroom-projects/%s/students/grades?keyId=%s"
-	RouteTeacherKeysGetPodGradesForStudents                      = "classroom-cards/%s/students/grades?keyId=%s&projectId=%s"
+	RouteTeacherKeysGetCardGradesForStudents                     = "classroom-cards/%s/students/grades?keyId=%s&projectId=%s"
 	RouteTeacherKeysAssignGradeToStudent                         = "classroom-projects/%s/student/grade?studentUserId=%s&keyId=%s"
-	RouteTeacherKeysAssignPodGradeForAStudentAsTeacher           = "classroom-cards/%s/student/grade?studentUserId=%s&keyId=%s&projectId=%s"
+	RouteTeacherKeysAssignCardGradeForAStudentAsTeacher          = "classroom-cards/%s/student/grade?studentUserId=%s&keyId=%s&projectId=%s"
 	RouteTeacherKeysGetStudentProfile                            = "classroom/students/%s/profile?keyId=%s&projectId=%s"
 )
 
 const (
 	RouteTemplatesGetKeyTemplates     = "templates/keys"
 	RouteTemplatesGetProjectTemplates = "templates/projects"
-	RouteTemplatesGetPodTemplates     = "templates/cards"
+	RouteTemplatesGetCardTemplates    = "templates/cards"
 )
 
 const (
