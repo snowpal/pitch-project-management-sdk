@@ -15,7 +15,7 @@ import (
 
 type ShareProjectWithCardsReqBody struct {
 	Acl     string `json:"projectAcl"`
-	CardIds string `json:"podIds"`
+	CardIds string `json:"cardIds"`
 }
 
 func ShareProjectWithUserWithCards(

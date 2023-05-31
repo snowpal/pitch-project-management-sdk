@@ -9,13 +9,13 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func AddCardTypeToCard(jwtToken string, podParam request.AddCardTypeIdParam) error {
+func AddCardTypeToCard(jwtToken string, cardParam request.AddCardTypeIdParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteCardsAddCardTypeToCard,
-		podParam.CardId,
-		podParam.CardTypeId,
-		podParam.KeyId,
-		*podParam.ProjectId,
+		cardParam.CardId,
+		cardParam.CardTypeId,
+		cardParam.KeyId,
+		*cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

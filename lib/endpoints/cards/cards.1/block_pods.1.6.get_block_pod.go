@@ -12,9 +12,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetCard(jwtToken string, podParam common.ResourceIdParam) (response.Card, error) {
+func GetCard(jwtToken string, cardParam common.ResourceIdParam) (response.Card, error) {
 	resCard := response.Card{}
-	route, err := helpers2.GetRoute(lib.RouteCardsGetCard, podParam.CardId, podParam.KeyId, podParam.ProjectId)
+	route, err := helpers2.GetRoute(lib.RouteCardsGetCard, cardParam.CardId, cardParam.KeyId, cardParam.ProjectId)
 	if err != nil {
 		fmt.Println(err)
 		return resCard, err

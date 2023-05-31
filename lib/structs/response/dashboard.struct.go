@@ -19,12 +19,12 @@ type RecentlyModifiedKeys struct {
 
 type RecentlyModifiedResources struct {
 	Projects []DashboardProject `json:"projects"`
-	Cards    []DashboardCard    `json:"pods"`
+	Cards    []DashboardCard    `json:"cards"`
 }
 
 type DueShortlyResources struct {
 	Projects *[]DashboardProject `json:"projects"`
-	Cards    []DashboardCard     `json:"pods"`
+	Cards    []DashboardCard     `json:"cards"`
 	Tasks    []DashboardTask     `json:"tasks"`
 }
 
@@ -42,8 +42,8 @@ type DashboardProject struct {
 
 type DashboardCard struct {
 	ID      string `json:"id"`
-	Name    string `json:"podName"`
-	DueDate string `json:"podDueDate"`
+	Name    string `json:"cardName"`
+	DueDate string `json:"cardDueDate"`
 
 	Key      *common2.SlimKey       `json:"key"`
 	Projects *[]ProjectWithCardType `json:"projects"`
@@ -56,7 +56,7 @@ type ProjectWithCardType struct {
 	ID       string           `json:"id"`
 	Name     string           `json:"projectName"`
 	Key      *common2.SlimKey `json:"key"`
-	CardType *CardType        `json:"podType"`
+	CardType *CardType        `json:"cardType"`
 }
 
 type DashboardTask struct {
@@ -66,7 +66,7 @@ type DashboardTask struct {
 
 	Key      *common2.SlimKey       `json:"key"`
 	Project  *common2.SlimProject   `json:"project"`
-	Card     *common2.SlimCard      `json:"pod"`
+	Card     *common2.SlimCard      `json:"card"`
 	Projects *[]common2.SlimProject `json:"projects"`
 
 	Creator  common2.ResourceCreator  `json:"creator"`

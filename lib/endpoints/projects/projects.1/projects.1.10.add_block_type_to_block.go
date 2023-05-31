@@ -14,12 +14,12 @@ type AddProjectTypeIdParam struct {
 	ProjectTypeId string
 }
 
-func AddCardTypeToCard(jwtToken string, podParam AddProjectTypeIdParam) error {
+func AddCardTypeToCard(jwtToken string, cardParam AddProjectTypeIdParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteProjectsAddProjectTypeToProject,
-		podParam.ProjectId,
-		podParam.ProjectTypeId,
-		podParam.KeyId,
+		cardParam.ProjectId,
+		cardParam.ProjectTypeId,
+		cardParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

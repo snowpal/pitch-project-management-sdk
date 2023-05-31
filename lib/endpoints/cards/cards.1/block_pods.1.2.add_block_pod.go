@@ -14,7 +14,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func AddCard(jwtToken string, reqBody request.AddCardReqBody, podParam common.ResourceIdParam) (response.Card, error) {
+func AddCard(jwtToken string, reqBody request.AddCardReqBody, cardParam common.ResourceIdParam) (response.Card, error) {
 	resCard := response.Card{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
@@ -24,7 +24,7 @@ func AddCard(jwtToken string, reqBody request.AddCardReqBody, podParam common.Re
 	payload := strings.NewReader(requestBody)
 
 	var route string
-	route, err = helpers2.GetRoute(lib.RouteCardsAddCard, podParam.ProjectId, podParam.KeyId)
+	route, err = helpers2.GetRoute(lib.RouteCardsAddCard, cardParam.ProjectId, cardParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resCard, err

@@ -17,7 +17,7 @@ import (
 func UpdateCardDescription(
 	jwtToken string,
 	reqBody request.UpdateCardDescReqBody,
-	podParam common.ResourceIdParam,
+	cardParam common.ResourceIdParam,
 ) (response.Card, error) {
 	resCard := response.Card{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -30,9 +30,9 @@ func UpdateCardDescription(
 	var route string
 	route, err = helpers2.GetRoute(
 		lib.RouteCardsUpdateCardDescription,
-		podParam.CardId,
-		podParam.KeyId,
-		podParam.ProjectId,
+		cardParam.CardId,
+		cardParam.KeyId,
+		cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

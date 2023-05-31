@@ -1,4 +1,4 @@
-package podTypes
+package cardTypes
 
 import (
 	"encoding/json"
@@ -13,7 +13,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func UpdateCardType(jwtToken string, reqBody request.CardTypeReqBody, podTypeId string) (response.CardType, error) {
+func UpdateCardType(jwtToken string, reqBody request.CardTypeReqBody, cardTypeId string) (response.CardType, error) {
 	resCardType := response.CardType{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
@@ -21,7 +21,7 @@ func UpdateCardType(jwtToken string, reqBody request.CardTypeReqBody, podTypeId 
 		return resCardType, err
 	}
 	payload := strings.NewReader(requestBody)
-	route, err := helpers2.GetRoute(lib.RouteCardTypesUpdateCardType, podTypeId)
+	route, err := helpers2.GetRoute(lib.RouteCardTypesUpdateCardType, cardTypeId)
 	if err != nil {
 		fmt.Println(err)
 		return resCardType, err

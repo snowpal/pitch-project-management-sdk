@@ -21,7 +21,7 @@ type UpdateProjectDescReqBody struct {
 func UpdateCardDescription(
 	jwtToken string,
 	reqBody UpdateProjectDescReqBody,
-	podParam common.ResourceIdParam,
+	cardParam common.ResourceIdParam,
 ) (response.Project, error) {
 	resProject := response.Project{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -34,8 +34,8 @@ func UpdateCardDescription(
 	var route string
 	route, err = helpers2.GetRoute(
 		lib.RouteProjectsUpdateProjectDescription,
-		podParam.ProjectId,
-		podParam.KeyId,
+		cardParam.ProjectId,
+		cardParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

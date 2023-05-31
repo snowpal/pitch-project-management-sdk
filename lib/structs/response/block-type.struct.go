@@ -13,8 +13,6 @@ type ProjectType struct {
 	Name     string                 `json:"projectTypeName"`
 	Projects *[]common2.SlimProject `json:"projects"`
 
-	TeacherReadOnly *bool `json:"teacherReadOnly"`
-
 	Modifier     *common2.ResourceModifier `json:"modifier"`
 	LastModified string                    `json:"lastModified"`
 }

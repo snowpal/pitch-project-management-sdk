@@ -1,4 +1,4 @@
-package podTypes
+package cardTypes
 
 import (
 	"encoding/json"

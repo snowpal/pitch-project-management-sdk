@@ -9,8 +9,8 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-func UnlinkCardFromProject(jwtToken string, podParam common.ResourceIdParam) error {
-	route, err := helpers.GetRoute(lib.RouteCardsUnlinkCardFromProject, podParam.ProjectId, podParam.CardId, podParam.KeyId)
+func UnlinkCardFromProject(jwtToken string, cardParam common.ResourceIdParam) error {
+	route, err := helpers.GetRoute(lib.RouteCardsUnlinkCardFromProject, cardParam.ProjectId, cardParam.CardId, cardParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return err

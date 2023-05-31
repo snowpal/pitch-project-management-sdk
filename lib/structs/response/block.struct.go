@@ -50,7 +50,7 @@ type Project struct {
 
 	// Count Attributes
 	KeysCount        *int `json:"keysCount"`
-	CardsCount       *int `json:"podsCount"`
+	CardsCount       *int `json:"cardsCount"`
 	TasksCount       *int `json:"tasksCount"`
 	ChecklistsCount  *int `json:"checklistsCount"`
 	AttachmentsCount *int `json:"attachmentsCount"`

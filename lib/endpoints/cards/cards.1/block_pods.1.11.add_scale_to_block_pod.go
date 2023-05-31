@@ -9,13 +9,13 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func AddScaleToCard(jwtToken string, podParam request.ScaleIdParam) error {
+func AddScaleToCard(jwtToken string, cardParam request.ScaleIdParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteCardsAddScaleToCard,
-		*podParam.CardId,
-		podParam.ScaleId,
-		podParam.KeyId,
-		*podParam.ProjectId,
+		*cardParam.CardId,
+		cardParam.ScaleId,
+		cardParam.KeyId,
+		*cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

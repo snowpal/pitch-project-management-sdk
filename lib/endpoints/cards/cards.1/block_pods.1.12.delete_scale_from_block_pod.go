@@ -9,12 +9,12 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-func DeleteScaleFromCard(jwtToken string, podParam common.ResourceIdParam) error {
+func DeleteScaleFromCard(jwtToken string, cardParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(
 		lib.RouteCardsDeleteScaleFromCard,
-		podParam.CardId,
-		podParam.KeyId,
-		podParam.ProjectId,
+		cardParam.CardId,
+		cardParam.KeyId,
+		cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

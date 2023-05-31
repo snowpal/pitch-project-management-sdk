@@ -17,7 +17,7 @@ import (
 func UpdateCardScaleValue(
 	jwtToken string,
 	reqBody request.UpdateScaleValueReqBody,
-	podParam common.ResourceIdParam,
+	cardParam common.ResourceIdParam,
 ) (response.UpdateCardScaleValue, error) {
 	resCardScaleValue := response.UpdateCardScaleValue{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -28,9 +28,9 @@ func UpdateCardScaleValue(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
 		lib.RouteCardsUpdateCardScaleValue,
-		podParam.CardId,
-		podParam.KeyId,
-		podParam.ProjectId,
+		cardParam.CardId,
+		cardParam.KeyId,
+		cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

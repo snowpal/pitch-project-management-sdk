@@ -28,7 +28,7 @@ func GrantAclOnCustomProject() {
 		return
 	}
 
-	key, err := recipes.AddCustomKey(user, CopyKeyName)
+	key, err := recipes.AddProjectKey(user, CopyKeyName)
 	if err != nil {
 		return
 	}

@@ -9,8 +9,8 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
-func LinkCardToProject(jwtToken string, podParam common.ResourceIdParam) error {
-	route, err := helpers.GetRoute(lib.RouteCardsLinkCardToProject, podParam.ProjectId, podParam.CardId, podParam.KeyId)
+func LinkCardToProject(jwtToken string, cardParam common.ResourceIdParam) error {
+	route, err := helpers.GetRoute(lib.RouteCardsLinkCardToProject, cardParam.ProjectId, cardParam.CardId, cardParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return err

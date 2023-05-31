@@ -2,8 +2,9 @@ package recipes
 
 import (
 	"fmt"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 	"time"
+
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 
 	"github.com/snowpal/pitch-building-projects-sdk/lib"
 	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/keys/keys.1"
@@ -45,22 +46,6 @@ func addKey(user response.User, keyName string, keyType string) (response.Key, e
 			Name: keyName,
 			Type: keyType,
 		})
-	if err != nil {
-		return newKey, err
-	}
-	return newKey, nil
-}
-
-func AddCustomKey(user response.User, keyName string) (response.Key, error) {
-	newKey, err := addKey(user, keyName, lib.CustomKeyType)
-	if err != nil {
-		return newKey, err
-	}
-	return newKey, nil
-}
-
-func AddTeacherKey(user response.User, keyName string) (response.Key, error) {
-	newKey, err := addKey(user, keyName, lib.TeacherKeyType)
 	if err != nil {
 		return newKey, err
 	}

@@ -15,7 +15,7 @@ type ProjectList struct {
 
 	Key     common2.SlimKey     `json:"key"`
 	Project common2.SlimProject `json:"project"`
-	Cards   []Card              `json:"pods"`
+	Cards   []Card              `json:"cards"`
 
 	Creator      common2.ResourceModifier `json:"creator"`
 	Modifier     common2.ResourceModifier `json:"modifier"`

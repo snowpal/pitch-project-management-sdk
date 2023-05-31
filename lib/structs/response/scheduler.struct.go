@@ -17,7 +17,7 @@ type EndDateEvent struct {
 type DueDateEvent struct {
 	Tasks    TasksEvent     `json:"tasks"`
 	Projects []ProjectEvent `json:"projects"`
-	Cards    []CardEvent    `json:"pods"`
+	Cards    []CardEvent    `json:"cards"`
 }
 
 type ProjectEvent struct {
@@ -34,8 +34,8 @@ type ProjectEvent struct {
 
 type CardEvent struct {
 	ID      string `json:"id"`
-	Name    string `json:"podName"`
-	DueDate string `json:"podDueDate"`
+	Name    string `json:"cardName"`
+	DueDate string `json:"cardDueDate"`
 
 	Key     common2.SlimKey     `json:"key"`
 	Project common2.SlimProject `json:"project"`
@@ -44,7 +44,7 @@ type CardEvent struct {
 type TasksEvent struct {
 	KeyTasks     []TaskEvent `json:"keys"`
 	ProjectTasks []TaskEvent `json:"projects"`
-	CardTasks    []TaskEvent `json:"pods"`
+	CardTasks    []TaskEvent `json:"cards"`
 }
 
 type TaskEvent struct {
@@ -53,7 +53,7 @@ type TaskEvent struct {
 	DueDate string               `json:"taskDueDate"`
 	Key     common2.SlimKey      `json:"key"`
 	Project *common2.SlimProject `json:"project"`
-	Card    *common2.SlimCard    `json:"pod"`
+	Card    *common2.SlimCard    `json:"card"`
 }
 
 type SchedulerEvent struct {

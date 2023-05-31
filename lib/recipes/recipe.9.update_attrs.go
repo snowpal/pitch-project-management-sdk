@@ -15,10 +15,10 @@ const (
 	AttrsProjectName = "Parrot"
 )
 
-// UpdateAttributes sign in, update key attributes, update project attributes, update pod attributes, update project pod attributes,
+// UpdateAttributes sign in, update key attributes, update project attributes, update card attributes,
 // get resource attributes
 func UpdateAttributes() {
-	log.Info("Objective: Update show/hide of key, project, pod & project pod attributes")
+	log.Info("Objective: Update show/hide of key, project & card attributes")
 	_, err := recipes.ValidateDependencies()
 	if err != nil {
 		return
@@ -39,7 +39,7 @@ func UpdateAttributes() {
 
 	log.Info("Update key attributes")
 	recipes.SleepBefore()
-	key, err := recipes.AddCustomKey(user, AttrsKeyName)
+	key, err := recipes.AddProjectKey(user, AttrsKeyName)
 	if err != nil {
 		return
 	}

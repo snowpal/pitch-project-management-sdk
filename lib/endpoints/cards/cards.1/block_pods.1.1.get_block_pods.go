@@ -14,13 +14,13 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetCards(jwtToken string, podsParam request.GetCardsParam) ([]response.Card, error) {
+func GetCards(jwtToken string, cardsParam request.GetCardsParam) ([]response.Card, error) {
 	resCards := response.Cards{}
 	route, err := helpers.GetRoute(
 		lib.RouteCardsGetCards,
-		*podsParam.ProjectId,
-		strconv.Itoa(podsParam.BatchIndex),
-		podsParam.KeyId,
+		*cardsParam.ProjectId,
+		strconv.Itoa(cardsParam.BatchIndex),
+		cardsParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

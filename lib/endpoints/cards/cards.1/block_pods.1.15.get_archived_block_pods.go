@@ -13,13 +13,13 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetArchivedCards(jwtToken string, podsParam request.GetCardsParam) ([]response.Card, error) {
+func GetArchivedCards(jwtToken string, cardsParam request.GetCardsParam) ([]response.Card, error) {
 	resCards := response.Cards{}
 	route, err := helpers2.GetRoute(
 		lib.RouteCardsGetArchivedCards,
-		strconv.Itoa(podsParam.BatchIndex),
-		podsParam.KeyId,
-		*podsParam.ProjectId,
+		strconv.Itoa(cardsParam.BatchIndex),
+		cardsParam.KeyId,
+		*cardsParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

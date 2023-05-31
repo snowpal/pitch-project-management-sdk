@@ -11,7 +11,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func BulkArchiveCards(jwtToken string, reqBody request.BulkArchiveCardsReqBody, podParam common.ResourceIdParam) error {
+func BulkArchiveCards(jwtToken string, reqBody request.BulkArchiveCardsReqBody, cardParam common.ResourceIdParam) error {
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
 		fmt.Println(err)
@@ -20,7 +20,7 @@ func BulkArchiveCards(jwtToken string, reqBody request.BulkArchiveCardsReqBody, 
 	payload := strings.NewReader(requestBody)
 
 	var route string
-	route, err = helpers.GetRoute(lib.RouteCardsBulkArchiveCards, podParam.KeyId, podParam.ProjectId)
+	route, err = helpers.GetRoute(lib.RouteCardsBulkArchiveCards, cardParam.KeyId, cardParam.ProjectId)
 	if err != nil {
 		fmt.Println(err)
 		return err

@@ -109,7 +109,7 @@ func getWriteUser(user response.User, project response.Project) (response.User, 
 
 func shareProject(user response.User) (response.Project, error) {
 	var project response.Project
-	key, err := recipes.AddCustomKey(user, KeyName)
+	key, err := recipes.AddProjectKey(user, KeyName)
 	if err != nil {
 		return project, err
 	}

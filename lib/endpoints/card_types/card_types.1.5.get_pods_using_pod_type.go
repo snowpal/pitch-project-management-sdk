@@ -1,4 +1,4 @@
-package podTypes
+package cardTypes
 
 import (
 	"encoding/json"
@@ -11,9 +11,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetCardsUsingCardType(jwtToken string, podTypeId string) ([]response.Card, error) {
+func GetCardsUsingCardType(jwtToken string, cardTypeId string) ([]response.Card, error) {
 	resCards := response.Cards{}
-	route, err := helpers2.GetRoute(lib.RouteCardTypesGetCardsUsingCardType, podTypeId)
+	route, err := helpers2.GetRoute(lib.RouteCardTypesGetCardsUsingCardType, cardTypeId)
 	if err != nil {
 		fmt.Println(err)
 		return resCards.Cards, err

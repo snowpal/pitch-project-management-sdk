@@ -12,9 +12,9 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetCardsAvailableToBeLinked(jwtToken string, podParam common.ResourceIdParam) ([]response.Card, error) {
+func GetCardsAvailableToBeLinked(jwtToken string, cardParam common.ResourceIdParam) ([]response.Card, error) {
 	resCards := response.Cards{}
-	route, err := helpers2.GetRoute(lib.RouteCardsGetCardsAvailableToBeLinkedToThisProject, podParam.ProjectId, podParam.KeyId)
+	route, err := helpers2.GetRoute(lib.RouteCardsGetCardsAvailableToBeLinkedToThisProject, cardParam.ProjectId, cardParam.KeyId)
 	if err != nil {
 		fmt.Println(err)
 		return resCards.Cards, err

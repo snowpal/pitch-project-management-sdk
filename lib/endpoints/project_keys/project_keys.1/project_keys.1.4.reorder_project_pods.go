@@ -23,7 +23,7 @@ type ReorderCardsReqBody struct {
 func ReorderCards(
 	jwtToken string,
 	reqBody ReorderCardsReqBody,
-	podParam common.ResourceIdParam,
+	cardParam common.ResourceIdParam,
 ) ([]response.Card, error) {
 	resCards := response.Cards{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -34,8 +34,8 @@ func ReorderCards(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectKeysReorderCards,
-		podParam.ProjectId,
-		podParam.KeyId,
+		cardParam.ProjectId,
+		cardParam.KeyId,
 	)
 	if err != nil {
 		fmt.Println(err)

@@ -12,13 +12,13 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
-func GetCardTasksForCharts(jwtToken string, podParam common.ResourceIdParam) ([]response.Task, error) {
+func GetCardTasksForCharts(jwtToken string, cardParam common.ResourceIdParam) ([]response.Task, error) {
 	resTasks := response.Tasks{}
 	route, err := helpers2.GetRoute(
 		lib.RouteCardsGetCardTasksForCharts,
-		podParam.CardId,
-		podParam.KeyId,
-		podParam.ProjectId,
+		cardParam.CardId,
+		cardParam.KeyId,
+		cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)

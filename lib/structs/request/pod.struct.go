@@ -1,38 +1,29 @@
 package request
 
 type AddCardReqBody struct {
-	Name string `json:"podName"`
+	Name string `json:"cardName"`
 }
 
 type UpdateCardDescReqBody struct {
-	Description   string  `json:"podDescription"`
+	Description   string  `json:"cardDescription"`
 	TaggedUserIds *string `json:"taggedUserIds"`
 }
 
 type BulkArchiveCardsReqBody struct {
-	CardIds string `json:"podIds"`
+	CardIds string `json:"cardIds"`
 }
 
 type UpdateCardStatusReqBody struct {
-	Completed bool `json:"podCompleted"`
+	Completed bool `json:"cardCompleted"`
 }
 
 type UpdateCardReqBody struct {
-	Name              *string `json:"podName"`
+	Name              *string `json:"cardName"`
 	SimpleDescription *string `json:"simpleDescription"`
-	DueDate           *string `json:"podDueDate"`
-	Color             *string `json:"podColor"`
-	Tags              *string `json:"podTags"`
+	DueDate           *string `json:"cardDueDate"`
+	Color             *string `json:"color"`
+	Tags              *string `json:"cardTags"`
 	KanbanMode        *bool   `json:"kanbanMode"`
-}
-
-type CardAclReqBody struct {
-	Acl string `json:"podAcl"`
-}
-
-type CardBulkShareReqBody struct {
-	Acl     string `json:"podAcl"`
-	CardIds string `json:"podIds"`
 }
 
 type GetCardsParam struct {

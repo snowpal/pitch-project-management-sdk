@@ -17,7 +17,7 @@ import (
 func AddCardBasedOnTemplate(
 	jwtToken string,
 	reqBody request.AddCardReqBody,
-	podParam request.CardByTemplateParam,
+	cardParam request.CardByTemplateParam,
 ) (response.Card, error) {
 	resCard := response.Card{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
@@ -30,10 +30,10 @@ func AddCardBasedOnTemplate(
 	var route string
 	route, err = helpers2.GetRoute(
 		lib.RouteCardsAddCardBasedOnTemplate,
-		*podParam.ProjectId,
-		podParam.KeyId,
-		podParam.TemplateId,
-		strconv.FormatBool(podParam.ExcludeTasks),
+		*cardParam.ProjectId,
+		cardParam.KeyId,
+		cardParam.TemplateId,
+		strconv.FormatBool(cardParam.ExcludeTasks),
 	)
 	if err != nil {
 		fmt.Println(err)

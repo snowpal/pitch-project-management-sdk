@@ -1,4 +1,4 @@
-package podTypes
+package cardTypes
 
 import (
 	"fmt"
@@ -8,8 +8,8 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
 )
 
-func DeleteCardType(jwtToken string, podTypeId string) error {
-	route, err := helpers.GetRoute(lib.RouteCardTypesDeleteCardType, podTypeId)
+func DeleteCardType(jwtToken string, cardTypeId string) error {
+	route, err := helpers.GetRoute(lib.RouteCardTypesDeleteCardType, cardTypeId)
 	if err != nil {
 		fmt.Println(err)
 		return err

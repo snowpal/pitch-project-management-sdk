@@ -18,7 +18,7 @@ type Comment struct {
 
 	Key     *common2.SlimKey     `json:"key"`
 	Project *common2.SlimProject `json:"project"`
-	Card    *common2.SlimCard    `json:"pod"`
+	Card    *common2.SlimCard    `json:"card"`
 
 	Creator      common2.ResourceCreator  `json:"creator"`
 	Modifier     common2.ResourceModifier `json:"modifier"`
@@ -36,9 +36,7 @@ type RecentComment struct {
 	Key      *common2.SlimKey       `json:"key"`
 	Project  *common2.SlimProject   `json:"project"`
 	Projects *[]common2.SlimProject `json:"projects"`
-	Card     *common2.SlimCard      `json:"pod"`
-
-	StudentId *string `json:"studentId"`
+	Card     *common2.SlimCard      `json:"card"`
 
 	Creator      common2.ResourceCreator  `json:"creator"`
 	Modifier     common2.ResourceModifier `json:"modifier"`

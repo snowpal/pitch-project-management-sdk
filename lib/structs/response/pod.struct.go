@@ -5,20 +5,20 @@ import (
 )
 
 type Cards struct {
-	Cards []Card `json:"pods"`
+	Cards []Card `json:"cards"`
 }
 
 type Card struct {
 	ID                string  `json:"id"`
-	Name              string  `json:"podName"`
-	Description       string  `json:"podDescription"`
+	Name              string  `json:"cardName"`
+	Description       string  `json:"cardDescription"`
 	SimpleDescription string  `json:"simpleDescription"`
 	Color             string  `json:"color"`
 	Tags              string  `json:"tags"`
 	ScaleValue        *string `json:"scaleValue"`
 
 	Attributes  []common2.DisplayAttribute `json:"attributes"`
-	CardType    *CardType                  `json:"podType"`
+	CardType    *CardType                  `json:"cardType"`
 	Scale       *Scale                     `json:"scale"`
 	TaggedUsers []TaggedUser               `json:"taggedUsers"`
 	Key         *common2.SlimKey           `json:"key"`
@@ -37,7 +37,7 @@ type Card struct {
 	ProjectListName   *string `json:"projectListName"`
 
 	// Time Attributes
-	DueDate string `json:"podDueDate"`
+	DueDate string `json:"cardDueDate"`
 
 	// Acl Attributes
 	Acl            *string       `json:"acl"`
@@ -50,7 +50,7 @@ type Card struct {
 
 	// Count Attributes
 	KeysCount        *int `json:"keysCount"`
-	ProjectsCount    *int `json:"podsCount"`
+	ProjectsCount    *int `json:"projectsCount"`
 	TasksCount       *int `json:"tasksCount"`
 	ChecklistsCount  *int `json:"checklistsCount"`
 	AttachmentsCount *int `json:"attachmentsCount"`

@@ -11,7 +11,7 @@ import (
 	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
 )
 
-func UpdateCardAttrs(jwtToken string, podParam common.ResourceIdParam, attribute request.ResourceAttributeReqBody) error {
+func UpdateCardAttrs(jwtToken string, cardParam common.ResourceIdParam, attribute request.ResourceAttributeReqBody) error {
 	requestBody, err := helpers.GetRequestBody(attribute)
 	if err != nil {
 		fmt.Println(err)
@@ -22,9 +22,9 @@ func UpdateCardAttrs(jwtToken string, podParam common.ResourceIdParam, attribute
 	var route string
 	route, err = helpers.GetRoute(
 		lib.RouteAttributesUpdateCardDisplayAttributes,
-		podParam.CardId,
-		podParam.KeyId,
-		podParam.ProjectId,
+		cardParam.CardId,
+		cardParam.KeyId,
+		cardParam.ProjectId,
 	)
 	if err != nil {
 		fmt.Println(err)
