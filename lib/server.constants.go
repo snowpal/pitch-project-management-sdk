@@ -312,11 +312,11 @@ const (
 )
 
 const (
-	RouteProfileGetUsersProfile                 = "profiles"
-	RouteProfileUpdateUsersProfile              = "profiles"
-	RouteProfileUpdateUsername                  = "profiles/username/%s"
-	RouteProfileProjectsUserFromSendingMessages = "users/%s/project"
-	RouteProfileUnprojectsUser                  = "users/%s/unproject"
+	RouteProfileGetUsersProfile              = "profiles"
+	RouteProfileUpdateUsersProfile           = "profiles"
+	RouteProfileUpdateUsername               = "profiles/username/%s"
+	RouteProfileBlockUserFromSendingMessages = "users/%s/block"
+	RouteProfileUnblockUser                  = "users/%s/unblock"
 )
 
 const (
