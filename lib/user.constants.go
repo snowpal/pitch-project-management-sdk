@@ -17,9 +17,6 @@ const (
 )
 
 const (
-	CustomKeyType  = "CustomKey"
-	TeacherKeyType = "TeacherKey"
-	StudentKeyType = "StudentKey"
 	ProjectKeyType = "ProjectKey"
 )
 

@@ -18,7 +18,7 @@ type SearchResource struct {
 	KeyName     *string `json:"keyName"`
 	KeyType     *string `json:"keyType"`
 	ProjectName *string `json:"projectName"`
-	CardName    *string `json:"podName"`
+	CardName    *string `json:"cardName"`
 
 	Key      *common2.SlimKey       `json:"key"`
 	Project  *common2.SlimProject   `json:"project"`
@@ -34,5 +34,5 @@ type Relations struct {
 type Relationships struct {
 	Keys     []common2.SlimKey     `json:"keys"`
 	Projects []common2.SlimProject `json:"projects"`
-	Cards    []common2.SlimCard    `json:"pods"`
+	Cards    []common2.SlimCard    `json:"cards"`
 }

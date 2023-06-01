@@ -24,7 +24,7 @@ type NotificationResource struct {
 
 	KeyName     *string `json:"keyName"`
 	ProjectName *string `json:"projectName"`
-	CardName    *string `json:"podName"`
+	CardName    *string `json:"cardName"`
 
 	Key      *common2.SlimKey       `json:"key"`
 	Projects *[]common2.SlimProject `json:"projects"`

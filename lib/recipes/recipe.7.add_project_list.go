@@ -55,30 +55,30 @@ func AddProjectList() {
 	log.Printf(".Both project lists, %s and %s created successfully", projectList1.Name, projectList2.Name)
 	recipes.SleepAfter()
 
-	log.Info("Add a project pod into a project list")
+	log.Info("Add a card into a project list")
 	recipes.SleepBefore()
-	projectCard, err := addCard(user, CardName, projectList1)
+	card, err := addCard(user, CardName, projectList1)
 	if err != nil {
 		return
 	}
-	log.Printf(".Project pod %s created inside %s successfully", projectCard.Name, projectList1.Name)
+	log.Printf(".Card %s created inside %s successfully", card.Name, projectList1.Name)
 	recipes.SleepAfter()
 
-	log.Printf("Move project pod %s between project lists", projectCard.Name)
+	log.Printf("Move card %s between project lists", card.Name)
 	recipes.SleepBefore()
-	err = moveCardBetweenLists(user, projectList1, projectList2, projectCard)
+	err = moveCardBetweenLists(user, projectList1, projectList2, card)
 	if err != nil {
 		return
 	}
-	log.Printf(".Project pod %s moved from list %s to list %s successfully", projectCard.Name,
+	log.Printf(".Card %s moved from list %s to list %s successfully", card.Name,
 		projectList1.Name, projectList2.Name)
 	recipes.SleepAfter()
 }
 
-func addCard(user response.User, podName string, projectList response.ProjectList) (response.Card, error) {
+func addCard(user response.User, cardName string, projectList response.ProjectList) (response.Card, error) {
 	newCard, err := projectKeys.AddCard(
 		user.JwtToken,
-		request.AddCardReqBody{Name: podName},
+		request.AddCardReqBody{Name: cardName},
 		request.ProjectListIdParam{
 			ProjectListId: projectList.ID,
 			ProjectId:     projectList.Project.ID,
@@ -107,16 +107,16 @@ func moveCardBetweenLists(
 	user response.User,
 	list1 response.ProjectList,
 	list2 response.ProjectList,
-	pod response.Card,
+	card response.Card,
 ) error {
 	err := projectLists.BulkMoveCardsInProjectList(user.JwtToken, request.CopyMoveProjectListCardsParam{
 		ProjectListId:       list1.ID,
-		ProjectId:           pod.Project.ID,
-		KeyId:               pod.Key.ID,
+		ProjectId:           card.Project.ID,
+		KeyId:               card.Key.ID,
 		TargetProjectListId: list2.ID,
 		TargetProjectId:     list2.Project.ID,
 		TargetKeyId:         list2.Key.ID,
-		CardIds:             []string{pod.ID},
+		CardIds:             []string{card.ID},
 	})
 	if err != nil {
 		return err

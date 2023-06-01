@@ -35,7 +35,7 @@ type FavoriteResource struct {
 	ResourceType string                  `json:"resourceType"`
 	KeyName      *string                 `json:"keyName"`
 	ProjectName  *string                 `json:"projectName"`
-	CardName     *string                 `json:"podName"`
+	CardName     *string                 `json:"cardName"`
 	Key          *FavoriteKey            `json:"key"`
 	Project      *FavoriteProject        `json:"project"`
 	Modifier     common.ResourceModifier `json:"modifier"`

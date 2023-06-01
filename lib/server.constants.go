@@ -47,10 +47,9 @@ const (
 )
 
 const (
-	RouteProjectsGetLinkedCards              = "charts/keys/%s/projects/%s/linked-resources"
-	RouteProjectsGetScaleValuesForScale      = "charts/keys/%s/projects/%s/scales/%s/grades"
-	RouteProjectsGetTaskStatusForProject     = "charts/keys/%s/projects/%s/task-status"
-	RouteProjectsGetProjectGradesForStudents = "projects/%s/students/all/grades?keyId=%s"
+	RouteProjectsGetLinkedCards          = "charts/keys/%s/projects/%s/linked-resources"
+	RouteProjectsGetScaleValuesForScale  = "charts/keys/%s/projects/%s/scales/%s/grades"
+	RouteProjectsGetTaskStatusForProject = "charts/keys/%s/projects/%s/task-status"
 )
 
 const (
@@ -391,28 +390,6 @@ const (
 const (
 	RouteSearchSearchKeyProjectOrCardByToken = "search?token=%s"
 	RouteSearchSearchUserByToken             = "search/users?token=%s"
-)
-
-const (
-	RouteTeacherKeysGetAttachmentSubmissionsAsStudent = "classroom-cards/%s/submissions/attachments/as-student?keyId=%s&projectId=%s"
-	RouteTeacherKeysGetCommentSubmissionsAsStudent    = "classroom-cards/%s/submissions/comments/as-student?keyId=%s&projectId=%s"
-	RouteTeacherKeysGetStudentsInAProject             = "classroom-projects/%s/students?keyId=%s"
-)
-
-const (
-	RouteTeacherKeysGetStudentAttachmentSubmissionsAsTeacher     = "classroom-cards/%s/submissions/attachments/as-teacher?studentId=%s&keyId=%s&projectId=%s"
-	RouteTeacherKeysGetStudentCommentSubmissionsAsTeacher        = "classroom-cards/%s/submissions/comments/as-teacher?studentId=%s&keyId=%s&projectId=%s"
-	RouteTeacherKeysAddAttachmentToTeacherCardAsTeacher          = "classroom-cards/%s/attachments/as-teacher?keyId=%s&projectId=%s"
-	RouteTeacherKeysAddCommentToTeacherCardAsTeacher             = "classroom-cards/%s/comments/as-teacher?keyId=%s&projectId=%s"
-	RouteTeacherKeysGetProjectAndCardsGradesForAStudentAsTeacher = "classroom-projects/%s/student-grades/as-teacher?studentUserId=%s&keyId=%s"
-	RouteTeacherKeysPublishStudentGradesForAProject              = "classroom-projects/%s/student-grades/publish?keyId=%s"
-	RouteTeacherKeysBulkPublishCardGradesForAStudent             = "classroom-cards/students/%s/grades/publish?keyId=%s&projectId=%s"
-	RouteTeacherKeysBulkPublishCardGradesForStudents             = "classroom-cards/%s/students/grades/publish?keyId=%s&projectId=%s"
-	RouteTeacherKeysGetProjectGradesForStudents                  = "classroom-projects/%s/students/grades?keyId=%s"
-	RouteTeacherKeysGetCardGradesForStudents                     = "classroom-cards/%s/students/grades?keyId=%s&projectId=%s"
-	RouteTeacherKeysAssignGradeToStudent                         = "classroom-projects/%s/student/grade?studentUserId=%s&keyId=%s"
-	RouteTeacherKeysAssignCardGradeForAStudentAsTeacher          = "classroom-cards/%s/student/grade?studentUserId=%s&keyId=%s&projectId=%s"
-	RouteTeacherKeysGetStudentProfile                            = "classroom/students/%s/profile?keyId=%s&projectId=%s"
 )
 
 const (
