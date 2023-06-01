@@ -1,7 +1,7 @@
 package response
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Keys struct {
@@ -25,8 +25,8 @@ type Key struct {
 	Public            *bool `json:"public"`
 
 	// Count Attributes
-	BlocksCount     *int `json:"blocksCount"`
-	PodsCount       *int `json:"podsCount"`
+	ProjectsCount   *int `json:"projectsCount"`
+	CardsCount      *int `json:"cardsCount"`
 	TasksCount      *int `json:"tasksCount"`
 	ChecklistsCount *int `json:"checklistsCount"`
 	NotesCount      *int `json:"notesCount"`

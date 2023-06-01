@@ -10,7 +10,7 @@ type Conversation struct {
 	RecentMessage string `json:"recentMessage"`
 
 	IsGroup         bool `json:"isGroup"`
-	UserBlocked     bool `json:"blockedUser"`
+	UserProjected   bool `json:"projectedUser"`
 	UserLeft        bool `json:"leftConversation"`
 	UserCanLeave    bool `json:"canLeave"`
 	Archived        bool `json:"archived"`

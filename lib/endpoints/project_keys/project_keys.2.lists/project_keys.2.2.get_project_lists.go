@@ -6,10 +6,10 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 func GetProjectLists(
@@ -19,7 +19,7 @@ func GetProjectLists(
 	resProjectLists := response.ProjectLists{}
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectKeysGetProjectLists,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.KeyId,
 	)
 	if err != nil {

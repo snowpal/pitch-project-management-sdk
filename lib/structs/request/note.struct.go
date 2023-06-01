@@ -5,8 +5,8 @@ type NoteReqBody struct {
 }
 
 type NoteIdParam struct {
-	KeyId   string
-	BlockId *string
-	PodId   *string
-	NoteId  *string
+	KeyId     string
+	ProjectId *string
+	CardId    *string
+	NoteId    *string
 }

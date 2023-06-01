@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type ProjectLists struct {
@@ -13,9 +13,9 @@ type ProjectList struct {
 	Name     string `json:"projectListName"`
 	Sequence int    `json:"projectListSequence"`
 
-	Key   common2.SlimKey   `json:"key"`
-	Block common2.SlimBlock `json:"block"`
-	Pods  []Pod             `json:"pods"`
+	Key     common2.SlimKey     `json:"key"`
+	Project common2.SlimProject `json:"project"`
+	Cards   []Card              `json:"cards"`
 
 	Creator      common2.ResourceModifier `json:"creator"`
 	Modifier     common2.ResourceModifier `json:"modifier"`

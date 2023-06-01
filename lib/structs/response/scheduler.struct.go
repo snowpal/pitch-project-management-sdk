@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type AllEvents struct {
@@ -11,49 +11,49 @@ type AllEvents struct {
 }
 
 type EndDateEvent struct {
-	Blocks []BlockEvent `json:"blocks"`
+	Projects []ProjectEvent `json:"projects"`
 }
 
 type DueDateEvent struct {
-	Tasks  TasksEvent   `json:"tasks"`
-	Blocks []BlockEvent `json:"blocks"`
-	Pods   []PodEvent   `json:"pods"`
+	Tasks    TasksEvent     `json:"tasks"`
+	Projects []ProjectEvent `json:"projects"`
+	Cards    []CardEvent    `json:"cards"`
 }
 
-type BlockEvent struct {
+type ProjectEvent struct {
 	ID          string `json:"id"`
-	Name        string `json:"blockName"`
-	Description string `json:"blockDescription"`
+	Name        string `json:"projectName"`
+	Description string `json:"projectDescription"`
 
-	DueDate   *string `json:"blockDueDate"`
-	StartTime *string `json:"blockStartTime"`
-	EndTime   *string `json:"blockEndTime"`
+	DueDate   *string `json:"projectDueDate"`
+	StartTime *string `json:"projectStartTime"`
+	EndTime   *string `json:"projectEndTime"`
 
 	Key common2.SlimKey `json:"key"`
 }
 
-type PodEvent struct {
+type CardEvent struct {
 	ID      string `json:"id"`
-	Name    string `json:"podName"`
-	DueDate string `json:"podDueDate"`
+	Name    string `json:"cardName"`
+	DueDate string `json:"cardDueDate"`
 
-	Key   common2.SlimKey   `json:"key"`
-	Block common2.SlimBlock `json:"block"`
+	Key     common2.SlimKey     `json:"key"`
+	Project common2.SlimProject `json:"project"`
 }
 
 type TasksEvent struct {
-	KeyTasks   []TaskEvent `json:"keys"`
-	BlockTasks []TaskEvent `json:"blocks"`
-	PodTasks   []TaskEvent `json:"pods"`
+	KeyTasks     []TaskEvent `json:"keys"`
+	ProjectTasks []TaskEvent `json:"projects"`
+	CardTasks    []TaskEvent `json:"cards"`
 }
 
 type TaskEvent struct {
-	ID      string             `json:"id"`
-	Name    string             `json:"taskName"`
-	DueDate string             `json:"taskDueDate"`
-	Key     common2.SlimKey    `json:"key"`
-	Block   *common2.SlimBlock `json:"block"`
-	Pod     *common2.SlimPod   `json:"pod"`
+	ID      string               `json:"id"`
+	Name    string               `json:"taskName"`
+	DueDate string               `json:"taskDueDate"`
+	Key     common2.SlimKey      `json:"key"`
+	Project *common2.SlimProject `json:"project"`
+	Card    *common2.SlimCard    `json:"card"`
 }
 
 type SchedulerEvent struct {

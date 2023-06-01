@@ -4,16 +4,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/blocks/blocks.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/collaboration/collaboration.1.blocks"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/keys/keys.1"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 
-	blockPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/block_pods/block_pods.1"
-	keyPods "github.com/snowpal/pitch-building-blocks-sdk/lib/endpoints/key_pods/key_pods.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/keys/keys.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 func sleepWindow(sleepTime time.Duration) {
@@ -54,22 +52,6 @@ func addKey(user response.User, keyName string, keyType string) (response.Key, e
 	return newKey, nil
 }
 
-func AddCustomKey(user response.User, keyName string) (response.Key, error) {
-	newKey, err := addKey(user, keyName, lib.CustomKeyType)
-	if err != nil {
-		return newKey, err
-	}
-	return newKey, nil
-}
-
-func AddTeacherKey(user response.User, keyName string) (response.Key, error) {
-	newKey, err := addKey(user, keyName, lib.TeacherKeyType)
-	if err != nil {
-		return newKey, err
-	}
-	return newKey, nil
-}
-
 func AddProjectKey(user response.User, keyName string) (response.Key, error) {
 	newKey, err := addKey(user, keyName, lib.ProjectKeyType)
 	if err != nil {
@@ -78,50 +60,28 @@ func AddProjectKey(user response.User, keyName string) (response.Key, error) {
 	return newKey, nil
 }
 
-func AddBlock(user response.User, blockName string, key response.Key) (response.Block, error) {
-	newBlock, err := blocks.AddBlock(
+func AddProject(user response.User, projectName string, key response.Key) (response.Project, error) {
+	newProject, err := projects.AddProject(
 		user.JwtToken,
-		request.AddBlockReqBody{Name: blockName},
+		request.AddProjectReqBody{Name: projectName},
 		key.ID)
 	if err != nil {
-		return newBlock, err
+		return newProject, err
 	}
-	return newBlock, nil
+	return newProject, nil
 }
 
-func AddPod(user response.User, podName string, key response.Key) (response.Pod, error) {
-	newPod, err := keyPods.AddKeyPod(
-		user.JwtToken,
-		request.AddPodReqBody{Name: podName},
-		key.ID)
-	if err != nil {
-		return newPod, err
-	}
-	return newPod, nil
-}
-
-func AddPodToBlock(user response.User, podName string, block response.Block) (response.Pod, error) {
-	newPod, err := blockPods.AddBlockPod(
-		user.JwtToken,
-		request.AddPodReqBody{Name: podName},
-		common.ResourceIdParam{BlockId: block.ID, KeyId: block.Key.ID})
-	if err != nil {
-		return newPod, err
-	}
-	return newPod, nil
-}
-
-func SearchUserAndShareBlock(user response.User, block response.Block, searchToken string, acl string) error {
-	blockIdParam := common.ResourceIdParam{
-		BlockId: block.ID,
-		KeyId:   block.Key.ID,
+func SearchUserAndShareProject(user response.User, project response.Project, searchToken string, acl string) error {
+	projectIdParam := common.ResourceIdParam{
+		ProjectId: project.ID,
+		KeyId:     project.Key.ID,
 	}
 
-	searchedUsers, err := collaboration.GetUsersThisBlockCanBeSharedWith(
+	searchedUsers, err := collaboration.GetUsersThisProjectCanBeSharedWith(
 		user.JwtToken,
 		common.SearchUsersParam{
 			SearchToken: searchToken,
-			ResourceIds: blockIdParam,
+			ResourceIds: projectIdParam,
 		})
 	if err != nil {
 		return err
@@ -129,12 +89,12 @@ func SearchUserAndShareBlock(user response.User, block response.Block, searchTok
 
 	// For the purpose of this recipe, it does not matter which user from the list we end up picking, hence we go with
 	// the first one.
-	_, err = collaboration.ShareBlockWithCollaborator(
+	_, err = collaboration.ShareProjectWithCollaborator(
 		user.JwtToken,
-		request.BlockAclReqBody{Acl: acl},
+		request.ProjectAclReqBody{Acl: acl},
 		common.AclParam{
 			UserId:      searchedUsers[0].ID,
-			ResourceIds: blockIdParam,
+			ResourceIds: projectIdParam,
 		})
 	if err != nil {
 		return err

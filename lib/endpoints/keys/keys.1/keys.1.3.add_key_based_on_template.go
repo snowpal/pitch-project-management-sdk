@@ -8,17 +8,17 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 type KeyByTemplateParam struct {
-	TemplateId    string
-	ExcludeBlocks bool
-	ExcludePods   bool
-	ExcludeTasks  bool
+	TemplateId      string
+	ExcludeProjects bool
+	ExcludeCards    bool
+	ExcludeTasks    bool
 }
 
 func AddKeyBasedOnTemplate(
@@ -36,8 +36,8 @@ func AddKeyBasedOnTemplate(
 	route, err := helpers2.GetRoute(
 		lib.RouteKeysAddKeyBasedOnTemplate,
 		keyParam.TemplateId,
-		strconv.FormatBool(keyParam.ExcludeBlocks),
-		strconv.FormatBool(keyParam.ExcludePods),
+		strconv.FormatBool(keyParam.ExcludeProjects),
+		strconv.FormatBool(keyParam.ExcludeCards),
 		strconv.FormatBool(keyParam.ExcludeTasks),
 	)
 	if err != nil {

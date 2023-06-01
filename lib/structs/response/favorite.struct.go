@@ -1,7 +1,7 @@
 package response
 
 import (
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
 )
 
 type Favorites struct {
@@ -24,9 +24,9 @@ type FavoriteKey struct {
 	Modifier common.ResourceModifier `json:"modifier"`
 }
 
-type FavoriteBlock struct {
+type FavoriteProject struct {
 	ID       string                  `json:"id"`
-	Name     string                  `json:"blockName"`
+	Name     string                  `json:"projectName"`
 	Modifier common.ResourceModifier `json:"modifier"`
 }
 
@@ -34,9 +34,9 @@ type FavoriteResource struct {
 	ID           string                  `json:"id"`
 	ResourceType string                  `json:"resourceType"`
 	KeyName      *string                 `json:"keyName"`
-	BlockName    *string                 `json:"blockName"`
-	PodName      *string                 `json:"podName"`
+	ProjectName  *string                 `json:"projectName"`
+	CardName     *string                 `json:"cardName"`
 	Key          *FavoriteKey            `json:"key"`
-	Block        *FavoriteBlock          `json:"block"`
+	Project      *FavoriteProject        `json:"project"`
 	Modifier     common.ResourceModifier `json:"modifier"`
 }

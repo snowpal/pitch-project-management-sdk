@@ -8,198 +8,175 @@ const (
 const GatewayHost = "https://gateway.snowpal.com/"
 
 const (
-	RouteAttributesGetDisplayableAttributes        = "app/resource/attributes"
-	RouteAttributesUpdateKeyDisplayAttributes      = "keys/%s/attributes"
-	RouteAttributesUpdateBlockDisplayAttributes    = "blocks/%s/attributes?keyId=%s"
-	RouteAttributesUpdateKeyPodDisplayAttributes   = "pods/%s/attributes?keyId=%s"
-	RouteAttributesUpdateBlockPodDisplayAttributes = "block-pods/%s/attributes?keyId=%s&blockId=%s"
+	RouteAttributesGetDisplayableAttributes       = "app/resource/attributes"
+	RouteAttributesUpdateKeyDisplayAttributes     = "keys/%s/attributes"
+	RouteAttributesUpdateProjectDisplayAttributes = "projects/%s/attributes?keyId=%s"
+	RouteAttributesUpdateCardDisplayAttributes    = "cards/%s/attributes?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlocksGetBlocks                             = "keys/%s/blocks?filter=%s&batchIndex=%s&aclWriteOrHigher=%s"
-	RouteBlocksAddBlock                              = "keys/%s/blocks"
-	RouteBlocksGetBlocksLinkedToPod                  = "pods/:id/linked-to/blocks?keyId=%s"
-	RouteBlocksAddBlockBasedOnTemplate               = "keys/%s/blocks/by-template?templateId=%s&excludePods=%s&excludeTasks=%s"
-	RouteBlocksLinkBlockToKey                        = "keys/%s/blocks/%s/link"
-	RouteBlocksUnlinkBlockFromKey                    = "keys/%s/blocks/%s/unlink"
-	RouteBlocksGetBlocksAvailableToBeLinkedToThisKey = "keys/%s/blocks/available-to-link"
-	RouteBlocksGetBlock                              = "blocks/%s?keyId=%s"
-	RouteBlocksUpdateBlock                           = "blocks/%s?keyId=%s"
-	RouteBlocksAddBlockTypeToBlock                   = "blocks/%s/block-types/%s?keyId=%s"
-	RouteBlocksDeleteBlockTypeFromBlock              = "blocks/%s/block-types?keyId=%s"
-	RouteBlocksAddScaleToBlock                       = "blocks/%s/scales/%s?keyId=%s"
-	RouteBlocksDeleteScaleFromBlock                  = "blocks/%s/scales?keyId=%s"
-	RouteBlocksUpdateBlockScaleValue                 = "blocks/%s/scale-value?keyId=%s"
-	RouteBlocksUpdateBlockDescription                = "blocks/%s/description?keyId=%s"
-	RouteBlocksArchiveBlock                          = "blocks/%s/archive?keyId=%s"
-	RouteBlocksUnarchiveBlock                        = "blocks/%s/unarchive?keyId=%s"
-	RouteBlocksGetArchivedBlocks                     = "blocks/archived?keyId=%s&batchIndex=%s"
-	RouteBlocksBulkArchiveBlocks                     = "blocks/archive?keyId=%s"
-	RouteBlocksAllowArchivalOfBlock                  = "blocks/%s/allow-archival?keyId=%s"
-	RouteBlocksCopyBlock                             = "blocks/%s/copy?keyId=%s&allTasks=%s&podIds=%s&allPods=%s&allChecklists=%s&targetKeyId=%s"
-	RouteBlocksMoveBlock                             = "blocks/%s/move?keyId=%s&targetKeyId=%s"
+	RouteProjectsGetProjects                             = "keys/%s/projects?filter=%s&batchIndex=%s&aclWriteOrHigher=%s"
+	RouteProjectsAddProject                              = "keys/%s/projects"
+	RouteProjectsGetProjectsLinkedToCard                 = "cards/:id/linked-to/projects?keyId=%s"
+	RouteProjectsAddProjectBasedOnTemplate               = "keys/%s/projects/by-template?templateId=%s&excludeCards=%s&excludeTasks=%s"
+	RouteProjectsLinkProjectToKey                        = "keys/%s/projects/%s/link"
+	RouteProjectsUnlinkProjectFromKey                    = "keys/%s/projects/%s/unlink"
+	RouteProjectsGetProjectsAvailableToBeLinkedToThisKey = "keys/%s/projects/available-to-link"
+	RouteProjectsGetProject                              = "projects/%s?keyId=%s"
+	RouteProjectsUpdateProject                           = "projects/%s?keyId=%s"
+	RouteProjectsAddProjectTypeToProject                 = "projects/%s/project-types/%s?keyId=%s"
+	RouteProjectsDeleteProjectTypeFromProject            = "projects/%s/project-types?keyId=%s"
+	RouteProjectsAddScaleToProject                       = "projects/%s/scales/%s?keyId=%s"
+	RouteProjectsDeleteScaleFromProject                  = "projects/%s/scales?keyId=%s"
+	RouteProjectsUpdateProjectScaleValue                 = "projects/%s/scale-value?keyId=%s"
+	RouteProjectsUpdateProjectDescription                = "projects/%s/description?keyId=%s"
+	RouteProjectsArchiveProject                          = "projects/%s/archive?keyId=%s"
+	RouteProjectsUnarchiveProject                        = "projects/%s/unarchive?keyId=%s"
+	RouteProjectsGetArchivedProjects                     = "projects/archived?keyId=%s&batchIndex=%s"
+	RouteProjectsBulkArchiveProjects                     = "projects/archive?keyId=%s"
+	RouteProjectsAllowArchivalOfProject                  = "projects/%s/allow-archival?keyId=%s"
+	RouteProjectsCopyProject                             = "projects/%s/copy?keyId=%s&allTasks=%s&cardIds=%s&allCards=%s&allChecklists=%s&targetKeyId=%s"
+	RouteProjectsMoveProject                             = "projects/%s/move?keyId=%s&targetKeyId=%s"
 )
 
 const (
-	RouteBlocksGetBlockAttachments   = "blocks/%s/attachments?keyId=%s"
-	RouteBlocksAddBlockAttachment    = "blocks/%s/attachments?keyId=%s"
-	RouteBlocksRenameBlockAttachment = "block-attachments/%s/rename?keyId=%s&blockId=%s"
-	RouteBlocksDeleteBlockAttachment = "block-attachments/%s?keyId=%s&blockId=%s"
+	RouteProjectsGetProjectAttachments   = "projects/%s/attachments?keyId=%s"
+	RouteProjectsAddProjectAttachment    = "projects/%s/attachments?keyId=%s"
+	RouteProjectsRenameProjectAttachment = "project-attachments/%s/rename?keyId=%s&projectId=%s"
+	RouteProjectsDeleteProjectAttachment = "project-attachments/%s?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlocksGetLinkedBlockPods        = "charts/keys/%s/blocks/%s/linked-resources"
-	RouteBlocksGetScaleValuesForScale    = "charts/keys/%s/blocks/%s/scales/%s/grades"
-	RouteBlocksGetTaskStatusForBlock     = "charts/keys/%s/blocks/%s/task-status"
-	RouteBlocksGetBlockGradesForStudents = "blocks/%s/students/all/grades?keyId=%s"
+	RouteProjectsGetLinkedCards          = "charts/keys/%s/projects/%s/linked-resources"
+	RouteProjectsGetScaleValuesForScale  = "charts/keys/%s/projects/%s/scales/%s/grades"
+	RouteProjectsGetTaskStatusForProject = "charts/keys/%s/projects/%s/task-status"
 )
 
 const (
-	RouteBlocksGetBlockChecklists         = "blocks/%s/checklists?keyId=%s"
-	RouteBlocksAddBlockChecklist          = "blocks/%s/checklists?keyId=%s"
-	RouteBlocksReorderBlockChecklists     = "blocks/%s/checklists/reorder?keyId=%s"
-	RouteBlocksDeleteBlockChecklist       = "blocks/%s/checklists/%s?keyId=%s"
-	RouteBlocksRenameBlockChecklist       = "blocks/%s/checklists/%s?keyId=%s"
-	RouteBlocksAddBlockChecklistItem      = "blocks/%s/checklists/%s/checklist-items?keyId=%s"
-	RouteBlocksUpdateBlockChecklistItem   = "blocks/%s/checklists/%s/checklist-items/%s?keyId=%s"
-	RouteBlocksDeleteBlockChecklistItem   = "blocks/%s/checklists/%s/checklist-items/%s?keyId=%s"
-	RouteBlocksReorderBlockChecklistItems = "blocks/%s/checklists/%s/checklist-items/reorder?keyId=%s"
+	RouteProjectsGetProjectChecklists         = "projects/%s/checklists?keyId=%s"
+	RouteProjectsAddProjectChecklist          = "projects/%s/checklists?keyId=%s"
+	RouteProjectsReorderProjectChecklists     = "projects/%s/checklists/reorder?keyId=%s"
+	RouteProjectsDeleteProjectChecklist       = "projects/%s/checklists/%s?keyId=%s"
+	RouteProjectsRenameProjectChecklist       = "projects/%s/checklists/%s?keyId=%s"
+	RouteProjectsAddProjectChecklistItem      = "projects/%s/checklists/%s/checklist-items?keyId=%s"
+	RouteProjectsUpdateProjectChecklistItem   = "projects/%s/checklists/%s/checklist-items/%s?keyId=%s"
+	RouteProjectsDeleteProjectChecklistItem   = "projects/%s/checklists/%s/checklist-items/%s?keyId=%s"
+	RouteProjectsReorderProjectChecklistItems = "projects/%s/checklists/%s/checklist-items/reorder?keyId=%s"
 )
 
 const (
-	RouteBlocksGetBlockComments   = "blocks/%s/comments?keyId=%s"
-	RouteBlocksAddBlockComment    = "blocks/%s/comments?keyId=%s"
-	RouteBlocksUpdateBlockComment = "block-comments/%s?keyId=%s&blockId=%s"
-	RouteBlocksDeleteBlockComment = "block-comments/%s?keyId=%s&blockId=%s"
+	RouteProjectsGetProjectComments   = "projects/%s/comments?keyId=%s"
+	RouteProjectsAddProjectComment    = "projects/%s/comments?keyId=%s"
+	RouteProjectsUpdateProjectComment = "project-comments/%s?keyId=%s&projectId=%s"
+	RouteProjectsDeleteProjectComment = "project-comments/%s?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlocksGetBlockNotes   = "blocks/%s/notes?keyId=%s"
-	RouteBlocksAddBlockNote    = "blocks/%s/notes?keyId=%s"
-	RouteBlocksUpdateBlockNote = "block-notes/%s?keyId=%s&blockId=%s"
-	RouteBlocksDeleteBlockNote = "block-notes/%s?keyId=%s&blockId=%s"
+	RouteProjectsGetProjectNotes   = "projects/%s/notes?keyId=%s"
+	RouteProjectsAddProjectNote    = "projects/%s/notes?keyId=%s"
+	RouteProjectsUpdateProjectNote = "project-notes/%s?keyId=%s&projectId=%s"
+	RouteProjectsDeleteProjectNote = "project-notes/%s?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlocksGetBlockTasks     = "blocks/%s/tasks?keyId=%s"
-	RouteBlocksAddBlockTask      = "blocks/%s/tasks?keyId=%s"
-	RouteBlocksUpdateBlockTask   = "block-tasks/%s?keyId=%s&blockId=%s"
-	RouteBlocksDeleteBlockTask   = "block-tasks/%s?keyId=%s&blockId=%s"
-	RouteBlocksAssignBlockTask   = "block-tasks/%s/assign?keyId=%s&blockId=%s"
-	RouteBlocksUnassignBlockTask = "block-tasks/%s/unassign?keyId=%s&blockId=%s"
-	RouteBlocksReorderBlockTasks = "blocks/%s/tasks/reorder?keyId=%s"
+	RouteProjectsGetProjectTasks     = "projects/%s/tasks?keyId=%s"
+	RouteProjectsAddProjectTask      = "projects/%s/tasks?keyId=%s"
+	RouteProjectsUpdateProjectTask   = "project-tasks/%s?keyId=%s&projectId=%s"
+	RouteProjectsDeleteProjectTask   = "project-tasks/%s?keyId=%s&projectId=%s"
+	RouteProjectsAssignProjectTask   = "project-tasks/%s/assign?keyId=%s&projectId=%s"
+	RouteProjectsUnassignProjectTask = "project-tasks/%s/unassign?keyId=%s&projectId=%s"
+	RouteProjectsReorderProjectTasks = "projects/%s/tasks/reorder?keyId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPods                          = "blocks/%s/pods?batchIndex=%s&keyId=%s"
-	RouteBlockPodsAddBlockPod                           = "blocks/%s/pods?keyId=%s"
-	RouteBlockPodsAddBlockPodBasedOnTemplate            = "blocks/%s/pods/by-template?keyId=%s&templateId=%s&excludeTasks=%s"
-	RouteBlockPodsLinkPodToBlock                        = "blocks/%s/pods/%s/link?keyId=%s"
-	RouteBlockPodsUnlinkPodFromBlock                    = "blocks/%s/pods/%s/unlink?keyId=%s"
-	RouteBlockPodsGetBlockPod                           = "block-pods/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPod                        = "block-pods/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodCompletionStatus        = "block-pods/%s/by-completion-status?keyId=%s&blockId=%s"
-	RouteBlockPodsAddPodTypeToBlockPod                  = "block-pods/%s/pod-types/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsDeletePodTypeFromBlockPod             = "block-pods/%s/pod-types?keyId=%s&blockId=%s"
-	RouteBlockPodsAddScaleToBlockPod                    = "block-pods/%s/scales/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsDeleteScaleFromBlockPod               = "block-pods/%s/scales?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodScaleValue              = "block-pods/%s/scale-value?keyId=%s&blockId=%s"
-	RouteBlockPodsArchiveBlockPod                       = "block-pods/%s/archive?keyId=%s&block=%s"
-	RouteBlockPodsGetArchivedBlockPods                  = "block-pods/archived?batchIndex=%s&keyId=%s&blockId=%s"
-	RouteBlockPodsGetPodsAvailableToBeLinkedToThisBlock = "blocks/%s/pods/available-to-link?keyId=%s"
-	RouteBlockPodsUnarchiveBlockPod                     = "block-pods/%s/unarchive?keyId=%s&blockId=%s"
-	RouteBlockPodsBulkArchiveBlockPods                  = "block-pods/archive?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodDescription             = "block-pods/%s/description?keyId=%s&blockId=%s"
-	RouteBlockPodsAllowArchivalOfBlockPod               = "block-pods/%s/allow-archival?keyId=%s&blockId=%s"
-	RouteBlockPodsCopyBlockPod                          = "block-pods/%s/copy?keyId=%s&blockId=%s&allTasks=%s&allChecklists=%s&targetKeyId=%s&targetBlockId=%s"
-	RouteBlockPodsMoveBlockPod                          = "block-pods/%s/move?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s"
+	RouteCardsGetCards                                 = "projects/%s/cards?batchIndex=%s&keyId=%s"
+	RouteCardsAddCard                                  = "projects/%s/cards?keyId=%s"
+	RouteCardsAddCardBasedOnTemplate                   = "projects/%s/cards/by-template?keyId=%s&templateId=%s&excludeTasks=%s"
+	RouteCardsLinkCardToProject                        = "projects/%s/cards/%s/link?keyId=%s"
+	RouteCardsUnlinkCardFromProject                    = "projects/%s/cards/%s/unlink?keyId=%s"
+	RouteCardsGetCard                                  = "cards/%s?keyId=%s&projectId=%s"
+	RouteCardsUpdateCard                               = "cards/%s?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardCompletionStatus               = "cards/%s/by-completion-status?keyId=%s&projectId=%s"
+	RouteCardsAddCardTypeToCard                        = "cards/%s/card-types/%s?keyId=%s&projectId=%s"
+	RouteCardsDeleteCardTypeFromCard                   = "cards/%s/card-types?keyId=%s&projectId=%s"
+	RouteCardsAddScaleToCard                           = "cards/%s/scales/%s?keyId=%s&projectId=%s"
+	RouteCardsDeleteScaleFromCard                      = "cards/%s/scales?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardScaleValue                     = "cards/%s/scale-value?keyId=%s&projectId=%s"
+	RouteCardsArchiveCard                              = "cards/%s/archive?keyId=%s&project=%s"
+	RouteCardsGetArchivedCards                         = "cards/archived?batchIndex=%s&keyId=%s&projectId=%s"
+	RouteCardsGetCardsAvailableToBeLinkedToThisProject = "projects/%s/cards/available-to-link?keyId=%s"
+	RouteCardsUnarchiveCard                            = "cards/%s/unarchive?keyId=%s&projectId=%s"
+	RouteCardsBulkArchiveCards                         = "cards/archive?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardDescription                    = "cards/%s/description?keyId=%s&projectId=%s"
+	RouteCardsAllowArchivalOfCard                      = "cards/%s/allow-archival?keyId=%s&projectId=%s"
+	RouteCardsCopyCard                                 = "cards/%s/copy?keyId=%s&projectId=%s&allTasks=%s&allChecklists=%s&targetKeyId=%s&targetProjectId=%s"
+	RouteCardsMoveCard                                 = "cards/%s/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPodAttachments   = "block-pods/%s/attachments?keyId=%s&blockId=%s"
-	RouteBlockPodsAddBlockPodAttachment    = "block-pods/%s/attachments?keyId=%s&blockId=%s"
-	RouteBlockPodsRenameBlockPodAttachment = "block-pod-attachments/%s/rename?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsDeleteBlockPodAttachment = "block-pod-attachments/%s?keyId=%s&blockId=%s&podId=%s"
+	RouteCardsGetCardAttachments   = "cards/%s/attachments?keyId=%s&projectId=%s"
+	RouteCardsAddCardAttachment    = "cards/%s/attachments?keyId=%s&projectId=%s"
+	RouteCardsRenameCardAttachment = "card-attachments/%s/rename?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsDeleteCardAttachment = "card-attachments/%s?keyId=%s&projectId=%s&cardId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPodTasksForCharts    = "charts/block-pods/%s/tasks?keyId=%s&blockId=%s"
-	RouteBlockPodsGetBlockPodGradesForStudents = "charts/classroom-pods/%s/students/grades?keyId=%s&blockId=%s"
+	RouteCardsGetCardTasksForCharts = "charts/cards/%s/tasks?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPodChecklists         = "block-pods/%s/checklists?keyId=%s&blockId=%s"
-	RouteBlockPodsAddBlockPodChecklist          = "block-pods/%s/checklists?keyId=%s&blockId=%s"
-	RouteBlockPodsReorderBlockPodChecklists     = "block-pods/%s/checklists/reorder?keyId=%s&blockId=%s"
-	RouteBlockPodsDeleteBlockPodChecklist       = "block-pods/%s/checklists/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsRenameBlockPodChecklist       = "block-pods/%s/checklists/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsAddBlockPodChecklistItem      = "block-pods/%s/checklists/%s/checklist-items?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodChecklistItem   = "block-pods/%s/checklists/%s/checklist-items/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsDeleteBlockPodChecklistItem   = "block-pods/%s/checklists/%s/checklist-items/%s?keyId=%s&blockId=%s"
-	RouteBlockPodsReorderBlockPodChecklistItems = "block-pods/%s/checklists/%s/checklist-items/reorder?keyId=%s&blockId=%s"
+	RouteCardsGetCardChecklists         = "cards/%s/checklists?keyId=%s&projectId=%s"
+	RouteCardsAddCardChecklist          = "cards/%s/checklists?keyId=%s&projectId=%s"
+	RouteCardsReorderCardChecklists     = "cards/%s/checklists/reorder?keyId=%s&projectId=%s"
+	RouteCardsDeleteCardChecklist       = "cards/%s/checklists/%s?keyId=%s&projectId=%s"
+	RouteCardsRenameCardChecklist       = "cards/%s/checklists/%s?keyId=%s&projectId=%s"
+	RouteCardsAddCardChecklistItem      = "cards/%s/checklists/%s/checklist-items?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardChecklistItem   = "cards/%s/checklists/%s/checklist-items/%s?keyId=%s&projectId=%s"
+	RouteCardsDeleteCardChecklistItem   = "cards/%s/checklists/%s/checklist-items/%s?keyId=%s&projectId=%s"
+	RouteCardsReorderCardChecklistItems = "cards/%s/checklists/%s/checklist-items/reorder?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPodComments   = "block-pods/%s/comments?keyId=%s&blockId=%s"
-	RouteBlockPodsAddBlockPodComment    = "block-pods/%s/comments?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodComment = "block-pod-comments/%s?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsDeleteBlockPodComment = "block-pod-comments/%s?keyId=%s&blockId=%s&podId=%s"
+	RouteCardsGetCardComments   = "cards/%s/comments?keyId=%s&projectId=%s"
+	RouteCardsAddCardComment    = "cards/%s/comments?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardComment = "card-comments/%s?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsDeleteCardComment = "card-comments/%s?keyId=%s&projectId=%s&cardId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPodNotes   = "block-pods/%s/notes?keyId=%s&blockId=%s"
-	RouteBlockPodsAddBlockPodNote    = "block-pods/%s/notes?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodNote = "block-pod-notes/%s?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsDeleteBlockPodNote = "block-pod-notes/%s?keyId=%s&blockId=%s&podId=%s"
+	RouteCardsGetCardNotes   = "cards/%s/notes?keyId=%s&projectId=%s"
+	RouteCardsAddCardNote    = "cards/%s/notes?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardNote = "card-notes/%s?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsDeleteCardNote = "card-notes/%s?keyId=%s&projectId=%s&cardId=%s"
 )
 
 const (
-	RouteBlockPodsGetBlockPodTasks     = "block-pods/%s/tasks?keyId=%s&blockId=%s"
-	RouteBlockPodsAddBlockPodTask      = "block-pods/%s/tasks?keyId=%s&blockId=%s"
-	RouteBlockPodsUpdateBlockPodTask   = "block-pod-tasks/%s?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsDeleteBlockPodTask   = "block-pod-tasks/%s?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsAssignBlockPodTask   = "block-pod-tasks/%s/assign?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsUnassignBlockPodTask = "block-pod-tasks/%s/unassign?keyId=%s&blockId=%s&podId=%s"
-	RouteBlockPodsReorderBlockPodTasks = "block-pods/%s/tasks/reorder?keyId=%s&blockId=%s"
+	RouteCardsGetCardTasks     = "cards/%s/tasks?keyId=%s&projectId=%s"
+	RouteCardsAddCardTask      = "cards/%s/tasks?keyId=%s&projectId=%s"
+	RouteCardsUpdateCardTask   = "card-tasks/%s?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsDeleteCardTask   = "card-tasks/%s?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsAssignCardTask   = "card-tasks/%s/assign?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsUnassignCardTask = "card-tasks/%s/unassign?keyId=%s&projectId=%s&cardId=%s"
+	RouteCardsReorderCardTasks = "cards/%s/tasks/reorder?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteBlockTypesGetBlockTypes           = "block-types?includeCounts=%s"
-	RouteBlockTypesAddBlockType            = "block-types"
-	RouteBlockTypesUpdateBlockType         = "block-types/%s"
-	RouteBlockTypesDeleteBlockType         = "block-types/%s"
-	RouteBlockTypesGetBlocksUsingBlockType = "block-types/%s/blocks"
+	RouteProjectTypesGetProjectTypes             = "project-types?includeCounts=%s"
+	RouteProjectTypesAddProjectType              = "project-types"
+	RouteProjectTypesUpdateProjectType           = "project-types/%s"
+	RouteProjectTypesDeleteProjectType           = "project-types/%s"
+	RouteProjectTypesGetProjectsUsingProjectType = "project-types/%s/projects"
 )
 
 const (
-	RouteCollaborationGetBlockCollaborators                   = "blocks/%s/acl?keyId=%s"
-	RouteCollaborationUpdateBlockAcl                          = "blocks/%s/users/%s/acl?keyId=%s"
-	RouteCollaborationUnshareBlockFromCollaborator            = "blocks/%s/users/%s/unshare?keyId=%s"
-	RouteCollaborationShareBlockWithCollaborator              = "blocks/%s/users/%s/share?keyId=%s"
-	RouteCollaborationShareBlockWithCollaboratorAlongWithPods = "blocks/%s/users/%s/share/with/pods?keyId=%s"
-	RouteCollaborationGetUsersThisBlockCanBeSharedWith        = "search/blocks/%s/shareable/users?keyId=%s&token=%s"
-	RouteCollaborationBulkShareBlocksWithCollaborators        = "blocks/users/%s/share?keyId=%s"
-	RouteCollaborationLeaveBlock                              = "blocks/%s/leave?keyId=%s"
-)
-
-const (
-	RouteCollaborationGetBlockPodCollaborators            = "block-pods/%s/acl?keyId=%s&blockId=%s"
-	RouteCollaborationShareBlockPodWithCollaborator       = "block-pods/%s/users/%s/share?keyId=%s&blockId=%s"
-	RouteCollaborationUnshareBlockPodFromCollaborator     = "block-pods/%s/users/%s/unshare?keyId=%s&blockId=%s"
-	RouteCollaborationBulkShareBlockPodsWithCollaborators = "block-pods/users/%s/share?keyId=%s"
-	RouteCollaborationGetUsersThisBlockPodCanBeSharedWith = "search/block-pods/%s/shareable/users?keyId=%s&blockId=%s&token=%s"
-	RouteCollaborationUpdateBlockPodAcl                   = "block-pods/%s/users/%s/acl?keyId=%s&blockId=%s"
-	RouteCollaborationLeaveBlockPod                       = "block-pods/%s/leave?keyId=%s&blockId=%s"
-)
-
-const (
-	RouteCollaborationGetKeyPodCollaborators            = "pods/%s/acl?keyId=%s"
-	RouteCollaborationShareKeyPodWithCollaborator       = "pods/%s/users/%s/share?keyId=%s"
-	RouteCollaborationBulkShareKeyPodsWithCollaborators = "pods/users/%s/share?keyId=%s"
-	RouteCollaborationUnshareKeyPodFromCollaborator     = "pods/%s/users/%s/unshare?keyId=%s"
-	RouteCollaborationGetUsersThisKeyPodCanBeSharedWith = "search/pods/%s/shareable/users?keyId=%s&token=%s"
-	RouteCollaborationUpdateKeyPodAcl                   = "pods/%s/users/%s/acl?keyId=%s"
-	RouteCollaborationLeaveKeyPod                       = "pods/%s/leave?keyId=%s"
+	RouteCollaborationGetProjectCollaborators                    = "projects/%s/acl?keyId=%s"
+	RouteCollaborationUpdateProjectAcl                           = "projects/%s/users/%s/acl?keyId=%s"
+	RouteCollaborationUnshareProjectFromCollaborator             = "projects/%s/users/%s/unshare?keyId=%s"
+	RouteCollaborationShareProjectWithCollaborator               = "projects/%s/users/%s/share?keyId=%s"
+	RouteCollaborationShareProjectWithCollaboratorAlongWithCards = "projects/%s/users/%s/share/with/cards?keyId=%s"
+	RouteCollaborationGetUsersThisProjectCanBeSharedWith         = "search/projects/%s/shareable/users?keyId=%s&token=%s"
+	RouteCollaborationBulkShareProjectsWithCollaborators         = "projects/users/%s/share?keyId=%s"
+	RouteCollaborationLeaveProject                               = "projects/%s/leave?keyId=%s"
 )
 
 const (
@@ -219,34 +196,33 @@ const (
 )
 
 const (
-	RouteDashboardGetDashboardDetails              = "dashboard/combined-responses"
-	RouteDashboardGetRecentlyModifiedBlocksAndPods = "dashboard/recently-modified"
-	RouteDashboardGetUnreadCount                   = "dashboard/unread-count"
-	RouteDashboardGetRecentlyModifiedKeys          = "dashboard/recently-modified/keys"
-	RouteDashboardGetPodsAndTasksDueShortly        = "dashboard/due-shortly/pods-and-tasks"
-	RouteDashboardGetBlocksDueShortly              = "dashboard/due-shortly/blocks"
-	RouteDashboardGetUnreadNotifications           = "dashboard/notifications/unread-status"
-	RouteDashboardGetUnreadConversations           = "dashboard/conversations/unread-status"
+	RouteDashboardGetDashboardDetails                 = "dashboard/combined-responses"
+	RouteDashboardGetRecentlyModifiedProjectsAndCards = "dashboard/recently-modified"
+	RouteDashboardGetUnreadCount                      = "dashboard/unread-count"
+	RouteDashboardGetRecentlyModifiedKeys             = "dashboard/recently-modified/keys"
+	RouteDashboardGetCardsAndTasksDueShortly          = "dashboard/due-shortly/cards-and-tasks"
+	RouteDashboardGetProjectsDueShortly               = "dashboard/due-shortly/projects"
+	RouteDashboardGetUnreadNotifications              = "dashboard/notifications/unread-status"
+	RouteDashboardGetUnreadConversations              = "dashboard/conversations/unread-status"
 )
 
 const (
-	RouteDashboardGetUserKeysBlocksAndPods           = "charts/dashboard/keys-blocks-pods"
-	RouteDashboardGetSystemKeysBlocksAndPods         = "charts/dashboard/system-keys"
-	RouteDashboardGetFilteredUserKeysBlocksAndPods   = "charts/dashboard/keys/filters"
-	RouteDashboardGetFilteredSystemKeysBlocksAndPods = "charts/dashboard/system-keys/filters"
-	RouteDashboardGetBlocksBasedOnBlockTypes         = "charts/dashboard/block-types"
-	RouteDashboardGetPodsBasedOnPodTypes             = "charts/dashboard/pod-types"
-	RouteDashboardGetBlocksAndPodsBasedOnScales      = "charts/dashboard/scales"
-	RouteDashboardGetTasksByStatus                   = "charts/dashboard/task-status"
+	RouteDashboardGetUserKeysProjectsAndCards           = "charts/dashboard/keys-projects-cards"
+	RouteDashboardGetSystemKeysProjectsAndCards         = "charts/dashboard/system-keys"
+	RouteDashboardGetFilteredUserKeysProjectsAndCards   = "charts/dashboard/keys/filters"
+	RouteDashboardGetFilteredSystemKeysProjectsAndCards = "charts/dashboard/system-keys/filters"
+	RouteDashboardGetProjectsBasedOnProjectTypes        = "charts/dashboard/project-types"
+	RouteDashboardGetCardsBasedOnCardTypes              = "charts/dashboard/card-types"
+	RouteDashboardGetProjectsAndCardsBasedOnScales      = "charts/dashboard/scales"
+	RouteDashboardGetTasksByStatus                      = "charts/dashboard/task-status"
 )
 
 const (
-	RouteFavoritesGetFavorites          = "favorites"
-	RouteFavoritesAddKeyAsFavorite      = "favorites/keys/%s"
-	RouteFavoritesAddBlockAsFavorite    = "favorites/blocks/%s?keyId=%s"
-	RouteFavoritesAddPodAsFavorite      = "favorites/pods/%s?keyId=%s"
-	RouteFavoritesAddBlockPodAsFavorite = "favorites/block-pods/%s?keyId=%s&blockId=%s"
-	RouteFavoritesDeleteFavorite        = "favorites/%s"
+	RouteFavoritesGetFavorites         = "favorites"
+	RouteFavoritesAddKeyAsFavorite     = "favorites/keys/%s"
+	RouteFavoritesAddProjectAsFavorite = "favorites/projects/%s?keyId=%s"
+	RouteFavoritesAddCardAsFavorite    = "favorites/cards/%s?keyId=%s&projectId=%s"
+	RouteFavoritesDeleteFavorite       = "favorites/%s"
 )
 
 const (
@@ -255,30 +231,30 @@ const (
 )
 
 const (
-	RouteKeysGetKeys               = "keys?batchIndex=%s"
-	RouteKeysAddKey                = "keys"
-	RouteKeysAddKeyBasedOnTemplate = "keys/by-template?templateId=%s&excludeBlocks=%s&excludePods=%s&excludeTasks=%s"
-	RouteKeysGetKey                = "keys/%s"
-	RouteKeysUpdateKey             = "keys/%s"
-	RouteKeysGetArchivedKeys       = "keys/archived"
-	RouteKeysGetKeysLinkedToPod    = "pods/%s/linked-to/keys?keyId=%s"
-	RouteKeysGetKeysLinkedToBlock  = "blocks/%s/linked-to/keys?keyId=%s"
-	RouteKeysGetKeysFilteredByType = "keys/filtered/by-type?keyType=%s"
-	RouteKeysBulkArchiveKeys       = "keys/archive?keyIds=%s"
-	RouteKeysArchiveKey            = "keys/%s/archive"
-	RouteKeysUnarchiveKey          = "keys/%s/unarchive"
-	RouteKeysUpdateKeyDescription  = "keys/%s/description"
+	RouteKeysGetKeys                = "keys?batchIndex=%s"
+	RouteKeysAddKey                 = "keys"
+	RouteKeysAddKeyBasedOnTemplate  = "keys/by-template?templateId=%s&excludeProjects=%s&excludeCards=%s&excludeTasks=%s"
+	RouteKeysGetKey                 = "keys/%s"
+	RouteKeysUpdateKey              = "keys/%s"
+	RouteKeysGetArchivedKeys        = "keys/archived"
+	RouteKeysGetKeysLinkedToCard    = "cards/%s/linked-to/keys?keyId=%s"
+	RouteKeysGetKeysLinkedToProject = "projects/%s/linked-to/keys?keyId=%s"
+	RouteKeysGetKeysFilteredByType  = "keys/filtered/by-type?keyType=%s"
+	RouteKeysBulkArchiveKeys        = "keys/archive?keyIds=%s"
+	RouteKeysArchiveKey             = "keys/%s/archive"
+	RouteKeysUnarchiveKey           = "keys/%s/unarchive"
+	RouteKeysUpdateKeyDescription   = "keys/%s/description"
 )
 
 const (
-	RouteKeysGetBlocksAndPodsAssociatedWithKey           = "charts/keys/%s/blocks-pods"
-	RouteKeysGetFilteredUserKeysBlocksAndPodsForGivenKey = "charts/keys/%s/filters"
-	RouteKeysGetBlockTypesAndBlocksBasedOnThemInKey      = "charts/keys/%s/block-types"
-	RouteKeysGetPodsBasedOnPodTypesInKey                 = "charts/keys/%s/pod-types"
-	RouteKeysGetScalesAlongWithBlocksAndPodsBasedOnThem  = "charts/keys/%s/scales"
-	RouteKeysGetLinkedResources                          = "charts/keys/%s/linked-resources"
-	RouteKeysGetKeyPodAndBlockScaleValues                = "charts/keys/%s/scales/%s/scale-values"
-	RouteKeysGetTaskStatus                               = "charts/keys/%s/task-status"
+	RouteKeysGetProjectsAndCardsAssociatedWithKey           = "charts/keys/%s/projects-cards"
+	RouteKeysGetFilteredUserKeysProjectsAndCardsForGivenKey = "charts/keys/%s/filters"
+	RouteKeysGetProjectTypesAndProjectsBasedOnThemInKey     = "charts/keys/%s/project-types"
+	RouteKeysGetCardsBasedOnCardTypesInKey                  = "charts/keys/%s/card-types"
+	RouteKeysGetScalesAlongWithProjectsAndCardsBasedOnThem  = "charts/keys/%s/scales"
+	RouteKeysGetLinkedResources                             = "charts/keys/%s/linked-resources"
+	RouteKeysGetProjectScaleValues                          = "charts/keys/%s/scales/%s/scale-values"
+	RouteKeysGetTaskStatus                                  = "charts/keys/%s/task-status"
 )
 
 const (
@@ -309,74 +285,6 @@ const (
 )
 
 const (
-	RouteKeyPodsGetKeyPods                             = "keys/%s/pods?batchIndex=%s"
-	RouteKeyPodsAddKeyPod                              = "keys/%s/pods"
-	RouteKeyPodsAddKeyPodBasedOnTemplate               = "keys/%s/pods/by-template?templateId=%s&excludeTasks=%s"
-	RouteKeyPodsGetKeyPodsAvailableToBeLinkedToThisKey = "keys/%s/pods/available-to-link"
-	RouteKeyPodsLinkKeyPodToKey                        = "keys/%s/pods/%s/link"
-	RouteKeyPodsUnlinkKeyPodFromKey                    = "keys/%s/pods/%s/unlink"
-	RouteKeyPodsGetKeyPod                              = "pods/%s?keyId=%s"
-	RouteKeyPodsUpdateKeyPod                           = "pods/%s?keyId=%s"
-	RouteKeyPodsUpdateKeyPodCompletionStatus           = "pods/%s/by-completion-status?keyId=%s"
-	RouteKeyPodsUpdateKeyPodScaleValue                 = "pods/%s/scale-value?keyId=%s"
-	RouteKeyPodsAddPodTypeToKeyPod                     = "pods/%s/pod-types/%s?keyId=%s"
-	RouteKeyPodsDeletePodTypeFromKeyPod                = "pods/%s/pod-types?keyId=%s"
-	RouteKeyPodsAddScaleToKeyPod                       = "pods/%s/scales/%s?keyId=%s"
-	RouteKeyPodsDeleteScaleFromKeyPod                  = "pods/%s/scales?keyId=%s"
-	RouteKeyPodsArchiveKeyPod                          = "pods/%s/archive?keyId=%s"
-	RouteKeyPodsGetArchivedKeyPods                     = "pods/archived?keyId=%s&batchIndex=%s"
-	RouteKeyPodsUnarchiveKeyPod                        = "pods/%s/unarchive?keyId=%s"
-	RouteKeyPodsBulkArchiveKeyPods                     = "pods/archive?keyId=%s"
-	RouteKeyPodsUpdateKeyPodDescription                = "pods/%s/description?keyId=%s"
-	RouteKeyPodsAllowArchivalOfKeyPod                  = "pods/%s/allow-archival?keyId=%s"
-	RouteKeyPodsCopyKeyPod                             = "pods/%s/copy?keyId=%s&allTasks=%s&allChecklists=%s&targetKeyId=%s&targetBlockId=%s"
-	RouteKeyPodsMoveKeyPod                             = "pods/%s/move?keyId=%s&targetKeyId=%s&targetBlockId=%s"
-)
-
-const (
-	RouteKeyPodsGetKeyPodAttachments   = "pods/%s/attachments?keyId=%s"
-	RouteKeyPodsAddKeyPodAttachment    = "pods/%s/attachments?keyId=%s"
-	RouteKeyPodsRenameKeyPodAttachment = "key-pod-attachments/%s/rename?keyId=%s&podId=%s"
-	RouteKeyPodsDeleteKeyPodAttachment = "key-pod-attachments/%s?keyId=%s&podId=%s"
-)
-
-const (
-	RouteKeyPodsGetKeyPodChecklists         = "pods/%s/checklists?keyId=%s"
-	RouteKeyPodsAddKeyPodChecklist          = "pods/%s/checklists?keyId=%s"
-	RouteKeyPodsReorderKeyPodChecklists     = "pods/%s/checklists/reorder?keyId=%s"
-	RouteKeyPodsDeleteKeyPodChecklist       = "pods/%s/checklists/%s?keyId=%s"
-	RouteKeyPodsRenameKeyPodChecklist       = "pods/%s/checklists/%s?keyId=%s"
-	RouteKeyPodsAddKeyPodChecklistItem      = "pods/%s/checklists/%s/checklist-items?keyId=%s"
-	RouteKeyPodsUpdateKeyPodChecklistItem   = "pods/%s/checklists/%s/checklist-items/%s?keyId=%s"
-	RouteKeyPodsDeleteKeyPodChecklistItem   = "pods/%s/checklists/%s/checklist-items/%s?keyId=%s"
-	RouteKeyPodsReorderKeyPodChecklistItems = "pods/%s/checklists/%s/checklist-items/reorder?keyId=%s"
-)
-
-const (
-	RouteKeyPodsGetKeyPodComments   = "pods/%s/comments?keyId=%s"
-	RouteKeyPodsAddKeyPodComment    = "pods/%s/comments?keyId=%s"
-	RouteKeyPodsUpdateKeyPodComment = "pod-comments/%s?keyId=%s&podId=%s"
-	RouteKeyPodsDeleteKeyPodComment = "pod-comments/%s?keyId=%s&podId=%s"
-)
-
-const (
-	RouteKeyPodsGetKeyPodNotes   = "pods/%s/notes?keyId=%s"
-	RouteKeyPodsAddKeyPodNote    = "pods/%s/notes?keyId=%s"
-	RouteKeyPodsUpdateKeyPodNote = "pod-notes/%s?keyId=%s&podId=%s"
-	RouteKeyPodsDeleteKeyPodNote = "pod-notes/%s?keyId=%s&podId=%s"
-)
-
-const (
-	RouteKeyPodsGetKeyPodTasks     = "pods/%s/tasks?keyId=%s"
-	RouteKeyPodsAddKeyPodTask      = "pods/%s/tasks?keyId=%s"
-	RouteKeyPodsUpdateKeyPodTask   = "pod-tasks/%s?keyId=%s&podId=%s"
-	RouteKeyPodsDeleteKeyPodTask   = "pod-tasks/%s?keyId=%s&podId=%s"
-	RouteKeyPodsAssignKeyPodTask   = "pod-tasks/%s/assign?keyId=%s&podId=%s"
-	RouteKeyPodsUnassignKeyPodTask = "pod-tasks/%s/unassign?keyId=%s&podId=%s"
-	RouteKeyPodsReorderKeyPodTasks = "pods/%s/tasks/reorder?keyId=%s"
-)
-
-const (
 	RouteNotificationsGetNotifications              = "notifications"
 	RouteNotificationsGetUnreadNotifications        = "notifications/unread"
 	RouteNotificationsGetUnreadNotificationCount    = "notifications/unread/count"
@@ -385,45 +293,45 @@ const (
 )
 
 const (
-	RoutePodTypesGetPodTypes         = "pod-types?includeCounts=%s"
-	RoutePodTypesAddPodType          = "pod-types"
-	RoutePodTypesUpdatePodType       = "pod-types/%s"
-	RoutePodTypesDeletePodType       = "pod-types/%s"
-	RoutePodTypesGetPodsUsingPodType = "pod-types/%s/pods"
+	RouteCardTypesGetCardTypes          = "card-types?includeCounts=%s"
+	RouteCardTypesAddCardType           = "card-types"
+	RouteCardTypesUpdateCardType        = "card-types/%s"
+	RouteCardTypesDeleteCardType        = "card-types/%s"
+	RouteCardTypesGetCardsUsingCardType = "card-types/%s/cards"
 )
 
 const (
-	RouteProfileGetUsersProfile               = "profiles"
-	RouteProfileUpdateUsersProfile            = "profiles"
-	RouteProfileUpdateUsername                = "profiles/username/%s"
-	RouteProfileBlocksUserFromSendingMessages = "users/%s/block"
-	RouteProfileUnblocksUser                  = "users/%s/unblock"
+	RouteProfileGetUsersProfile              = "profiles"
+	RouteProfileUpdateUsersProfile           = "profiles"
+	RouteProfileUpdateUsername               = "profiles/username/%s"
+	RouteProfileBlockUserFromSendingMessages = "users/%s/block"
+	RouteProfileUnblockUser                  = "users/%s/unblock"
 )
 
 const (
-	RouteProjectKeysAddAProjectPod               = "blocks/%s/project-pods?keyId=%s&projectListId=%s"
-	RouteProjectKeysAddProjectPodBasedOnTemplate = "blocks/%s/project-pods/by-template?keyId=%s&projectListId=%s&templateId=%s&excludeTasks=%s"
-	RouteProjectKeysLinkProjectPodToBlock        = "blocks/%s/project-pods/%s/link?keyId=%s&projectListId=%s"
-	RouteProjectKeysReorderProjectPods           = "blocks/%s/project-pods/reorder?keyId=%s"
-	RouteProjectKeysCopyProjectPod               = "project-pods/%s/copy?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s&targetProjectListId=%s"
-	RouteProjectKeysMoveProjectPod               = "project-pods/%s/move?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s&targetProjectListId=%s"
-	RouteProjectKeysCopyProjectBlock             = "blocks/%s/project-pods/copy?keyId=%s&targetKeyId=%s&allPods=%s&allTasks=%s"
-	RouteProjectKeysAssignProjectPod             = "project-pods/%s/assign?keyId=%s&blockId=%s"
-	RouteProjectKeysUnassignProjectPod           = "project-pods/%s/unassign?keyId=%s&blockId=%s"
+	RouteProjectKeysAddACard               = "projects/%s/cards?keyId=%s&projectListId=%s"
+	RouteProjectKeysAddCardBasedOnTemplate = "projects/%s/cards/by-template?keyId=%s&projectListId=%s&templateId=%s&excludeTasks=%s"
+	RouteProjectKeysLinkCardToProject      = "projects/%s/cards/%s/link?keyId=%s&projectListId=%s"
+	RouteProjectKeysReorderCards           = "projects/%s/cards/reorder?keyId=%s"
+	RouteProjectKeysCopyCard               = "cards/%s/copy?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s"
+	RouteProjectKeysMoveCard               = "cards/%s/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s"
+	RouteProjectKeysCopyProject            = "projects/%s/cards/copy?keyId=%s&targetKeyId=%s&allCards=%s&allTasks=%s"
+	RouteProjectKeysAssignCard             = "cards/%s/assign?keyId=%s&projectId=%s"
+	RouteProjectKeysUnassignCard           = "cards/%s/unassign?keyId=%s&projectId=%s"
 )
 
 const (
-	RouteProjectKeysAddProjectBlockList       = "blocks/%s/project-block-lists?keyId=%s"
-	RouteProjectKeysGetProjectLists           = "blocks/%s/project-block-lists?keyId=%s"
-	RouteProjectKeysCopyPodsInProjectList     = "project-block-lists/%s/pods/copy-all?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s&targetProjectListId=%s&allPods=%s&allTasks=%s"
-	RouteProjectKeysBulkCopyPodsInProjectList = "project-block-lists/%s/pods/copy?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s&targetProjectListId=%s&allTasks=%s&podIds=%s"
-	RouteProjectKeysMovePodsInProjectList     = "project-block-lists/%s/pods/move-all?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s&targetProjectListId=%s&allPods=%s"
-	RouteProjectKeysBulkMovePodsInProjectList = "project-block-lists/%s/pods/move?keyId=%s&blockId=%s&targetKeyId=%s&targetBlockId=%s&targetProjectListId=%s&podIds=%s"
-	RouteProjectKeysMoveProjectList           = "blocks/%s/project-block-lists/%s/move?keyId=%s&targetKeyId=%s&targetBlockId=%s&targetPosition=%s"
-	RouteProjectKeysGetProjectList            = "blocks/%s/project-block-lists/%s?keyId=%s"
-	RouteProjectKeysRenameProjectList         = "blocks/%s/project-block-lists/%s?keyId=%s"
-	RouteProjectKeysReorderProjectList        = "blocks/%s/project-block-lists/reorder?keyId=%s"
-	RouteProjectKeysArchiveProjectList        = "blocks/%s/project-block-lists/%s/archive?keyId=%s"
+	RouteProjectKeysAddProjectList             = "projects/%s/project-lists?keyId=%s"
+	RouteProjectKeysGetProjectLists            = "projects/%s/project-lists?keyId=%s"
+	RouteProjectKeysCopyCardsInProjectList     = "project-lists/%s/cards/copy-all?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allCards=%s&allTasks=%s"
+	RouteProjectKeysBulkCopyCardsInProjectList = "project-lists/%s/cards/copy?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allTasks=%s&cardIds=%s"
+	RouteProjectKeysMoveCardsInProjectList     = "project-lists/%s/cards/move-all?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&allCards=%s"
+	RouteProjectKeysBulkMoveCardsInProjectList = "project-lists/%s/cards/move?keyId=%s&projectId=%s&targetKeyId=%s&targetProjectId=%s&targetProjectListId=%s&cardIds=%s"
+	RouteProjectKeysMoveProjectList            = "projects/%s/project-lists/%s/move?keyId=%s&targetKeyId=%s&targetProjectId=%s&targetPosition=%s"
+	RouteProjectKeysGetProjectList             = "projects/%s/project-lists/%s?keyId=%s"
+	RouteProjectKeysRenameProjectList          = "projects/%s/project-lists/%s?keyId=%s"
+	RouteProjectKeysReorderProjectList         = "projects/%s/project-lists/reorder?keyId=%s"
+	RouteProjectKeysArchiveProjectList         = "projects/%s/project-lists/%s/archive?keyId=%s"
 )
 
 const (
@@ -433,51 +341,41 @@ const (
 	RouteRegistrationActivateUser           = "app/user-verified/%s"
 )
 
-// TODO(Anish,3,03/23/23): As the endpoint is same for key pod & block pod. We need to create these constants to
+// TODO(Anish,3,03/23/23): As the endpoint is same for key card & project card. We need to create these constants to
 // support both with the same endpoint with different query string params.
 const (
-	RouteRelationsGetRelationsForKeyMatchingSearchToken      = "search/relations?token=%s&currentKeyId=%s"
-	RouteRelationsGetRelationsForBlockMatchingSearchToken    = "search/relations?token=%s&currentBlockId=%s"
-	RouteRelationsGetRelationsForPodMatchingSearchToken      = "search/relations?token=%s&currentPodId=%s&keyId=%s"
-	RouteRelationsGetRelationsForBlockPodMatchingSearchToken = "search/relations?token=%s&currentPodId=%s&keyId=%s&blockId=%s"
+	RouteRelationsGetRelationsForKeyMatchingSearchToken     = "search/relations?token=%s&currentKeyId=%s"
+	RouteRelationsGetRelationsForProjectMatchingSearchToken = "search/relations?token=%s&currentProjectId=%s"
+	RouteRelationsGetRelationsForCardMatchingSearchToken    = "search/relations?token=%s&currentCardId=%s&keyId=%s&projectId=%s"
 
-	RouteRelationsRelateBlockPodToKey          = "keys/%s/pods/%s/relate?targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsUnrelateBlockPodFromKey      = "keys/%s/pods/%s/unrelate?targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsRelateBlockPodToBlock        = "blocks/%s/pods/%s/relate?targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsUnrelateBlockPodFromBlock    = "blocks/%s/pods/%s/unrelate?targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsRelatePodToBlockPod          = "pods/%s/pods/%s/relate?sourceKeyId=%s&targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsUnrelatePodFromBlockPod      = "pods/%s/pods/%s/unrelate?sourceKeyId=%s&targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsRelateBlockPodToBlockPod     = "pods/%s/pods/%s/relate?sourceKeyId=%s&sourceBlockId=%s&targetKeyId=%s&targetBlockId=%s"
-	RouteRelationsUnrelateBlockPodFromBlockPod = "pods/%s/pods/%s/unrelate?sourceKeyId=%s&sourceBlockId=%s&targetKeyId=%s&targetBlockId=%s"
+	RouteRelationsRelateCardToKey         = "keys/%s/cards/%s/relate?targetKeyId=%s&targetProjectId=%s"
+	RouteRelationsUnrelateCardFromKey     = "keys/%s/cards/%s/unrelate?targetKeyId=%s&targetProjectId=%s"
+	RouteRelationsRelateCardToProject     = "projects/%s/cards/%s/relate?targetKeyId=%s&targetProjectId=%s"
+	RouteRelationsUnrelateCardFromProject = "projects/%s/cards/%s/unrelate?targetKeyId=%s&targetProjectId=%s"
+	RouteRelationsRelateCardToCard        = "cards/%s/cards/%s/relate?sourceKeyId=%s&sourceProjectId=%s&targetKeyId=%s&targetProjectId=%s"
+	RouteRelationsUnrelateCardFromCard    = "cards/%s/cards/%s/unrelate?sourceKeyId=%s&sourceProjectId=%s&targetKeyId=%s&targetProjectId=%s"
 )
 
 const (
-	RouteRelationsGetRelationsForKey      = "keys/%s/relations"
-	RouteRelationsGetRelationsForBlock    = "blocks/%s/relations?keyId=%s"
-	RouteRelationsGetRelationsForPod      = "pods/%s/relations?keyId=%s"
-	RouteRelationsGetRelationsForBlockPod = "block-pods/%s/relations?keyId=%s&blockId=%s"
-	RouteRelationsRelateKeyToKey          = "keys/%s/keys/%s/relate"
-	RouteRelationsUnrelateKeyFromKey      = "keys/%s/keys/%s/unrelate"
-	RouteRelationsRelateBlockToKey        = "keys/%s/blocks/%s/relate"
-	RouteRelationsUnrelateBlockFromKey    = "keys/%s/blocks/%s/unrelate"
-	RouteRelationsRelatePodToKey          = "keys/%s/pods/%s/relate?targetKeyId=%s"
-	RouteRelationsUnrelatePodFromKey      = "keys/%s/pods/%s/unrelate?targetKeyId=%s"
-	RouteRelationsRelatePodToBlock        = "blocks/%s/pods/%s/relate?targetKeyId=%s"
-	RouteRelationsUnrelatePodFromBlock    = "blocks/%s/pods/%s/unrelate?targetKeyId=%s"
-	RouteRelationsRelateBlockToBlock      = "blocks/%s/blocks/%s/relate"
-	RouteRelationsUnrelateBlockFromBlock  = "blocks/%s/blocks/%s/unrelate"
-	RouteRelationsRelatePodToPod          = "pods/%s/pods/%s/relate?sourceKeyId=%s&targetKeyId=%s"
-	RouteRelationsUnrelatePodFromPod      = "pods/%s/pods/%s/unrelate?sourceKeyId=%s&targetKeyId=%s"
+	RouteRelationsGetRelationsForKey         = "keys/%s/relations"
+	RouteRelationsGetRelationsForProject     = "projects/%s/relations?keyId=%s"
+	RouteRelationsGetRelationsForCard        = "cards/%s/relations?keyId=%s&projectId=%s"
+	RouteRelationsRelateKeyToKey             = "keys/%s/keys/%s/relate"
+	RouteRelationsUnrelateKeyFromKey         = "keys/%s/keys/%s/unrelate"
+	RouteRelationsRelateProjectToKey         = "keys/%s/projects/%s/relate"
+	RouteRelationsUnrelateProjectFromKey     = "keys/%s/projects/%s/unrelate"
+	RouteRelationsRelateProjectToProject     = "projects/%s/projects/%s/relate"
+	RouteRelationsUnrelateProjectFromProject = "projects/%s/projects/%s/unrelate"
 )
 
 const (
-	RouteScalesGetScales           = "scales?includeCounts=%s&excludeEmpty=%s"
-	RouteScalesAddScale            = "scales"
-	RouteScalesGetScale            = "scales/%s"
-	RouteScalesUpdateScale         = "scales/%s"
-	RouteScalesDeleteScale         = "scales/%s"
-	RouteScalesGetBlocksUsingScale = "scales/%s/blocks"
-	RouteScalesGetPodsUsingScale   = "scales/%s/pods"
+	RouteScalesGetScales             = "scales?includeCounts=%s&excludeEmpty=%s"
+	RouteScalesAddScale              = "scales"
+	RouteScalesGetScale              = "scales/%s"
+	RouteScalesUpdateScale           = "scales/%s"
+	RouteScalesDeleteScale           = "scales/%s"
+	RouteScalesGetProjectsUsingScale = "scales/%s/projects"
+	RouteScalesGetCardsUsingScale    = "scales/%s/cards"
 )
 
 const (
@@ -490,36 +388,14 @@ const (
 )
 
 const (
-	RouteSearchSearchKeyBlockOrPodByToken = "search?token=%s"
-	RouteSearchSearchUserByToken          = "search/users?token=%s"
+	RouteSearchSearchKeyProjectOrCardByToken = "search?token=%s"
+	RouteSearchSearchUserByToken             = "search/users?token=%s"
 )
 
 const (
-	RouteTeacherKeysGetAttachmentSubmissionsAsStudent = "classroom-pods/%s/submissions/attachments/as-student?keyId=%s&blockId=%s"
-	RouteTeacherKeysGetCommentSubmissionsAsStudent    = "classroom-pods/%s/submissions/comments/as-student?keyId=%s&blockId=%s"
-	RouteTeacherKeysGetStudentsInABlock               = "classroom-blocks/%s/students?keyId=%s"
-)
-
-const (
-	RouteTeacherKeysGetStudentAttachmentSubmissionsAsTeacher  = "classroom-pods/%s/submissions/attachments/as-teacher?studentId=%s&keyId=%s&blockId=%s"
-	RouteTeacherKeysGetStudentCommentSubmissionsAsTeacher     = "classroom-pods/%s/submissions/comments/as-teacher?studentId=%s&keyId=%s&blockId=%s"
-	RouteTeacherKeysAddAttachmentToTeacherPodAsTeacher        = "classroom-pods/%s/attachments/as-teacher?keyId=%s&blockId=%s"
-	RouteTeacherKeysAddCommentToTeacherPodAsTeacher           = "classroom-pods/%s/comments/as-teacher?keyId=%s&blockId=%s"
-	RouteTeacherKeysGetBlockAndPodsGradesForAStudentAsTeacher = "classroom-blocks/%s/student-grades/as-teacher?studentUserId=%s&keyId=%s"
-	RouteTeacherKeysPublishStudentGradesForABlock             = "classroom-blocks/%s/student-grades/publish?keyId=%s"
-	RouteTeacherKeysBulkPublishPodGradesForAStudent           = "classroom-pods/students/%s/grades/publish?keyId=%s&blockId=%s"
-	RouteTeacherKeysBulkPublishPodGradesForStudents           = "classroom-pods/%s/students/grades/publish?keyId=%s&blockId=%s"
-	RouteTeacherKeysGetBlockGradesForStudents                 = "classroom-blocks/%s/students/grades?keyId=%s"
-	RouteTeacherKeysGetPodGradesForStudents                   = "classroom-pods/%s/students/grades?keyId=%s&blockId=%s"
-	RouteTeacherKeysAssignGradeToStudent                      = "classroom-blocks/%s/student/grade?studentUserId=%s&keyId=%s"
-	RouteTeacherKeysAssignPodGradeForAStudentAsTeacher        = "classroom-pods/%s/student/grade?studentUserId=%s&keyId=%s&blockId=%s"
-	RouteTeacherKeysGetStudentProfile                         = "classroom/students/%s/profile?keyId=%s&blockId=%s"
-)
-
-const (
-	RouteTemplatesGetKeyTemplates   = "templates/keys"
-	RouteTemplatesGetBlockTemplates = "templates/blocks"
-	RouteTemplatesGetPodTemplates   = "templates/pods"
+	RouteTemplatesGetKeyTemplates     = "templates/keys"
+	RouteTemplatesGetProjectTemplates = "templates/projects"
+	RouteTemplatesGetCardTemplates    = "templates/cards"
 )
 
 const (

@@ -2,8 +2,8 @@ package request
 
 type ChecklistIdParam struct {
 	KeyId           string
-	BlockId         *string
-	PodId           *string
+	ProjectId       *string
+	CardId          *string
 	ChecklistId     *string
 	ChecklistItemId *string
 }

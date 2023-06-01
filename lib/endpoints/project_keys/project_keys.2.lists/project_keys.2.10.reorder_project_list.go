@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-blocks-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-blocks-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-blocks-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-building-projects-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
 )
 
 type ReorderProjectListsReqBody struct {
@@ -31,7 +31,7 @@ func ReorderProjectLists(
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(
 		lib.RouteProjectKeysReorderProjectList,
-		projectListParam.BlockId,
+		projectListParam.ProjectId,
 		projectListParam.KeyId,
 	)
 	if err != nil {
