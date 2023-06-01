@@ -16,8 +16,8 @@ const (
 	CopyProjectName = "Car Insurance"
 )
 
-func GrantAclOnCustomProject() {
-	log.Info("Objective: Add Custom Project, Share Project, Grant Read Access, Copy Project, Grant Admin Access")
+func GrantAclOnProject() {
+	log.Info("Objective: Add Project, Share Project, Grant Read Access, Copy Project, Grant Admin Access")
 	_, err := recipes.ValidateDependencies()
 	if err != nil {
 		return

@@ -38,7 +38,7 @@ func main() {
 		break
 	case 8:
 		log.Info("Run Recipe8")
-		recipes.GrantAclOnCustomProject()
+		recipes.GrantAclOnProject()
 		break
 	case 9:
 		log.Info("Run Recipe9")
