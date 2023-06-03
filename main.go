@@ -2,7 +2,7 @@ package main
 
 import (
 	log "github.com/sirupsen/logrus"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/recipes"
+	"github.com/snowpal/pitch-project-management-sdk/lib/recipes"
 )
 
 func main() {
