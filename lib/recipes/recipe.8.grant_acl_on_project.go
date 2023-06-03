@@ -1,12 +1,12 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/projects/projects.1"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 
-	recipes "github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
-	response "github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
+	recipes "github.com/snowpal/pitch-project-management-sdk/lib/helpers/recipes"
+	response "github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 
 	log "github.com/sirupsen/logrus"
 )

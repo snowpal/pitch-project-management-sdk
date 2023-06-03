@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers"
 )
 
 func DeleteScale(jwtToken string, scaleId string) error {

@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-project-management-sdk/lib/helpers"
 )
 
 type Followers struct {

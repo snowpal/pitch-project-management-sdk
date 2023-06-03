@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 )
 
 func relateKeyToCard(jwtToken string, route string) error {

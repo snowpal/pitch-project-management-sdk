@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/collaboration/collaboration.1.projects"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/keys/keys.1"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/projects/projects.1"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/keys/keys.1"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/projects/projects.1"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 )
 
 func sleepWindow(sleepTime time.Duration) {

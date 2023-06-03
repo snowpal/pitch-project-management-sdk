@@ -1,7 +1,7 @@
 package response
 
 import (
-	common2 "github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	common2 "github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
 )
 
 type Tasks struct {

@@ -2,8 +2,8 @@ package recipes
 
 import (
 	log "github.com/sirupsen/logrus"
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers/recipes"
 )
 
 func RegisterFewUsers() {

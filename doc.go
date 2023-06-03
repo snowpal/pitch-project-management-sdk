@@ -5,7 +5,7 @@ Check out the recipes to get a sense of what the underlying API has to offer. He
 
 	import (
 		log "github.com/sirupsen/logrus"
-		"github.com/snowpal/pitch-building-projects-sdk/lib/recipes"
+		"github.com/snowpal/pitch-project-management-sdk/lib/recipes"
 	)
 
 	func main() {

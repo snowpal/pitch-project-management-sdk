@@ -1,15 +1,15 @@
 package recipes
 
 import (
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers/recipes"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers/recipes"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 
 	log "github.com/sirupsen/logrus"
-	projectKeys "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_keys/project_keys.1"
-	projectLists "github.com/snowpal/pitch-building-projects-sdk/lib/endpoints/project_keys/project_keys.2.lists"
+	projectKeys "github.com/snowpal/pitch-project-management-sdk/lib/endpoints/project_keys/project_keys.1"
+	projectLists "github.com/snowpal/pitch-project-management-sdk/lib/endpoints/project_keys/project_keys.2.lists"
 )
 
 const (
