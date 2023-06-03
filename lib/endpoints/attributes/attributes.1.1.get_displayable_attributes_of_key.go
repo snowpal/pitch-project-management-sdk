@@ -6,9 +6,9 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 )
 
 func GetResourceAttrs(jwtToken string) (response.ResourceAttributes, error) {

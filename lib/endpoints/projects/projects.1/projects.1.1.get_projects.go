@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	helpers2 "github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/response"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	helpers2 "github.com/snowpal/pitch-project-management-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 )
 
 func GetProjects(jwtToken string, projectParam request.GetProjectsParam) ([]response.Project, error) {

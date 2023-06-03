@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
 )
 
 type ProjectBulkShareReqBody struct {

@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/snowpal/pitch-building-projects-sdk/lib"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/helpers"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/common"
-	"github.com/snowpal/pitch-building-projects-sdk/lib/structs/request"
+	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/helpers"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 )
 
 func UpdateProjectAttrs(jwtToken string, projectParam common.ResourceIdParam, attribute request.ResourceAttributeReqBody) error {
