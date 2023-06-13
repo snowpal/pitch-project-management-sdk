@@ -33,7 +33,7 @@ func GrantAclOnProject() {
 		return
 	}
 
-	log.Info("Add custom project")
+	log.Info("Add project")
 	recipes.SleepBefore()
 	project, err := recipes.AddProject(user, CopyProjectName, key)
 	if err != nil {
