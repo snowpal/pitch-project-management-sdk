@@ -67,7 +67,7 @@ func UpdateAttributes() {
 		user.JwtToken,
 		common.ResourceIdParam{
 			ProjectId: project.ID,
-			KeyId:     project.Key.ID,
+			KeyId:     key.ID,
 		},
 		request.ResourceAttributeReqBody{
 			AttributeNames: "tags,rendering_mode",
