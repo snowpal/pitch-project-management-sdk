@@ -18,9 +18,9 @@ import (
 )
 
 const (
-	KeyName            = "Diwali Festival"
-	ProjectName        = "Diwali Function"
-	UpdatedProjectName = "Diwali Celebration"
+	KeyName            = "Snowpal Pitch"
+	ProjectName        = "Web App"
+	UpdatedProjectName = "Android App"
 )
 
 func ShareProject() {
