@@ -9,7 +9,6 @@ import (
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
 	"github.com/snowpal/pitch-project-management-sdk/lib/helpers"
-	helpers2 "github.com/snowpal/pitch-project-management-sdk/lib/helpers"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 )
@@ -34,10 +33,10 @@ func GetCards(jwtToken string, cardsParam request.GetCardsParam) ([]response.Car
 		return resCards.Cards, err
 	}
 
-	helpers2.AddUserHeaders(jwtToken, req)
+	helpers.AddUserHeaders(jwtToken, req)
 
 	var res *http.Response
-	_, err = helpers.MakeRequest(req)
+	res, err = helpers.MakeRequest(req)
 	if err != nil {
 		fmt.Println(err)
 		return resCards.Cards, err

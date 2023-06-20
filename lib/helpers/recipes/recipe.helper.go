@@ -2,11 +2,12 @@ package recipes
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
-	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/collaboration/collaboration.1.projects"
-
 	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/cards/cards.1"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/collaboration/collaboration.1.projects"
 	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/keys/keys.1"
 	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/projects/projects.1"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
@@ -71,6 +72,17 @@ func AddProject(user response.User, projectName string, key response.Key) (respo
 	return newProject, nil
 }
 
+func AddProjectCard(user response.User, cardName string, project response.Project) (response.Card, error) {
+	newCard, err := cards.AddCard(
+		user.JwtToken,
+		request.AddCardReqBody{Name: cardName},
+		common.ResourceIdParam{ProjectId: project.ID, KeyId: project.Key.ID})
+	if err != nil {
+		return newCard, err
+	}
+	return newCard, nil
+}
+
 func SearchUserAndShareProject(user response.User, project response.Project, searchToken string, acl string) error {
 	projectIdParam := common.ResourceIdParam{
 		ProjectId: project.ID,
@@ -80,7 +92,7 @@ func SearchUserAndShareProject(user response.User, project response.Project, sea
 	searchedUsers, err := collaboration.GetUsersThisProjectCanBeSharedWith(
 		user.JwtToken,
 		common.SearchUsersParam{
-			SearchToken: searchToken,
+			SearchToken: strings.Split(searchToken, "@")[0],
 			ResourceIds: projectIdParam,
 		})
 	if err != nil {
