@@ -2,7 +2,6 @@ package collaboration
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -26,7 +25,6 @@ func ShareProjectWithUserWithCards(
 	resProject := response.Project{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -38,7 +36,6 @@ func ShareProjectWithUserWithCards(
 	)
 	req, err := http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -46,7 +43,6 @@ func ShareProjectWithUserWithCards(
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -54,13 +50,11 @@ func ShareProjectWithUserWithCards(
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	err = json.Unmarshal(body, &resProject)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	return resProject, nil

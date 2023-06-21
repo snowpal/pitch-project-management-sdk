@@ -2,7 +2,6 @@ package cardTypes
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -17,19 +16,16 @@ func UpdateCardType(jwtToken string, reqBody request.CardTypeReqBody, cardTypeId
 	resCardType := response.CardType{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resCardType, err
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(lib.RouteCardTypesUpdateCardType, cardTypeId)
 	if err != nil {
-		fmt.Println(err)
 		return resCardType, err
 	}
 
 	req, err := http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resCardType, err
 	}
 
@@ -37,7 +33,6 @@ func UpdateCardType(jwtToken string, reqBody request.CardTypeReqBody, cardTypeId
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCardType, err
 	}
 
@@ -45,13 +40,11 @@ func UpdateCardType(jwtToken string, reqBody request.CardTypeReqBody, cardTypeId
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCardType, err
 	}
 
 	err = json.Unmarshal(body, &resCardType)
 	if err != nil {
-		fmt.Println(err)
 		return resCardType, err
 	}
 	return resCardType, nil

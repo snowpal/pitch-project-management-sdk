@@ -2,7 +2,6 @@ package collaboration
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -20,14 +19,12 @@ func GetProjectCollaborators(jwtToken string, projectParam common.ResourceIdPara
 		projectParam.KeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -36,7 +33,6 @@ func GetProjectCollaborators(jwtToken string, projectParam common.ResourceIdPara
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -45,13 +41,11 @@ func GetProjectCollaborators(jwtToken string, projectParam common.ResourceIdPara
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	err = json.Unmarshal(body, &resProject)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	return resProject, nil

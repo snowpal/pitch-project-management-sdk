@@ -1,7 +1,6 @@
 package projectKeys
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -20,14 +19,12 @@ func CopyCard(jwtToken string, projectCardParam request.CopyMoveProjectCardParam
 		projectCardParam.TargetProjectListId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -35,7 +32,6 @@ func CopyCard(jwtToken string, projectCardParam request.CopyMoveProjectCardParam
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

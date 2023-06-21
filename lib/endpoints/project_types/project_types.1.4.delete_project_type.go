@@ -1,7 +1,6 @@
 package project_types
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -11,13 +10,11 @@ import (
 func DeleteProjectType(jwtToken string, projectTypeId string) error {
 	route, err := helpers.GetRoute(lib.RouteProjectTypesDeleteProjectType, projectTypeId)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	req, err := http.NewRequest(http.MethodDelete, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -25,7 +22,6 @@ func DeleteProjectType(jwtToken string, projectTypeId string) error {
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

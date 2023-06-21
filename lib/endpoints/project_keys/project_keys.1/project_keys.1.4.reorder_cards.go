@@ -2,7 +2,6 @@ package projectKeys
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -28,7 +27,6 @@ func ReorderCards(
 	resCards := response.Cards{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -38,12 +36,10 @@ func ReorderCards(
 		cardParam.KeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 	req, err := http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
@@ -51,7 +47,6 @@ func ReorderCards(
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
@@ -59,13 +54,11 @@ func ReorderCards(
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
 	err = json.Unmarshal(body, &resCards)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 	return resCards.Cards, nil

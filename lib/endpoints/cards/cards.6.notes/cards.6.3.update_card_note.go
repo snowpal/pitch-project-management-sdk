@@ -2,7 +2,6 @@ package cards
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -21,7 +20,6 @@ func UpdateCardNote(
 	resNote := response.Note{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resNote, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -34,7 +32,6 @@ func UpdateCardNote(
 	)
 	req, err := http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resNote, err
 	}
 
@@ -42,7 +39,6 @@ func UpdateCardNote(
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resNote, err
 	}
 
@@ -50,13 +46,11 @@ func UpdateCardNote(
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resNote, err
 	}
 
 	err = json.Unmarshal(body, &resNote)
 	if err != nil {
-		fmt.Println(err)
 		return resNote, err
 	}
 	return resNote, nil

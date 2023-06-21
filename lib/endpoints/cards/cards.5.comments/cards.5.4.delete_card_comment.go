@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -19,7 +18,6 @@ func DeleteCardComment(jwtToken string, commentParam request.CommentIdParam) err
 	)
 	req, err := http.NewRequest(http.MethodDelete, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -27,7 +25,6 @@ func DeleteCardComment(jwtToken string, commentParam request.CommentIdParam) err
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

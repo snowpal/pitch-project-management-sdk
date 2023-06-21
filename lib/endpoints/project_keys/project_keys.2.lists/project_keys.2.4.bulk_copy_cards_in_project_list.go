@@ -1,7 +1,6 @@
 package projectKeys
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -24,14 +23,12 @@ func BulkCopyCardsInProjectList(jwtToken string, projectListParam request.CopyMo
 		strings.Join(projectListParam.CardIds, ","),
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -39,7 +36,6 @@ func BulkCopyCardsInProjectList(jwtToken string, projectListParam request.CopyMo
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

@@ -1,7 +1,6 @@
 package relations
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -12,7 +11,6 @@ import (
 func unrelateKeyFromCard(jwtToken string, route string) error {
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -20,7 +18,6 @@ func unrelateKeyFromCard(jwtToken string, route string) error {
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
@@ -34,12 +31,10 @@ func UnrelateKeyFromKeyCard(jwtToken string, relationParam request.ProjectToCard
 		relationParam.TargetKeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	err = unrelateKeyFromCard(jwtToken, route)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
@@ -54,12 +49,10 @@ func UnrelateKeyFromCard(jwtToken string, relationParam request.ProjectToCardRel
 		relationParam.TargetProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	err = unrelateKeyFromCard(jwtToken, route)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

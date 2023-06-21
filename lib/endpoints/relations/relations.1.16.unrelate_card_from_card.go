@@ -1,7 +1,6 @@
 package relations
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -12,7 +11,6 @@ import (
 func unrelateCardFromCard(jwtToken string, route string) error {
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -20,7 +18,6 @@ func unrelateCardFromCard(jwtToken string, route string) error {
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
@@ -35,12 +32,10 @@ func UnrelateKeyCardFromKeyCard(jwtToken string, relationParam request.CardToCar
 		relationParam.TargetKeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	err = unrelateCardFromCard(jwtToken, route)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
@@ -56,12 +51,10 @@ func UnrelateKeyCardFromCard(jwtToken string, relationParam request.CardToCardRe
 		relationParam.TargetProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	err = unrelateCardFromCard(jwtToken, route)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
@@ -78,12 +71,10 @@ func UnrelateCardFromCard(jwtToken string, relationParam request.CardToCardRelat
 		relationParam.TargetProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	err = unrelateCardFromCard(jwtToken, route)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
