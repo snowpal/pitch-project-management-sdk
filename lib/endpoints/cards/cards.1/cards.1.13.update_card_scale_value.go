@@ -2,7 +2,6 @@ package cards
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -22,7 +21,6 @@ func UpdateCardScaleValue(
 	resCardScaleValue := response.UpdateCardScaleValue{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resCardScaleValue, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -33,14 +31,12 @@ func UpdateCardScaleValue(
 		cardParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resCardScaleValue, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resCardScaleValue, err
 	}
 
@@ -49,7 +45,6 @@ func UpdateCardScaleValue(
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCardScaleValue, err
 	}
 
@@ -58,13 +53,11 @@ func UpdateCardScaleValue(
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCardScaleValue, err
 	}
 
 	err = json.Unmarshal(body, &resCardScaleValue)
 	if err != nil {
-		fmt.Println(err)
 		return resCardScaleValue, err
 	}
 	return resCardScaleValue, nil

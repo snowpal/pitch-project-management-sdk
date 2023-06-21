@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -20,14 +19,12 @@ func GetTaskStatusForProject(jwtToken string, taskParam common.ResourceIdParam) 
 		taskParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTasksStatus, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTasksStatus, err
 	}
 
@@ -36,7 +33,6 @@ func GetTaskStatusForProject(jwtToken string, taskParam common.ResourceIdParam) 
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTasksStatus, err
 	}
 
@@ -45,13 +41,11 @@ func GetTaskStatusForProject(jwtToken string, taskParam common.ResourceIdParam) 
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTasksStatus, err
 	}
 
 	err = json.Unmarshal(body, &resProjectTasksStatus)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTasksStatus, err
 	}
 	return resProjectTasksStatus, nil

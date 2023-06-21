@@ -2,7 +2,6 @@ package project_types
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -16,12 +15,10 @@ func GetProjectTypes(jwtToken string, includeCounts bool) ([]response.ProjectTyp
 	resProjectTypes := response.ProjectTypes{}
 	route, err := helpers2.GetRoute(lib.RouteProjectTypesGetProjectTypes, strconv.FormatBool(includeCounts))
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTypes.ProjectTypes, err
 	}
 	req, err := http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTypes.ProjectTypes, err
 	}
 
@@ -29,7 +26,6 @@ func GetProjectTypes(jwtToken string, includeCounts bool) ([]response.ProjectTyp
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTypes.ProjectTypes, err
 	}
 
@@ -37,13 +33,11 @@ func GetProjectTypes(jwtToken string, includeCounts bool) ([]response.ProjectTyp
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTypes.ProjectTypes, err
 	}
 
 	err = json.Unmarshal(body, &resProjectTypes)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectTypes.ProjectTypes, err
 	}
 	return resProjectTypes.ProjectTypes, nil

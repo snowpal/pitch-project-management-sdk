@@ -2,7 +2,6 @@ package cards
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -22,14 +21,12 @@ func GetArchivedCards(jwtToken string, cardsParam request.GetCardsParam) ([]resp
 		*cardsParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
@@ -38,7 +35,6 @@ func GetArchivedCards(jwtToken string, cardsParam request.GetCardsParam) ([]resp
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
@@ -47,13 +43,11 @@ func GetArchivedCards(jwtToken string, cardsParam request.GetCardsParam) ([]resp
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
 	err = json.Unmarshal(body, &resCards)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 	return resCards.Cards, nil

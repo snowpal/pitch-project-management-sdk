@@ -2,7 +2,6 @@ package collaboration
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -22,7 +21,6 @@ func UnshareProjectWithCollaborator(jwtToken string, projectAclParam common.AclP
 	)
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -30,7 +28,6 @@ func UnshareProjectWithCollaborator(jwtToken string, projectAclParam common.AclP
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -38,13 +35,11 @@ func UnshareProjectWithCollaborator(jwtToken string, projectAclParam common.AclP
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	err = json.Unmarshal(body, &resProject)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	return resProject, nil

@@ -2,7 +2,6 @@ package scales
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -15,14 +14,12 @@ func GetCardsUsingScale(jwtToken string, scaleId string) ([]response.Card, error
 	resCards := response.Cards{}
 	route, err := helpers2.GetRoute(lib.RouteScalesGetCardsUsingScale, scaleId)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
@@ -31,7 +28,6 @@ func GetCardsUsingScale(jwtToken string, scaleId string) ([]response.Card, error
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
@@ -40,13 +36,11 @@ func GetCardsUsingScale(jwtToken string, scaleId string) ([]response.Card, error
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 
 	err = json.Unmarshal(body, &resCards)
 	if err != nil {
-		fmt.Println(err)
 		return resCards.Cards, err
 	}
 	return resCards.Cards, nil

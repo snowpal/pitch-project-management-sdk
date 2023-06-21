@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -23,14 +22,12 @@ func GetProjects(jwtToken string, projectParam request.GetProjectsParam) ([]resp
 		strconv.FormatBool(projectParam.WriteOrHigherAcl),
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
@@ -39,7 +36,6 @@ func GetProjects(jwtToken string, projectParam request.GetProjectsParam) ([]resp
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
@@ -48,13 +44,11 @@ func GetProjects(jwtToken string, projectParam request.GetProjectsParam) ([]resp
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
 	err = json.Unmarshal(body, &resProjects)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 	return resProjects.Projects, nil

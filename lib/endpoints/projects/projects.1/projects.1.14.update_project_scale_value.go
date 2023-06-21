@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -22,7 +21,6 @@ func UpdateProjectScaleValue(
 	resProjectScaleValue := response.UpdateProjectScaleValue{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectScaleValue, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -32,14 +30,12 @@ func UpdateProjectScaleValue(
 		projectParam.KeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectScaleValue, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectScaleValue, err
 	}
 
@@ -48,7 +44,6 @@ func UpdateProjectScaleValue(
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectScaleValue, err
 	}
 
@@ -57,13 +52,11 @@ func UpdateProjectScaleValue(
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectScaleValue, err
 	}
 
 	err = json.Unmarshal(body, &resProjectScaleValue)
 	if err != nil {
-		fmt.Println(err)
 		return resProjectScaleValue, err
 	}
 	return resProjectScaleValue, nil
