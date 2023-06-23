@@ -3,11 +3,15 @@ package recipes
 import (
 	"github.com/snowpal/pitch-project-management-sdk/lib"
 	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/favorites"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/keys/keys.1"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/projects/projects.1"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
+	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 
-	log "github.com/sirupsen/logrus"
 	recipes "github.com/snowpal/pitch-project-management-sdk/lib/helpers/recipes"
 	response "github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
+
+	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -52,11 +56,20 @@ func removeFavorite(user response.User, favorite response.AddFavorite) error {
 
 func addFavorite(user response.User) (response.AddFavorite, error) {
 	var favorite response.AddFavorite
-	key, err := recipes.AddProjectKey(user, FavKeyName)
+	key, err := keys.AddKey(
+		user.JwtToken,
+		request.AddKeyReqBody{
+			Name: FavKeyName,
+			Type: lib.ProjectKeyType,
+		})
 	if err != nil {
 		return favorite, err
 	}
-	project, err := recipes.AddProject(user, FavProjectName, key)
+	var project response.Project
+	project, err = projects.AddProject(
+		user.JwtToken,
+		request.AddProjectReqBody{Name: FavProjectName},
+		key.ID)
 	if err != nil {
 		return favorite, err
 	}
