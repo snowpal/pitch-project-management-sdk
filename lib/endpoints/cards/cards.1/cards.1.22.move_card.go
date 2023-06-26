@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -19,14 +18,12 @@ func MoveCard(jwtToken string, cardParam request.CopyMoveProjectCardParam) error
 		cardParam.TargetProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -34,7 +31,6 @@ func MoveCard(jwtToken string, cardParam request.CopyMoveProjectCardParam) error
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -29,7 +28,6 @@ func AddProjectBasedOnTemplate(
 	resProject := response.Project{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -42,12 +40,10 @@ func AddProjectBasedOnTemplate(
 		strconv.FormatBool(projectParam.ExcludeTasks),
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	req, err := http.NewRequest(http.MethodPost, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -55,7 +51,6 @@ func AddProjectBasedOnTemplate(
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -63,13 +58,11 @@ func AddProjectBasedOnTemplate(
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	err = json.Unmarshal(body, &resProject)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	return resProject, nil

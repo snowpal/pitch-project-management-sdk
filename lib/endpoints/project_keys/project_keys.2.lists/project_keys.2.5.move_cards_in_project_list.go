@@ -1,7 +1,6 @@
 package projectKeys
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -22,14 +21,12 @@ func MoveCardsInProjectList(jwtToken string, projectListParam request.CopyMovePr
 		strconv.FormatBool(projectListParam.AllCards),
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -37,7 +34,6 @@ func MoveCardsInProjectList(jwtToken string, projectListParam request.CopyMovePr
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

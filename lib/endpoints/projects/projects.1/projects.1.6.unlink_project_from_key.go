@@ -1,7 +1,6 @@
 package projects
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -12,13 +11,11 @@ import (
 func UnlinkProjectFromKey(jwtToken string, projectParam common.ResourceIdParam) error {
 	route, err := helpers.GetRoute(lib.RouteProjectsUnlinkProjectFromKey, projectParam.KeyId, projectParam.ProjectId)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	req, err := http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -26,7 +23,6 @@ func UnlinkProjectFromKey(jwtToken string, projectParam common.ResourceIdParam) 
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

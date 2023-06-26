@@ -2,7 +2,6 @@ package cards
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -21,13 +20,11 @@ func GetCardTasksForCharts(jwtToken string, cardParam common.ResourceIdParam) ([
 		cardParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resTasks.Tasks, err
 	}
 
 	req, err := http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resTasks.Tasks, err
 	}
 
@@ -35,7 +32,6 @@ func GetCardTasksForCharts(jwtToken string, cardParam common.ResourceIdParam) ([
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resTasks.Tasks, err
 	}
 
@@ -43,13 +39,11 @@ func GetCardTasksForCharts(jwtToken string, cardParam common.ResourceIdParam) ([
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resTasks.Tasks, err
 	}
 
 	err = json.Unmarshal(body, &resTasks)
 	if err != nil {
-		fmt.Println(err)
 		return resTasks.Tasks, err
 	}
 	return resTasks.Tasks, nil

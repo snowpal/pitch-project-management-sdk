@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -18,13 +17,11 @@ func DeleteCardChecklist(jwtToken string, checklistParam request.ChecklistIdPara
 		*checklistParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	req, err := http.NewRequest(http.MethodDelete, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -32,7 +29,6 @@ func DeleteCardChecklist(jwtToken string, checklistParam request.ChecklistIdPara
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

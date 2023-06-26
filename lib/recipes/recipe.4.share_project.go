@@ -19,7 +19,7 @@ import (
 
 const (
 	KeyName            = "Snowpal Pitch"
-	ProjectName        = "Web App"
+	ShareProjectName   = "Web App"
 	UpdatedProjectName = "Android App"
 )
 
@@ -55,25 +55,25 @@ func ShareProject() {
 	if err != nil {
 		return
 	}
-	log.Printf(".Notifications for the recent share displayed successfully")
+	log.Info(".Notifications for the recent share displayed successfully")
 	recipes.SleepAfter()
 
-	log.Printf("Update project name as a write user")
+	log.Info("Update project name as a write user")
 	recipes.SleepBefore()
 	var resProject response.Project
 	resProject, err = updateProjectAsWriteUser(writeUser, project)
 	if err != nil {
 		return
 	}
-	log.Printf(".Write user updated project name to %s successfully", resProject.Name)
+	log.Info(fmt.Sprintf(".Write user updated project name to %s successfully", resProject.Name))
 	recipes.SleepAfter()
 
-	log.Printf("Grant admin access to a user with read access")
+	log.Info("Grant admin access to a user with read access")
 	err = makeReadUserAsAdmin(user, project)
 	if err != nil {
 		return
 	}
-	log.Printf(".Admin access has been granted successfully")
+	log.Info(".Admin access has been granted successfully")
 }
 
 func getWriteUser(user response.User, project response.Project) (response.User, error) {
@@ -109,19 +109,27 @@ func getWriteUser(user response.User, project response.Project) (response.User, 
 
 func shareProject(user response.User) (response.Project, error) {
 	var project response.Project
-	key, err := recipes.AddProjectKey(user, KeyName)
+	key, err := keys.AddKey(
+		user.JwtToken,
+		request.AddKeyReqBody{
+			Name: KeyName,
+			Type: lib.ProjectKeyType,
+		})
 	if err != nil {
 		return project, err
 	}
-	project, err = recipes.AddProject(user, ProjectName, key)
+	project, err = projects.AddProject(
+		user.JwtToken,
+		request.AddProjectReqBody{Name: ShareProjectName},
+		key.ID)
 	if err != nil {
 		return project, err
 	}
-	err = recipes.SearchUserAndShareProject(user, project, "api_read_user", lib.ReadAcl)
+	err = recipes.SearchUserAndShareProject(user, project, lib.ReadUser, lib.ReadAcl)
 	if err != nil {
 		return project, err
 	}
-	err = recipes.SearchUserAndShareProject(user, project, "api_write_user", lib.WriteAcl)
+	err = recipes.SearchUserAndShareProject(user, project, lib.WriteUser, lib.WriteAcl)
 	if err != nil {
 		return project, err
 	}
@@ -136,7 +144,7 @@ func showNotificationsAsWriteUser(writeUser response.User) error {
 	fmt.Println(len(unreadNotifications))
 	for index, notification := range unreadNotifications {
 		if notification.Type == "acl" {
-			log.Printf(".Notification %d: %s", index, notification.Text)
+			log.Info(fmt.Sprintf(".Notification %d: %s", index, notification.Text))
 		}
 	}
 	return nil

@@ -3,10 +3,11 @@ package main
 import (
 	"os"
 	"strconv"
-
-	log "github.com/sirupsen/logrus"
 	"github.com/snowpal/pitch-project-management-sdk/lib/config"
 	"github.com/snowpal/pitch-project-management-sdk/lib/recipes"
+
+	log "github.com/sirupsen/logrus"
+	setupnewuser "github.com/snowpal/pitch-project-management-sdk/lib/recipes/recipe.10.setup_new_user"
 )
 
 func main() {
@@ -63,6 +64,10 @@ func main() {
 	case 9:
 		log.Info("Run Recipe9")
 		recipes.UpdateAttributes()
+		break
+	case 10:
+		log.Info("Run Recipe10")
+		setupnewuser.SetupNewUser()
 		break
 	default:
 		log.Info("pick a specific recipe to run")

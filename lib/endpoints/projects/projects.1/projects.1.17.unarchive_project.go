@@ -1,7 +1,6 @@
 package projects
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -16,14 +15,12 @@ func UnarchiveProject(jwtToken string, projectParam common.ResourceIdParam) erro
 		projectParam.KeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -31,7 +28,6 @@ func UnarchiveProject(jwtToken string, projectParam common.ResourceIdParam) erro
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

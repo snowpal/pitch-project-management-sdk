@@ -2,7 +2,6 @@ package projectKeys
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -21,7 +20,6 @@ func AddCard(
 	resCard := response.Card{}
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -34,14 +32,12 @@ func AddCard(
 		projectListParam.ProjectListId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
@@ -50,7 +46,6 @@ func AddCard(
 	var res *http.Response
 	res, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
@@ -59,13 +54,11 @@ func AddCard(
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
 	err = json.Unmarshal(body, &resCard)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 	return resCard, nil

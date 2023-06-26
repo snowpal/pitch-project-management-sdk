@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -17,14 +16,12 @@ func ArchiveCard(jwtToken string, cardParam common.ResourceIdParam) error {
 		cardParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -32,7 +29,6 @@ func ArchiveCard(jwtToken string, cardParam common.ResourceIdParam) error {
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

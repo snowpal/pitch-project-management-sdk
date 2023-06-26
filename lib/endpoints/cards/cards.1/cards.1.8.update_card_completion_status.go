@@ -2,7 +2,6 @@ package cards
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -22,7 +21,6 @@ func UpdateCardCompletionStatus(
 	resCard := response.Card{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -35,14 +33,12 @@ func UpdateCardCompletionStatus(
 		cardParam.ProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
@@ -51,7 +47,6 @@ func UpdateCardCompletionStatus(
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
@@ -60,13 +55,11 @@ func UpdateCardCompletionStatus(
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
 	err = json.Unmarshal(body, &resCard)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 	return resCard, nil
