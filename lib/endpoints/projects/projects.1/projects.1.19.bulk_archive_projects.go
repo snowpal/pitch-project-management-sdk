@@ -1,7 +1,6 @@
 package projects
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -16,7 +15,6 @@ type BulkArchiveProjectsReqBody struct {
 func BulkArchiveProjects(jwtToken string, reqBody BulkArchiveProjectsReqBody, keyId string) error {
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	payload := strings.NewReader(requestBody)
@@ -24,14 +22,12 @@ func BulkArchiveProjects(jwtToken string, reqBody BulkArchiveProjectsReqBody, ke
 	var route string
 	route, err = helpers.GetRoute(lib.RouteProjectsBulkArchiveProjects, keyId)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -39,7 +35,6 @@ func BulkArchiveProjects(jwtToken string, reqBody BulkArchiveProjectsReqBody, ke
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

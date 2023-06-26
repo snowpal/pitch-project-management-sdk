@@ -1,7 +1,6 @@
 package cardTypes
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/snowpal/pitch-project-management-sdk/lib"
@@ -11,13 +10,11 @@ import (
 func DeleteCardType(jwtToken string, cardTypeId string) error {
 	route, err := helpers.GetRoute(lib.RouteCardTypesDeleteCardType, cardTypeId)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	req, err := http.NewRequest(http.MethodDelete, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -25,7 +22,6 @@ func DeleteCardType(jwtToken string, cardTypeId string) error {
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

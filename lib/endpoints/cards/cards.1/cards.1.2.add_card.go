@@ -2,7 +2,6 @@ package cards
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -18,7 +17,6 @@ func AddCard(jwtToken string, reqBody request.AddCardReqBody, cardParam common.R
 	resCard := response.Card{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 	payload := strings.NewReader(requestBody)
@@ -26,14 +24,12 @@ func AddCard(jwtToken string, reqBody request.AddCardReqBody, cardParam common.R
 	var route string
 	route, err = helpers2.GetRoute(lib.RouteCardsAddCard, cardParam.ProjectId, cardParam.KeyId)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
@@ -42,7 +38,6 @@ func AddCard(jwtToken string, reqBody request.AddCardReqBody, cardParam common.R
 	var res *http.Response
 	res, err = helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
@@ -51,13 +46,11 @@ func AddCard(jwtToken string, reqBody request.AddCardReqBody, cardParam common.R
 	var body []byte
 	body, err = io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 
 	err = json.Unmarshal(body, &resCard)
 	if err != nil {
-		fmt.Println(err)
 		return resCard, err
 	}
 	return resCard, nil

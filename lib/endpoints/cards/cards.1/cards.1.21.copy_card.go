@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -22,14 +21,12 @@ func CopyCard(jwtToken string, cardParam request.CopyMoveCardParam) error {
 		cardParam.TargetProjectId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -37,7 +34,6 @@ func CopyCard(jwtToken string, cardParam request.CopyMoveCardParam) error {
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

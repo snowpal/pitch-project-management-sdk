@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -20,20 +19,17 @@ func GetProjectsLinkedToCards(jwtToken string, projectParam common.ResourceIdPar
 		projectParam.KeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
 	req, _ := http.NewRequest(http.MethodGet, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
 	helpers2.AddUserHeaders(jwtToken, req)
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
@@ -41,13 +37,11 @@ func GetProjectsLinkedToCards(jwtToken string, projectParam common.ResourceIdPar
 
 	body, _ := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 
 	err = json.Unmarshal(body, &resProjects)
 	if err != nil {
-		fmt.Println(err)
 		return resProjects.Projects, err
 	}
 	return resProjects.Projects, nil

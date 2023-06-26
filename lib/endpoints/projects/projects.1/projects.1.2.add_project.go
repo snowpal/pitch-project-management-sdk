@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -17,19 +16,16 @@ func AddProject(jwtToken string, reqBody request.AddProjectReqBody, keyId string
 	resProject := response.Project{}
 	requestBody, err := helpers2.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	payload := strings.NewReader(requestBody)
 	route, err := helpers2.GetRoute(lib.RouteProjectsAddProject, keyId)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	req, err := http.NewRequest(http.MethodPost, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -37,7 +33,6 @@ func AddProject(jwtToken string, reqBody request.AddProjectReqBody, keyId string
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -45,13 +40,11 @@ func AddProject(jwtToken string, reqBody request.AddProjectReqBody, keyId string
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	err = json.Unmarshal(body, &resProject)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	return resProject, nil

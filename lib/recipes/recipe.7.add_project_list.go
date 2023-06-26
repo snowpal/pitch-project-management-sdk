@@ -1,23 +1,28 @@
 package recipes
 
 import (
+	"fmt"
+
 	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/keys/keys.1"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/projects/projects.1"
 	"github.com/snowpal/pitch-project-management-sdk/lib/helpers/recipes"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/common"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/response"
 
-	log "github.com/sirupsen/logrus"
 	projectKeys "github.com/snowpal/pitch-project-management-sdk/lib/endpoints/project_keys/project_keys.1"
 	projectLists "github.com/snowpal/pitch-project-management-sdk/lib/endpoints/project_keys/project_keys.2.lists"
+
+	log "github.com/sirupsen/logrus"
 )
 
 const (
-	ProjectKeyName     = "Go Development"
-	ProjectProjectName = "Status API"
-	CardName           = "Define Endpoints"
-	ProjectList1Name   = "Statuses"
-	ProjectList2Name   = "Teams"
+	ProjectKeyName   = "Go Development"
+	ProjectName      = "Status API"
+	CardName         = "Define Endpoints"
+	ProjectList1Name = "Statuses"
+	ProjectList2Name = "Teams"
 )
 
 func AddProjectList() {
@@ -27,32 +32,44 @@ func AddProjectList() {
 		return
 	}
 
-	user, err := recipes.SignIn(lib.ActiveUser, lib.Password)
+	var user response.User
+	user, err = recipes.SignIn(lib.ActiveUser, lib.Password)
 	if err != nil {
 		return
 	}
 
-	projectKey, err := recipes.AddProjectKey(user, ProjectKeyName)
+	var projectKey response.Key
+	projectKey, err = keys.AddKey(
+		user.JwtToken,
+		request.AddKeyReqBody{
+			Name: ProjectKeyName,
+			Type: lib.ProjectKeyType,
+		})
 	if err != nil {
 		return
 	}
 
-	projectProject, err := recipes.AddProject(user, ProjectProjectName, projectKey)
+	var project response.Project
+	project, err = projects.AddProject(
+		user.JwtToken,
+		request.AddProjectReqBody{Name: ProjectName},
+		projectKey.ID)
 	if err != nil {
 		return
 	}
 
 	log.Info("Add 2 project lists")
 	recipes.SleepBefore()
-	projectList1, err := addProjectList(user, ProjectList1Name, projectProject)
+	var projectList1, projectList2 response.ProjectList
+	projectList1, err = addProjectList(user, ProjectList1Name, project)
 	if err != nil {
 		return
 	}
-	projectList2, err := addProjectList(user, ProjectList2Name, projectProject)
+	projectList2, err = addProjectList(user, ProjectList2Name, project)
 	if err != nil {
 		return
 	}
-	log.Printf(".Both project lists, %s and %s created successfully", projectList1.Name, projectList2.Name)
+	log.Info(fmt.Sprintf(".Both project lists, %s and %s created successfully", projectList1.Name, projectList2.Name))
 	recipes.SleepAfter()
 
 	log.Info("Add a card into a project list")
@@ -61,17 +78,17 @@ func AddProjectList() {
 	if err != nil {
 		return
 	}
-	log.Printf(".Card %s created inside %s successfully", card.Name, projectList1.Name)
+	log.Info(fmt.Sprintf(".Card %s created inside %s successfully", card.Name, projectList1.Name))
 	recipes.SleepAfter()
 
-	log.Printf("Move card %s between project lists", card.Name)
+	log.Info(fmt.Sprintf("Move card %s between project lists", card.Name))
 	recipes.SleepBefore()
 	err = moveCardBetweenLists(user, projectList1, projectList2, card)
 	if err != nil {
 		return
 	}
-	log.Printf(".Card %s moved from list %s to list %s successfully", card.Name,
-		projectList1.Name, projectList2.Name)
+	log.Info(fmt.Sprintf(".Card %s moved from list %s to list %s successfully", card.Name,
+		projectList1.Name, projectList2.Name))
 	recipes.SleepAfter()
 }
 

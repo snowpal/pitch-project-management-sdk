@@ -2,7 +2,6 @@ package projects
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -27,14 +26,12 @@ func CopyProject(jwtToken string, projectParam request.CopyMoveProjectParam) (re
 		projectParam.TargetKeyId,
 	)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -42,7 +39,6 @@ func CopyProject(jwtToken string, projectParam request.CopyMoveProjectParam) (re
 
 	res, err := helpers2.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
@@ -50,13 +46,11 @@ func CopyProject(jwtToken string, projectParam request.CopyMoveProjectParam) (re
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 
 	err = json.Unmarshal(body, &resProject)
 	if err != nil {
-		fmt.Println(err)
 		return resProject, err
 	}
 	return resProject, nil

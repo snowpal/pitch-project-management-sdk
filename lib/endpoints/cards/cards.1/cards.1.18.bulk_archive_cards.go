@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -14,7 +13,6 @@ import (
 func BulkArchiveCards(jwtToken string, reqBody request.BulkArchiveCardsReqBody, cardParam common.ResourceIdParam) error {
 	requestBody, err := helpers.GetRequestBody(reqBody)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	payload := strings.NewReader(requestBody)
@@ -22,14 +20,12 @@ func BulkArchiveCards(jwtToken string, reqBody request.BulkArchiveCardsReqBody, 
 	var route string
 	route, err = helpers.GetRoute(lib.RouteCardsBulkArchiveCards, cardParam.KeyId, cardParam.ProjectId)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPatch, route, payload)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -37,7 +33,6 @@ func BulkArchiveCards(jwtToken string, reqBody request.BulkArchiveCardsReqBody, 
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil

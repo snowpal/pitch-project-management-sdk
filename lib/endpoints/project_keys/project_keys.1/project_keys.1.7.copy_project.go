@@ -1,7 +1,6 @@
 package projectKeys
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -20,14 +19,12 @@ func CopyProject(jwtToken string, projectParam request.CopyMoveProjectParam) err
 		strconv.FormatBool(projectParam.AllTasks),
 	)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
 	var req *http.Request
 	req, err = http.NewRequest(http.MethodPost, route, nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -35,7 +32,6 @@ func CopyProject(jwtToken string, projectParam request.CopyMoveProjectParam) err
 
 	_, err = helpers.MakeRequest(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	return nil
