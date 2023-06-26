@@ -1,7 +1,10 @@
 package recipes
 
 import (
+	"fmt"
+
 	"github.com/snowpal/pitch-project-management-sdk/lib"
+	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/keys/keys.1"
 	"github.com/snowpal/pitch-project-management-sdk/lib/endpoints/projects/projects.1"
 	"github.com/snowpal/pitch-project-management-sdk/lib/structs/request"
 
@@ -23,50 +26,62 @@ func GrantAclOnProject() {
 		return
 	}
 
-	user, err := recipes.SignIn(lib.ActiveUser, lib.Password)
+	var user response.User
+	user, err = recipes.SignIn(lib.ActiveUser, lib.Password)
 	if err != nil {
 		return
 	}
 
-	key, err := recipes.AddProjectKey(user, CopyKeyName)
+	var key response.Key
+	key, err = keys.AddKey(
+		user.JwtToken,
+		request.AddKeyReqBody{
+			Name: CopyKeyName,
+			Type: lib.ProjectKeyType,
+		})
 	if err != nil {
 		return
 	}
 
 	log.Info("Add project")
 	recipes.SleepBefore()
-	project, err := recipes.AddProject(user, CopyProjectName, key)
+	var project response.Project
+	project, err = projects.AddProject(
+		user.JwtToken,
+		request.AddProjectReqBody{Name: CopyProjectName},
+		key.ID)
 	if err != nil {
 		return
 	}
-	log.Printf(".Project %s added successfully", project.Name)
+	log.Info(fmt.Sprintf(".Project %s added successfully", project.Name))
 	recipes.SleepAfter()
 
 	log.Info("Share project with read access")
 	recipes.SleepBefore()
-	err = recipes.SearchUserAndShareProject(user, project, "api_read_user", lib.ReadAcl)
+	err = recipes.SearchUserAndShareProject(user, project, lib.AdminUser, lib.ReadAcl)
 	if err != nil {
 		return
 	}
-	log.Printf(".Project %s shared with %s with read access level", project.Name, lib.ReadUser)
+	log.Info(fmt.Sprintf(".Project %s shared with %s with read access level", project.Name, lib.ReadUser))
 	recipes.SleepAfter()
 
 	log.Info("Copy project and see acl is not copied")
 	recipes.SleepBefore()
-	anotherProject, err := copyProject(user, project)
+	var anotherProject response.Project
+	anotherProject, err = copyProject(user, project)
 	if err != nil {
 		return
 	}
-	log.Printf(".Project %s copied but %s don't have access on copied project", project.Name, lib.ReadUser)
+	log.Info(fmt.Sprintf(".Project %s copied but %s don't have access on copied project", project.Name, lib.ReadUser))
 	recipes.SleepAfter()
 
 	log.Info("Share project with admin access")
 	recipes.SleepBefore()
-	err = recipes.SearchUserAndShareProject(user, anotherProject, "api_admin_user", lib.AdminAcl)
+	err = recipes.SearchUserAndShareProject(user, anotherProject, lib.AdminUser, lib.AdminAcl)
 	if err != nil {
 		return
 	}
-	log.Printf(".Project %s shared with %s with admin access", project.Name, lib.ReadUser)
+	log.Info(fmt.Sprintf(".Project %s shared with %s with admin access", project.Name, lib.ReadUser))
 	recipes.SleepAfter()
 }
 
